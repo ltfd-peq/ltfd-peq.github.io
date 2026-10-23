@@ -1,0 +1,78 @@
+# Publicação no GitHub Pages (PLANO §9.5 e §9.6): a cada push no main, toda
+# segunda às 06:00 (horário de Brasília) — para recalcular situações e prazos —
+# e manualmente. Ambiente pela variável do repositório HUGO_AMBIENTE:
+# "provisorio" (padrão, com noindex) até o lançamento; "producao" a partir dele.
+name: Publicação
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    env:
+      AMBIENTE: ${{ vars.HUGO_AMBIENTE || 'provisorio' }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: ./.github/actions/preparar
+
+      - name: Dados (esquemas, ids, consentimentos)
+        run: python -I scripts/validar_dados.py
+
+      - name: Data da última atualização (último commit em content/ e data/)
+        run: echo "HUGO_PARAMS_ULTIMAATUALIZACAO=$(git log -1 --format=%cI -- content data)" >> "$GITHUB_ENV"
+
+      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
+      - name: Build
+        run: hugo build --environment "$AMBIENTE" --gc --minify --panicOnWarning
+
+      - name: Links internos (inclui âncoras)
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: --config tests/lychee.toml --offline --root-dir ${{ github.workspace }}/public --no-progress public
+          fail: true
+          jobSummary: false
+
+      - name: Orçamento de peso
+        run: python -I scripts/checar_peso.py
+
+      - name: Marcadores de rascunho (bloqueia em produção)
+        run: |
+          if [ "$AMBIENTE" = "producao" ]; then
+            python -I scripts/checar_marcadores.py
+          else
+            python -I scripts/checar_marcadores.py --aviso
+          fi
+
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: public
+
+  publicar:
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.publicacao.outputs.page_url }}
+    steps:
+      - id: publicacao
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

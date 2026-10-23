@@ -1,0 +1,21 @@
+id: calor-massa-mudanca-fase
+titulo: Transferência de calor e massa com mudança de fase
+titulo_en: Heat and mass transfer with phase change
+ordem: 6
+ativa: true
+icone: linha-calor-massa
+chamada: "Gotas, sprays e convecção com mudança de fase."   # uma frase, usada nos cards
+resumo: >-
+  Problemas de transferência de calor e massa com mudança de fase em processos
+  multifásicos, como a evaporação e a vaporização de gotas e sprays e a convecção
+  natural e mista.
+topicos:
+  - Gotas e sprays
+  - Evaporação
+  - Convecção natural e mista
+docentes_responsaveis: [paulo-lage]
+# Temas históricos (contato direto, combustão, radiação térmica, GITT) ficam na
+# trajetória em /sobre/, não aqui (PLANO §6.2 e §6.3).
+fonte: "kit/linhas_de_pesquisa.json (calor-massa-mudanca-de-fase); resumo do Lattes de Lage (25/08/2026)"
+verificado_em: 2026-10-23
+revisado_em: null

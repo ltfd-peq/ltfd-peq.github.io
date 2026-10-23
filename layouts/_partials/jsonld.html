@@ -1,0 +1,55 @@
+{{- /* Dados estruturados (PLANO §10.3). knowsAbout só com linhas ativas (D18). */ -}}
+{{- $lab := hugo.Data.laboratorio -}}
+{{- $raiz := "/" | absURL -}}
+{{- $orgId := printf "%s#org" $raiz -}}
+{{- $grafo := slice -}}
+
+{{- if .IsHome -}}
+  {{- $temas := slice -}}
+  {{- range sort hugo.Data.linhas "ordem" -}}
+    {{- if .ativa }}{{ $temas = $temas | append .titulo }}{{ end -}}
+  {{- end -}}
+  {{- $v := $lab.vinculo -}}
+  {{- $ufrj := dict "@type" "CollegeOrUniversity" "name" $v.universidade.nome "url" $v.universidade.url -}}
+  {{- $coppe := dict "@type" "Organization" "name" (printf "%s – %s" $v.instituto.sigla $v.instituto.nome) "url" $v.instituto.url "parentOrganization" $ufrj -}}
+  {{- $peq := dict "@type" "Organization" "name" (printf "%s (%s)" $v.programa.nome $v.programa.sigla) "url" $v.programa.url "parentOrganization" $coppe -}}
+  {{- $e := $lab.endereco -}}
+  {{- $endereco := dict "@type" "PostalAddress"
+        "streetAddress" (printf "%s, %s" $e.logradouro $e.complemento)
+        "postalCode" $e.cep "addressLocality" $e.cidade "addressRegion" $e.uf "addressCountry" $e.pais -}}
+  {{- $org := dict
+        "@type" (slice "ResearchOrganization" "Organization")
+        "@id" $orgId
+        "name" $lab.nome
+        "alternateName" (slice $lab.sigla $lab.nome_en)
+        "url" $raiz
+        "logo" ("img/icone-512.png" | absURL)
+        "email" $lab.email
+        "address" $endereco
+        "parentOrganization" $peq
+        "knowsAbout" $temas -}}
+  {{- $site := dict "@type" "WebSite" "@id" (printf "%s#site" $raiz) "url" $raiz "name" $lab.sigla "inLanguage" site.Language.Locale "publisher" (dict "@id" $orgId) -}}
+  {{- $grafo = $grafo | append $org $site -}}
+{{- end -}}
+
+{{- with .Params.membro -}}
+  {{- $m := index hugo.Data.membros . -}}
+  {{- $mesmo := slice -}}
+  {{- with $m.ids.orcid }}{{ $mesmo = $mesmo | append (printf "https://orcid.org/%s" .) }}{{ end -}}
+  {{- with $m.ids.lattes }}{{ $mesmo = $mesmo | append (printf "http://lattes.cnpq.br/%s" .) }}{{ end -}}
+  {{- $pessoa := dict "@type" "Person" "name" $m.nome "url" $.Permalink "affiliation" (dict "@id" $orgId) -}}
+  {{- with $m.cargo }}{{ $pessoa = merge $pessoa (dict "jobTitle" .) }}{{ end -}}
+  {{- with $mesmo }}{{ $pessoa = merge $pessoa (dict "sameAs" .) }}{{ end -}}
+  {{- $grafo = $grafo | append $pessoa -}}
+{{- end -}}
+
+{{- if and (not .IsHome) .Parent (not .Parent.IsHome) -}}
+  {{- $itens := slice (dict "@type" "ListItem" "position" 1 "name" (T "inicio") "item" $raiz) -}}
+  {{- $itens = $itens | append (dict "@type" "ListItem" "position" 2 "name" .Parent.Title "item" .Parent.Permalink) -}}
+  {{- $itens = $itens | append (dict "@type" "ListItem" "position" 3 "name" .Title "item" .Permalink) -}}
+  {{- $grafo = $grafo | append (dict "@type" "BreadcrumbList" "itemListElement" $itens) -}}
+{{- end -}}
+
+{{- with $grafo }}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" . | jsonify | safeJS }}</script>
+{{- end }}

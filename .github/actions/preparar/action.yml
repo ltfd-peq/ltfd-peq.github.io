@@ -1,0 +1,27 @@
+# Prepara o ambiente de build: Python com as dependências fixadas e Hugo na
+# versão fixa (edição padrão), com o checksum conferido. Atualizar o Hugo uma vez
+# por semestre, num PR (PLANO §9.3 e §11.3): trocar versão e SHA-256 abaixo.
+name: Preparar ambiente
+description: Python 3.12 + dependências + Hugo fixo
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+      with:
+        python-version: "3.12"
+        cache: pip
+    - name: Dependências Python
+      shell: bash
+      run: pip install -r requirements.txt
+    - name: Hugo
+      shell: bash
+      env:
+        HUGO_VERSION: 0.168.0
+        HUGO_SHA256: fada83ad56bb27ed4cb7dd81590303bdac16140f944ac4e66fc248117e2d5594
+      run: |
+        curl -sSfL -o "$RUNNER_TEMP/hugo.tar.gz" \
+          "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.tar.gz"
+        echo "${HUGO_SHA256}  $RUNNER_TEMP/hugo.tar.gz" | sha256sum -c -
+        tar -xzf "$RUNNER_TEMP/hugo.tar.gz" -C "$RUNNER_TEMP" hugo
+        sudo install -m 755 "$RUNNER_TEMP/hugo" /usr/local/bin/hugo
+        hugo version

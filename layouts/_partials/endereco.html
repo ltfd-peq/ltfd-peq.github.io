@@ -1,0 +1,7 @@
+{{- /* Endereço do laboratório em <address>; recebe hugo.Data.laboratorio. */ -}}
+{{- $e := .endereco -}}
+<address>
+  {{ $e.logradouro }} – {{ $e.complemento }}{{ with $e.sala }}, sala {{ . }}{{ end }}<br>
+  {{ $e.bairro }}<br>
+  {{ $e.cidade }}, {{ $e.uf }} · CEP {{ $e.cep }}
+</address>

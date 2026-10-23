@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "linha.schema.json",
+  "title": "Linha de pesquisa (data/linhas/<id>.yaml)",
+  "type": "object",
+  "allOf": [{"$ref": "comum.schema.json#/$defs/proveniencia"}],
+  "properties": {
+    "id": {"$ref": "comum.schema.json#/$defs/id"},
+    "titulo": {"$ref": "comum.schema.json#/$defs/texto"},
+    "titulo_en": {"type": "string"},
+    "ordem": {"type": "integer", "minimum": 1},
+    "ativa": {"type": "boolean"},
+    "icone": {"type": "string", "pattern": "^linha-[a-z-]+$"},
+    "chamada": {"type": "string", "minLength": 10, "maxLength": 90},
+    "resumo": {"type": "string", "minLength": 40, "maxLength": 900},
+    "resumo_en": {"type": "string"},
+    "topicos": {"type": "array", "items": {"type": "string"}, "maxItems": 5},
+    "metodos": {"type": "array", "items": {"type": "string"}},
+    "perguntas": {"type": "array", "items": {"type": "string"}},
+    "docentes_responsaveis": {"type": "array", "items": {"$ref": "comum.schema.json#/$defs/id"}, "minItems": 1},
+    "imagem": {
+      "type": "object",
+      "properties": {"arquivo": {"type": "string"}, "alt": {"type": "string", "minLength": 10}, "legenda": {"type": "string"}},
+      "required": ["arquivo", "alt", "legenda"]
+    },
+    "fonte": {}, "verificado_em": {}, "revisado_em": {}
+  },
+  "required": ["id", "titulo", "ordem", "ativa", "icone", "chamada", "resumo", "docentes_responsaveis"],
+  "additionalProperties": false
+}

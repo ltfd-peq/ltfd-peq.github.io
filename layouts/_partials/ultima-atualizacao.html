@@ -1,0 +1,10 @@
+{{- /* Data da "Última atualização" do site (D8), devolvida como time.Time.
+     No CI: data do último commit em content/ e data/ (HUGO_PARAMS_ULTIMAATUALIZACAO).
+     Fora do CI: a data mais recente entre as páginas. Chamar com partialCached. */ -}}
+{{- $data := now -}}
+{{- with site.Params.ultimaAtualizacao -}}
+  {{- $data = time.AsTime . -}}
+{{- else -}}
+  {{- with first 1 (sort site.Pages "Lastmod" "desc") }}{{ $data = (index . 0).Lastmod }}{{ end -}}
+{{- end -}}
+{{- return $data -}}

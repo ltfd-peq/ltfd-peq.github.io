@@ -1,0 +1,54 @@
+{{- define "main" }}
+{{- /* Sobre (PLANO §6.2): apresentação e "o que fazemos" (Markdown), trajetória só com
+     marcos que têm fonte (data/historico.yaml), docentes, onde estamos. */ -}}
+{{- $lab := hugo.Data.laboratorio }}
+{{- partial "cabecalho-pagina.html" . }}
+<div class="secao">
+  <div class="container container--estreito prosa">
+    {{ .Content }}
+  </div>
+</div>
+
+<section class="secao secao--alt" aria-labelledby="trajetoria">
+  <div class="container container--estreito">
+    <div class="titulo-secao">
+      <span class="sobretitulo">Desde 1993</span>
+      <h2 id="trajetoria">Nossa trajetória</h2>
+    </div>
+    <ol class="linha-tempo">
+      {{- range hugo.Data.historico.marcos }}
+      <li><span class="linha-tempo__ano">{{ .ano }}</span><p>{{ .texto }}</p></li>
+      {{- end }}
+    </ol>
+  </div>
+</section>
+
+<section class="secao" aria-labelledby="docentes">
+  <div class="container">
+    <div class="titulo-secao titulo-secao--linha">
+      <div>
+        <span class="sobretitulo">Equipe</span>
+        <h2 id="docentes">Docentes</h2>
+      </div>
+      <a class="link-seta" href="{{ "/equipe/" | relLangURL }}">Ver a equipe completa</a>
+    </div>
+    <ul class="grade-membros grade-membros--docentes">
+      {{- range partial "membros.html" (dict "atuais" true "categoria" "docente") }}
+      <li>{{ partial "card-membro.html" (dict "id" .id "nivel" 3) }}</li>
+      {{- end }}
+    </ul>
+  </div>
+</section>
+
+<section class="secao secao--alt" aria-labelledby="onde-estamos">
+  <div class="container container--estreito">
+    <div class="titulo-secao">
+      <span class="sobretitulo">{{ T "contato" }}</span>
+      <h2 id="onde-estamos">Onde estamos</h2>
+    </div>
+    <p>{{ $lab.vinculo.programa.nome }} – {{ $lab.vinculo.instituto.sigla }}/{{ $lab.vinculo.universidade.sigla }}</p>
+    {{- partial "endereco.html" $lab }}
+    <p><a class="link-seta" href="{{ "/contato/" | relLangURL }}#como-chegar">{{ T "comoChegar" }}</a></p>
+  </div>
+</section>
+{{- end }}

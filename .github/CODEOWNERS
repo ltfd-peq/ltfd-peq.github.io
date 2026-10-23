@@ -1,0 +1,9 @@
+# Revisão obrigatória de um docente nos arquivos que mexem com pessoas, com a
+# identidade do laboratório, com privacidade e com a automação (PLANO §10.5).
+# Só tem efeito com "Require review from Code Owners" ligado no ruleset do main.
+# A equipe ltfd-peq/docentes precisa ser criada na organização.
+/data/membros/            @ltfd-peq/docentes
+/data/laboratorio.yaml    @ltfd-peq/docentes
+/content/pt/privacidade.md    @ltfd-peq/docentes
+/content/pt/acessibilidade.md @ltfd-peq/docentes
+/.github/                 @ltfd-peq/docentes

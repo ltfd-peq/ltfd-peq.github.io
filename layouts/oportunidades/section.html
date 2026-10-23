@@ -1,0 +1,45 @@
+{{- define "main" }}
+{{- /* Oportunidades (PLANO §6.12). Vagas vêm de data/vagas/ e expiram sozinhas pelo prazo
+     (rebuild semanal + vagas.js, quando houver vagas). Sem vaga aberta, a mensagem padrão. */ -}}
+{{- $lab := hugo.Data.laboratorio }}
+{{- partial "cabecalho-pagina.html" . }}
+{{- $abertas := slice }}
+{{- range hugo.Data.vagas }}{{ if ge (time.AsTime .prazo) now }}{{ $abertas = $abertas | append . }}{{ end }}{{ end }}
+<section class="secao" aria-labelledby="vagas">
+  <div class="container container--estreito">
+    <div class="titulo-secao"><h2 id="vagas">Vagas abertas</h2></div>
+    {{- with $abertas }}
+    {{- /* Cards de vaga: Onda A (modelo data/vagas/<id>.yaml no PLANO §7.2). */}}
+    {{- else }}
+    <p>No momento não há vagas com bolsa; veja abaixo como manifestar interesse.</p>
+    {{- end }}
+  </div>
+</section>
+<div class="secao secao--alt">
+  <div class="container container--estreito prosa">
+    {{ .Content }}
+  </div>
+</div>
+<section class="secao" aria-labelledby="linhas-interesse">
+  <div class="container">
+    <div class="titulo-secao">
+      <span class="sobretitulo">{{ T "linhasDePesquisa" }}</span>
+      <h2 id="linhas-interesse">Em que você gostaria de trabalhar?</h2>
+    </div>
+    <ul class="grade">
+      {{- range sort hugo.Data.linhas "ordem" }}
+      {{- if .ativa }}<li>{{ partial "card-linha.html" (dict "id" .id "nivel" 3) }}</li>{{ end }}
+      {{- end }}
+    </ul>
+  </div>
+</section>
+<section class="faixa" aria-labelledby="fale" data-superficie="inversa">
+  <div class="container faixa__conteudo">
+    <div>
+      <h2 id="fale">Fale com a gente</h2>
+      <p>Conte seu nível (IC, mestrado, doutorado ou pós-doutorado) e a linha que lhe interessa.</p>
+    </div>
+    <a class="botao botao--contorno" href="{{ partial "mailto.html" (dict "email" $lab.email "assunto" "[LTFD] Interesse – <nível> – <linha>") }}">Escrever para o LTFD</a>
+  </div>
+</section>
+{{- end }}

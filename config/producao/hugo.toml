@@ -1,0 +1,6 @@
+# Ambiente de produção: ligado no lançamento público (16/11/2026).
+enableGitInfo = true
+
+[params]
+  noindex = false
+  csp = true

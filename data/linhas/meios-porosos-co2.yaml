@@ -1,0 +1,21 @@
+id: meios-porosos-co2
+titulo: Escoamentos em meios porosos, reservatórios e CO₂
+titulo_en: Porous-media flows, reservoirs and CO₂
+ordem: 3
+ativa: true
+icone: linha-meios-porosos
+chamada: "Redes de poros e simulação multiescala para reservatórios e CO₂."   # uma frase, usada nos cards
+resumo: >-
+  Redes de poros, abordagem micro-contínua e simulação multiescala para estudar
+  permeabilidade, dispersão e escoamento reativo em meios porosos, com aplicações
+  em caracterização de fluidos de reservatório e em captura e armazenamento de
+  carbono.
+topicos:
+  - Redes de poros
+  - Simulação multiescala
+  - Escoamento reativo
+  - Armazenamento de CO₂
+docentes_responsaveis: [paulo-lage, gabriel-ferreira]
+fonte: "kit/linhas_de_pesquisa.json (meios-porosos-co2); teses em andamento nos Lattes de Lage (25/08/2026) e de Ferreira (22/05/2026)"
+verificado_em: 2026-10-23
+revisado_em: null

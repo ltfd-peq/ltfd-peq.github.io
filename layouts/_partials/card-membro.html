@@ -1,0 +1,30 @@
+{{- /* C9 Card de membro (PLANO §6.7): retrato ou iniciais, nome (H3 com link para o
+     perfil), cargo ou nível, tema e orientação dos alunos, identificadores.
+     Recebe dict "id" e "nivel" (nível do título: 2 ou 3). */ -}}
+{{- $m := index hugo.Data.membros .id -}}
+{{- $perfil := site.GetPage (printf "/equipe/%s" .id) -}}
+{{- $h := printf "h%d" (or .nivel 3) -}}
+{{- $temFoto := and $m.foto $m.consentimento.foto -}}
+<article class="card card-membro{{ if not $temFoto }} card-membro--sem-foto{{ end }}">
+  <div class="card-membro__foto">{{ partial "retrato.html" $m }}</div>
+  <div class="card-membro__corpo">
+    {{ printf "<%s>" $h | safeHTML }}<a class="card__link" href="{{ $perfil.RelPermalink }}">{{ or $m.nome_exibicao $m.nome }}</a>{{ printf "</%s>" $h | safeHTML }}
+    <p class="card-membro__papel">
+      {{- if eq $m.categoria "docente" }}{{ $m.cargo }}
+      {{- else }}{{ T (printf "nivel_%s" $m.categoria) }}{{ with $m.periodo.inicio }} · {{ T "desde" }} {{ . }}{{ end }}
+      {{- end }}
+    </p>
+    {{- if ne $m.categoria "docente" }}
+    <dl class="card-membro__detalhe">
+      {{- with $m.trabalho.titulo }}
+      <div><dt>{{ T "tema" }}:</dt> <dd>{{ . }}</dd></div>
+      {{- end }}
+      {{- with $m.trabalho.orientadores }}
+      <div><dt>{{ if eq $m.categoria "pos-doutorado" }}{{ T "supervisao" }}{{ else }}{{ T "orientacao" }}{{ end }}:</dt>
+        <dd>{{ partial "nomes-membros.html" . }}{{ with $m.trabalho.coorientadores }}; {{ lower (T "coorientacao") }}: {{ partial "nomes-membros.html" . }}{{ end }}</dd></div>
+      {{- end }}
+    </dl>
+    {{- end }}
+    {{- partial "ids-membro.html" (dict "m" $m "email_visivel" false) }}
+  </div>
+</article>

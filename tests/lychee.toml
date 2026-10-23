@@ -1,0 +1,17 @@
+# Verificação de links (PLANO §9.5).
+# Internos, no PR e no deploy (bloqueia):
+#   lychee --config tests/lychee.toml --offline --root-dir "$PWD/public" public
+# Externos, semanal (abre issue): mesmo comando sem --offline.
+# root_dir precisa ser absoluto: vai na linha de comando.
+
+index_files = ["index.html"]
+include_fragments = "full"        # âncoras (#como-chegar, #docentes…) também são conferidas
+include_mail = false              # mailto: não é verificável
+accept = ["200..=299", "403", "429"]   # editoras respondem 403 a robôs; DOI aponta para doi.org
+max_retries = 2
+timeout = 20
+user_agent = "Mozilla/5.0 (compatible; verificador de links do site do LTFD)"
+exclude = [
+  "^tel:",
+  "^https://www\\.google\\.com/maps",   # bloqueia robôs; o link é conferido à mão
+]

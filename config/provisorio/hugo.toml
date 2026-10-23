@@ -1,0 +1,7 @@
+# Ambiente provisório: mesmo endereço do lançamento, mas fora dos buscadores.
+# Sem "Disallow: /" no robots.txt: o buscador precisa ler o noindex (PLANO §9.6).
+enableGitInfo = true
+
+[params]
+  noindex = true
+  csp = true

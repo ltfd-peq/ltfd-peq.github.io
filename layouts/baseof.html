@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale }}" dir="{{ or site.Language.Direction "ltr" }}">
+<head>
+  {{- partial "head.html" . }}
+</head>
+<body>
+  <a class="pular" href="#conteudo">{{ T "pular" }}</a>
+  {{- partial "cabecalho-site.html" . }}
+  <main id="conteudo" tabindex="-1">
+    {{- block "main" . }}{{ end }}
+  </main>
+  {{- partial "rodape.html" . }}
+</body>
+</html>

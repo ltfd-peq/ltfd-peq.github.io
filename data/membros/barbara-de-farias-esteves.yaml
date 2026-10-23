@@ -1,0 +1,16 @@
+id: barbara-de-farias-esteves
+nome: Barbara de Farias Esteves
+categoria: pos-doutorado
+periodo: {inicio: 2025, fim: null}
+trabalho:
+  titulo: ""                       # o Lattes não informa o título do projeto: a confirmar pelo formulário
+  orientadores: [paulo-lage]       # supervisão de pós-doutorado
+  coorientadores: []
+linhas: []                         # a confirmar pelo formulário
+ids: {lattes: null, orcid: null}
+email: null                        # só com consentimento (PLANO §7.1, princípio 9)
+foto: null
+consentimento: {foto: null, email: null, destino: null, data: null}
+fonte: "Lattes de P. L. C. Lage (25/08/2026): supervisão de pós-doutorado em andamento, início 2025"
+verificado_em: 2026-10-23
+revisado_em: null

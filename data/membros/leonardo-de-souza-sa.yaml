@@ -1,0 +1,18 @@
+id: leonardo-de-souza-sa
+nome: Leonardo de Souza Sá
+categoria: doutorado
+# O Lattes de Ferreira (22/05/2026) ainda lista o mestrado como em andamento; o de Lage
+# (25/08/2026) registra o mestrado concluído em 2026 e o doutorado iniciado em 2026.
+periodo: {inicio: 2026, fim: null}
+trabalho:
+  titulo: Análise de aumento de escala de permeabilidade relativa de meios porosos
+  orientadores: [paulo-lage]
+  coorientadores: []
+linhas: [meios-porosos-co2]
+ids: {lattes: null, orcid: null}
+email: null
+foto: null
+consentimento: {foto: null, email: null, destino: null, data: null}
+fonte: "Lattes de P. L. C. Lage (25/08/2026): tese em andamento, início 2026"
+verificado_em: 2026-10-23
+revisado_em: null

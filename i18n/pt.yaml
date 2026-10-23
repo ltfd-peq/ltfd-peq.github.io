@@ -1,0 +1,59 @@
+# Rótulos da interface (pt-BR). O inglês (i18n/en.yaml) entra na Fase 3.
+pular: Pular para o conteúdo
+menu: Menu
+fechar: Fechar
+menuPrincipal: Principal
+mapaDoSite: Mapa do site
+inicio: Início
+trilha: Trilha
+logoAlt: "LTFD – Laboratório de Termofluidodinâmica, página inicial"
+ultimaAtualizacao: Última atualização
+privacidade: Privacidade
+acessibilidade: Acessibilidade
+contato: Contato
+navegacao: Navegação
+vinculo: Vínculo institucional
+telefones: Telefones
+comoChegar: Como chegar
+abrirOSM: Abrir no OpenStreetMap
+abrirGoogle: Abrir no Google Maps
+linhasDePesquisa: Linhas de pesquisa
+todasAsLinhas: Todas as linhas de pesquisa
+conhecaPesquisa: Conheça nossa pesquisa
+oportunidadesEstudantes: Oportunidades para estudantes
+docentesResponsaveis: Docentes responsáveis
+equipeDaLinha: Equipe da linha
+interessadoLinha: Interessado nesta linha?
+perfil: Perfil
+perfilDe: "Perfil de {{ .nome }}"
+lattesDe: "Currículo Lattes de {{ .nome }}"
+orcidDe: "ORCID de {{ .nome }}"
+scholarDe: "Google Acadêmico de {{ .nome }}"
+emailDe: "E-mail de {{ .nome }}"
+desde: desde
+tema: Tema
+orientacao: Orientação
+coorientacao: Coorientação
+supervisao: Supervisão
+orientandosAtuais: Orientações em andamento
+trabalhoAtual: Trabalho em andamento
+identificadores: Identificadores
+# Categorias (títulos de seção na Equipe) e níveis (no card)
+categoria_docente: Docentes
+categoria_pesquisador: Pesquisadores
+categoria_pos-doutorado: Pós-doutorado
+categoria_doutorado: Doutorado
+categoria_mestrado: Mestrado
+categoria_graduacao: Graduação (IC e TCC)
+categoria_tecnico: Técnicos e apoio
+categoria_colaborador-externo: Colaboradores externos
+nivel_docente: Docente
+nivel_pesquisador: Pesquisador(a)
+nivel_pos-doutorado: Pós-doutorado
+nivel_doutorado: Doutorado
+nivel_mestrado: Mestrado
+nivel_graduacao: Graduação
+nivel_tecnico: Técnico(a)
+nivel_colaborador-externo: Colaborador(a) externo(a)
+irPara: "Ir para:"
+paginaNaoEncontrada: Página não encontrada

@@ -1,0 +1,51 @@
+{{- define "main" }}
+{{- /* Contato (PLANO §6.15): mailto por assunto (sem formulário, nada coletado),
+     endereço em <address>, telefones com tel:, como chegar e contatos dos docentes.
+     O mapa estático + iframe por clique entra quando as coordenadas forem conferidas. */ -}}
+{{- $lab := hugo.Data.laboratorio }}
+{{- partial "cabecalho-pagina.html" . }}
+<section class="secao" aria-labelledby="assuntos">
+  <div class="container">
+    <div class="titulo-secao"><h2 id="assuntos">Escreva para o LTFD</h2></div>
+    <p>Escolha o assunto: seu programa de e-mail abre com a mensagem já endereçada.</p>
+    <ul class="assuntos">
+      {{- range .Params.assuntos }}
+      <li><a href="{{ partial "mailto.html" (dict "email" (cond .site $lab.email_site $lab.email) "assunto" (printf "[LTFD] %s" .titulo)) }}"><strong>{{ .titulo }}</strong><span>{{ .descricao }}</span></a></li>
+      {{- end }}
+    </ul>
+    <p>Ou escreva diretamente para <a href="mailto:{{ $lab.email }}">{{ $lab.email }}</a>.</p>
+  </div>
+</section>
+
+<section class="secao secao--alt" aria-labelledby="como-chegar">
+  <div class="container colunas">
+    <div>
+      <div class="titulo-secao"><h2 id="como-chegar">{{ T "comoChegar" }}</h2></div>
+      <p>{{ $lab.vinculo.programa.nome }} – {{ $lab.vinculo.instituto.sigla }}/{{ $lab.vinculo.universidade.sigla }}</p>
+      {{- partial "endereco.html" $lab }}
+      <ul class="lista-simples">
+        <li><a href="{{ $lab.endereco.mapa_osm }}">{{ T "abrirOSM" }}</a></li>
+        <li><a href="{{ $lab.endereco.mapa_google }}">{{ T "abrirGoogle" }}</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="titulo-secao"><h2 id="telefones">{{ T "telefones" }}</h2></div>
+      <p>Secretaria do {{ $lab.vinculo.programa.nome }}:</p>
+      <ul class="lista-simples">
+        {{- range $lab.telefones }}<li><a href="tel:+55{{ replaceRE `\D` "" . }}">{{ . }}</a></li>{{ end }}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="secao" aria-labelledby="docentes">
+  <div class="container">
+    <div class="titulo-secao"><h2 id="docentes">Docentes</h2></div>
+    <ul class="grade-membros grade-membros--docentes">
+      {{- range partial "membros.html" (dict "atuais" true "categoria" "docente") }}
+      <li>{{ partial "card-membro.html" (dict "id" .id "nivel" 3) }}</li>
+      {{- end }}
+    </ul>
+  </div>
+</section>
+{{- end }}

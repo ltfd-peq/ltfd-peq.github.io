@@ -1,0 +1,31 @@
+{{- define "main" }}
+{{- /* Pesquisa — hub (PLANO §6.3): introdução, cards das linhas ativas, métodos e
+     ferramentas. Projetos e Infraestrutura entram como subpáginas na Onda A. */ -}}
+{{- partial "cabecalho-pagina.html" . }}
+<div class="secao">
+  <div class="container">
+    <div class="prosa">{{ .Content }}</div>
+    <h2 class="visualmente-oculto">{{ T "linhasDePesquisa" }}</h2>
+    <ul class="grade">
+      {{- range sort hugo.Data.linhas "ordem" }}
+      {{- if .ativa }}
+      <li>{{ partial "card-linha.html" (dict "id" .id "nivel" 3) }}</li>
+      {{- end }}
+      {{- end }}
+    </ul>
+  </div>
+</div>
+{{- with .Params.metodos }}
+<section class="secao secao--alt" aria-labelledby="metodos">
+  <div class="container">
+    <div class="titulo-secao">
+      <span class="sobretitulo">Como trabalhamos</span>
+      <h2 id="metodos">Métodos e ferramentas</h2>
+    </div>
+    <ul class="chips">
+      {{- range . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+  </div>
+</section>
+{{- end }}
+{{- end }}

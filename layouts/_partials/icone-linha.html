@@ -1,0 +1,7 @@
+{{- /* Ícone de linha de pesquisa (kit, assets/icones/), embutido no HTML: sem requisição.
+     Recebe o nome do ícone, ex.: "linha-cfd". Decorativo: aria-hidden. */ -}}
+{{- with resources.Get (printf "icones/%s.svg" .) -}}
+  {{- replace .Content "<svg " `<svg class="icone-linha" aria-hidden="true" focusable="false" ` | safeHTML -}}
+{{- else -}}
+  {{- errorf "Ícone de linha inexistente: assets/icones/%s.svg" . -}}
+{{- end -}}

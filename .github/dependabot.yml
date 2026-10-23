@@ -1,0 +1,17 @@
+# Atualizações agrupadas e mensais, para não gerar um PR por ação (PLANO §9.5 e §10.5).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      python:
+        patterns: ["*"]

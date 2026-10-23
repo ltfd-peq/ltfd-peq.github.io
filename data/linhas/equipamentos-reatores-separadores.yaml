@@ -1,0 +1,19 @@
+id: equipamentos-reatores-separadores
+titulo: Equipamentos, reatores e separadores
+titulo_en: Process equipment, reactors and separators
+ordem: 5
+ativa: true
+icone: linha-reatores
+chamada: "CFD aplicada a reatores, cristalizadores e separadores."   # uma frase, usada nos cards
+resumo: >-
+  Simulação fluidodinâmica de equipamentos de processo — reatores com membrana,
+  reatores compactos, cristalizadores e separadores supersônicos para captura de
+  CO₂ — integrando CFD, modelagem de processos e projeto.
+topicos:
+  - Reatores compactos e com membrana
+  - Separadores supersônicos
+  - Cristalização
+docentes_responsaveis: [paulo-lage, gabriel-ferreira, argimiro-secchi]
+fonte: "kit/linhas_de_pesquisa.json (reatores-processos); Lattes dos 3 docentes"
+verificado_em: 2026-10-23
+revisado_em: null

@@ -1,0 +1,68 @@
+# Configuração base do site do LTFD (Hugo 0.168.x, edição padrão).
+# Ambientes: config/provisorio/ (antes do lançamento, com noindex) e config/producao/.
+# Rodar: hugo server  ·  hugo build --environment provisorio|producao --minify
+
+# Único lugar onde o endereço do site é escrito (PLANO §9.8). Na migração de
+# domínio, muda-se só esta linha. Templates usam .Permalink, relURL e absURL.
+baseURL = "https://ltfd-peq.github.io/"
+
+title = "LTFD – Laboratório de Termofluidodinâmica"
+defaultContentLanguage = "pt"
+defaultContentLanguageInSubdir = false
+timeZone = "America/Sao_Paulo"
+
+# Sem taxonomias; RSS só quando houver Notícias (v1.1).
+disableKinds = ["taxonomy", "term", "rss"]
+enableRobotsTXT = true
+
+# A data de "Última atualização" vem do Git no CI (fetch-depth: 0).
+# Desligado aqui para o hugo server funcionar fora de um clone completo.
+enableGitInfo = false
+
+[languages.pt]
+  locale = "pt-BR"
+  label = "Português"
+  title = "LTFD – Laboratório de Termofluidodinâmica"
+  contentDir = "content/pt"
+  weight = 1
+
+[languages.en]
+  locale = "en-US"
+  label = "English"
+  title = "LTFD – Thermofluid Dynamics Laboratory"
+  contentDir = "content/en"
+  weight = 2
+  disabled = true  # inglês nível 1 entra na Fase 3 (PLANO §5.5)
+
+[taxonomies]
+
+[frontmatter]
+  lastmod = [":git", "lastmod", ":fileModTime", ":default"]
+
+[markup.goldmark.renderer]
+  unsafe = false
+[markup.goldmark.parser.attribute]
+  block = true
+[markup.highlight]
+  noClasses = false  # realce por classes: a CSP (style-src 'self') bloqueia style="…"
+
+[imaging]
+  resampleFilter = "lanczos"
+  anchor = "Center"
+  [imaging.webp]
+    quality = 72
+    method = 6
+  [imaging.avif]
+    quality = 55
+
+[params]
+  # Segurança por padrão: qualquer build fora de "producao" sai com noindex.
+  noindex = true
+  # CSP em <meta> (PLANO §10.5). Desligada no hugo server, que injeta livereload.
+  csp = false
+  # Medição de audiência (GoatCounter, sem cookies): código da conta, quando existir.
+  goatcounter = ""
+  # Preenchido pelo CI com a data do último commit em content/ e data/ (D8).
+  ultimaAtualizacao = ""
+  # Repositório público do site (organização ltfd-peq, criada em 22/10/2026).
+  repositorio = ""

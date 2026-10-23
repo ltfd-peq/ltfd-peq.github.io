@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "historico.schema.json",
+  "title": "Trajetória (data/historico.yaml): marco sem fonte não é publicado",
+  "type": "object",
+  "properties": {
+    "marcos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ano": {"type": "string", "pattern": "^[0-9]{4}(–[0-9]{4})?$"},
+          "texto": {"type": "string", "minLength": 10},
+          "texto_en": {"type": "string"},
+          "fonte": {"type": "string", "minLength": 5}
+        },
+        "required": ["ano", "texto", "fonte"],
+        "additionalProperties": false
+      }
+    },
+    "verificado_em": {"type": "string", "format": "date"},
+    "revisado_em": {"anyOf": [{"type": "string", "format": "date"}, {"type": "null"}]}
+  },
+  "required": ["marcos", "verificado_em"]
+}

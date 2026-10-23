@@ -1,0 +1,6 @@
+# Dependências dos scripts e testes (Python 3.12). Fixadas; o Dependabot propõe atualizações mensais.
+PyYAML==6.0.3
+jsonschema==4.26.0
+playwright==1.63.0
+# Só para regenerar fontes, ícones e logos a partir dos arquivos da marca (não usado no CI):
+# fonttools[woff]  Pillow  + Inkscape instalado no sistema

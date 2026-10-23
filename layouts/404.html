@@ -1,0 +1,20 @@
+{{- define "main" }}
+{{- /* 404 (PLANO §6.16): mensagem curta e caminhos úteis. A busca entra na Onda A. */ -}}
+<div class="cabecalho-pagina" data-superficie="inversa">
+  <div class="container">
+    <h1>{{ T "paginaNaoEncontrada" }}</h1>
+    <p class="cabecalho-pagina__lead">O endereço pode ter mudado ou estar incorreto.</p>
+  </div>
+</div>
+<div class="secao">
+  <div class="container container--estreito">
+    <p>Tente um destes caminhos:</p>
+    <ul class="links-404">
+      <li><a class="botao" href="{{ "/" | relLangURL }}">{{ T "inicio" }}</a></li>
+      <li><a class="botao botao--contorno" href="{{ "/pesquisa/" | relLangURL }}">Pesquisa</a></li>
+      <li><a class="botao botao--contorno" href="{{ "/oportunidades/" | relLangURL }}">Oportunidades</a></li>
+      <li><a class="botao botao--contorno" href="{{ "/contato/" | relLangURL }}">{{ T "contato" }}</a></li>
+    </ul>
+  </div>
+</div>
+{{- end }}

@@ -1,0 +1,36 @@
+# Trajetória (página Sobre). Só entram marcos com fonte (PLANO §6.2):
+# marco sem fonte não é publicado. O ano em que o nome "LTFD" passou a ser
+# usado está a confirmar (PLANO §15, item 6) e por isso não aparece aqui.
+marcos:
+  - ano: "1993"
+    texto: 'Paulo L. C. Lage inicia suas atividades de pesquisa e ensino no Programa de Engenharia Química da COPPE/UFRJ, na área de Termofluidodinâmica.'
+    fonte: "Lattes de P. L. C. Lage (25/08/2026), atuação profissional: 10/1993 – atual"
+  - ano: "2005"
+    texto: 'Depósito da patente de um processo que combina evaporação por contato direto e permeação de vapor (PI 0501787-4, concedida em 2014).'
+    fonte: "Lattes de P. L. C. Lage (25/08/2026), patentes"
+  - ano: "2006"
+    texto: 'Grande Prêmio CAPES de Teses – Prêmio César Lattes, para tese de doutorado orientada por Paulo L. C. Lage.'
+    fonte: "Lattes de P. L. C. Lage (25/08/2026), prêmios"
+  - ano: "2007"
+    texto: 'Prêmio COPPE Giulio Massarani de Mérito Acadêmico, concedido a Paulo L. C. Lage.'
+    fonte: "Lattes de P. L. C. Lage (25/08/2026), prêmios"
+  - ano: "2015"
+    texto: 'Menção honrosa no Prêmio CAPES de Teses – Engenharias II, para tese orientada por Paulo L. C. Lage.'
+    fonte: "Lattes de P. L. C. Lage (25/08/2026), prêmios"
+  - ano: "2016"
+    texto: 'Início do projeto "Termofluidodinâmica: Modelagem e Simulação de Escoamentos Complexos", financiado pelo CNPq.'
+    fonte: "Lattes de P. L. C. Lage (25/08/2026), projetos: 2016 – atual"
+  - ano: "2018"
+    texto: 'Gabriel G. S. Ferreira defende sua tese de doutorado sobre simulação de escoamentos multifásicos com formação de hidratos, orientada por Paulo L. C. Lage.'
+    fonte: "Lattes de G. G. S. Ferreira (22/05/2026), formação"
+  - ano: "2019–2022"
+    texto: 'Quatro edições do curso de extensão "Introdução à CFD usando OpenFOAM".'
+    fonte: "Lattes de G. G. S. Ferreira (22/05/2026), cursos de curta duração ministrados"
+  - ano: "2020"
+    texto: 'Gabriel G. S. Ferreira torna-se professor do Programa de Engenharia Química da COPPE/UFRJ.'
+    fonte: "Lattes de G. G. S. Ferreira (22/05/2026), atuação profissional: 2020 – atual"
+  - ano: "2026"
+    texto: 'Nova identidade visual e lançamento do site do LTFD.'
+    fonte: "Manual de identidade visual do LTFD, versão 1.0 (outubro de 2026)"
+verificado_em: 2026-10-23
+revisado_em: null

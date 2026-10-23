@@ -1,0 +1,59 @@
+{{- define "main" }}
+{{- /* Perfil individual (PLANO §6.7): retrato, identificadores, minibiografia, linhas,
+     trabalho atual e orientação; para docentes, as orientações em andamento.
+     Publicações e projetos com o nome em destaque entram na Onda A. */ -}}
+{{- $id := .Params.membro }}
+{{- $m := index hugo.Data.membros $id }}
+{{- partial "cabecalho-pagina.html" . }}
+<div class="secao">
+  <div class="container perfil">
+    <aside class="perfil__lateral" aria-label="{{ T "identificadores" }}">
+      {{ partial "retrato.html" $m }}
+      {{- partial "ids-membro.html" (dict "m" $m "email_visivel" true) }}
+    </aside>
+
+    <div>
+      {{- with $m.bio }}
+      <h2 id="sobre">Sobre</h2>
+      <p>{{ . }}</p>
+      {{- end }}
+
+      {{- with $m.trabalho }}{{ if .titulo }}
+      <h2 id="trabalho">{{ T "trabalhoAtual" }}</h2>
+      <p><strong>{{ .titulo }}</strong></p>
+      {{- with .orientadores }}
+      <p>{{ if eq $m.categoria "pos-doutorado" }}{{ T "supervisao" }}{{ else }}{{ T "orientacao" }}{{ end }}: {{ partial "nomes-membros.html" . }}{{ with $m.trabalho.coorientadores }}; {{ lower (T "coorientacao") }}: {{ partial "nomes-membros.html" . }}{{ end }}.</p>
+      {{- end }}
+      {{- else }}{{ with .orientadores }}
+      <h2 id="trabalho">{{ T "trabalhoAtual" }}</h2>
+      <p>{{ if eq $m.categoria "pos-doutorado" }}{{ T "supervisao" }}{{ else }}{{ T "orientacao" }}{{ end }}: {{ partial "nomes-membros.html" . }}.</p>
+      {{- end }}{{ end }}{{ end }}
+
+      {{- with $m.linhas }}
+      <h2 id="linhas">{{ T "linhasDePesquisa" }}</h2>
+      <ul class="lista-simples">
+        {{- range . }}
+        {{- $l := index hugo.Data.linhas . }}
+        <li><a href="{{ (site.GetPage (printf "/pesquisa/%s" .)).RelPermalink }}">{{ $l.titulo }}</a></li>
+        {{- end }}
+      </ul>
+      {{- end }}
+
+      {{- if eq $m.categoria "docente" }}
+      {{- $orientandos := slice }}
+      {{- range partial "membros.html" (dict "atuais" true) }}
+        {{- if or (in .trabalho.orientadores $id) (in .trabalho.coorientadores $id) }}{{ $orientandos = $orientandos | append . }}{{ end }}
+      {{- end }}
+      {{- with $orientandos }}
+      <h2 id="orientacoes">{{ T "orientandosAtuais" }}</h2>
+      <ul class="lista-simples">
+        {{- range . }}
+        <li><a href="{{ (site.GetPage (printf "/equipe/%s" .id)).RelPermalink }}">{{ .nome }}</a> – {{ T (printf "nivel_%s" .categoria) }}{{ if in .trabalho.coorientadores $id }} ({{ lower (T "coorientacao") }}){{ end }}</li>
+        {{- end }}
+      </ul>
+      {{- end }}
+      {{- end }}
+    </div>
+  </div>
+</div>
+{{- end }}

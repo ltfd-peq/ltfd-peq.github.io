@@ -1,0 +1,66 @@
+# Verificação de cada pull request (PLANO §9.5). Bloqueia o merge se falhar.
+# O site gerado fica como artefato para download: nada é publicado daqui.
+name: Verificação do PR
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  AXE_VERSION: 4.13.0
+
+jobs:
+  verificar:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0  # datas do Git para "Última atualização"
+          persist-credentials: false
+
+      - uses: ./.github/actions/preparar
+
+      - name: Dados (esquemas, ids, consentimentos)
+        run: python -I scripts/validar_dados.py
+
+      - name: Contraste das cores do tema
+        run: python -I scripts/contraste.py
+
+      - name: Build (ambiente provisório; falha em qualquer aviso do Hugo)
+        run: hugo build --environment provisorio --gc --minify --panicOnWarning
+
+      - name: Links internos (inclui âncoras)
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: --config tests/lychee.toml --offline --root-dir ${{ github.workspace }}/public --no-progress public
+          fail: true
+          jobSummary: false
+
+      - name: Orçamento de peso
+        run: python -I scripts/checar_peso.py
+
+      - name: Marcadores de rascunho (aviso; bloqueia só na publicação em produção)
+        run: python -I scripts/checar_marcadores.py --aviso
+
+      - name: Navegador para os testes
+        run: |
+          npm install --no-save --no-package-lock --ignore-scripts "axe-core@${AXE_VERSION}"
+          python -m playwright install --with-deps chromium
+
+      - name: Acessibilidade (axe, WCAG 2.2 AA), 320 px, console/CSP e menu pelo teclado
+        run: python -I tests/verificar_paginas.py --axe node_modules/axe-core/axe.min.js
+
+      - name: Site gerado (artefato do PR)
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: site-gerado
+          path: public/
+          retention-days: 7

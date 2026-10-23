@@ -1,0 +1,18 @@
+{{- /* Content adapter: um perfil por membro atual, a partir de data/membros/
+     (/equipe/<id>/). Egressos (periodo.fim preenchido) ganham página na Onda B. */ -}}
+{{- range $id, $m := hugo.Data.membros -}}
+  {{- if ne $id $m.id }}{{ errorf "data/membros/%s.yaml: o campo id (%s) deve ser igual ao nome do arquivo" $id $m.id }}{{ end -}}
+  {{- if not $m.periodo.fim -}}
+    {{- $papel := $m.cargo -}}
+    {{- if ne $m.categoria "docente" }}{{ $papel = T (printf "nivel_%s" $m.categoria) }}{{ end -}}
+    {{- $.AddPage (dict
+        "kind" "page"
+        "path" $id
+        "title" $m.nome
+        "linkTitle" (or $m.nome_exibicao $m.nome)
+        "description" (printf "%s – %s no Laboratório de Termofluidodinâmica (LTFD), PEQ/COPPE/UFRJ." $m.nome $papel)
+        "params" (dict "membro" $id "lead" $papel)
+        "content" (dict "mediaType" "text/markdown" "value" "")
+    ) -}}
+  {{- end -}}
+{{- end -}}

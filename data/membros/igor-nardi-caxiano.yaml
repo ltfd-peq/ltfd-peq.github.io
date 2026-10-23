@@ -1,0 +1,18 @@
+id: igor-nardi-caxiano
+nome: Igor Nardi Caxiano
+categoria: doutorado
+# Dupla orientação (PLANO §7.6, decidida caso a caso): orientação de Secchi,
+# coorientação de Ferreira. Entra pelo padrão do §15, item 12; confirmar na revisão.
+periodo: {inicio: 2026, fim: null}
+trabalho:
+  titulo: Modelagem matemática de reatores não ideais aplicada ao projeto e simulação computacional de processos com reatores compactos
+  orientadores: [argimiro-secchi]
+  coorientadores: [gabriel-ferreira]
+linhas: [equipamentos-reatores-separadores]
+ids: {lattes: null, orcid: null}
+email: null
+foto: null
+consentimento: {foto: null, email: null, destino: null, data: null}
+fonte: "Lattes de G. G. S. Ferreira (22/05/2026): coorientação de tese em andamento, início 2026; orientação de Secchi pelo kit (AJUSTES_ORIENTACAO)"
+verificado_em: 2026-10-23
+revisado_em: null

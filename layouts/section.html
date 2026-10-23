@@ -1,0 +1,13 @@
+{{- define "main" }}
+{{- partial "cabecalho-pagina.html" . }}
+<div class="secao">
+  <div class="container container--estreito prosa">
+    {{ .Content }}
+    {{- with .RegularPages }}
+    <ul class="lista-simples">
+      {{- range . }}<li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>{{ end }}
+    </ul>
+    {{- end }}
+  </div>
+</div>
+{{- end }}

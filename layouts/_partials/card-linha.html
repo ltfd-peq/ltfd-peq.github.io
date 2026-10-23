@@ -1,0 +1,16 @@
+{{- /* C8 Card de linha de pesquisa: ícone + H3 com link + chamada + chips informativos.
+     O card inteiro é clicável pelo pseudo-elemento do link (sem <a> envolvendo blocos).
+     Recebe dict "id" e "nivel" (nível do título: 2 ou 3). */ -}}
+{{- $l := index hugo.Data.linhas .id -}}
+{{- $pagina := site.GetPage (printf "/pesquisa/%s" .id) -}}
+{{- $h := printf "h%d" (or .nivel 3) -}}
+<article class="card card-linha">
+  {{ partial "icone-linha.html" $l.icone }}
+  {{ printf "<%s>" $h | safeHTML }}<a class="card__link" href="{{ $pagina.RelPermalink }}">{{ $l.titulo }}</a>{{ printf "</%s>" $h | safeHTML }}
+  <p>{{ $l.chamada }}</p>
+  {{- with $l.topicos }}
+  <ul class="chips" aria-label="Tópicos">
+    {{- range . }}<li>{{ . }}</li>{{ end }}
+  </ul>
+  {{- end }}
+</article>

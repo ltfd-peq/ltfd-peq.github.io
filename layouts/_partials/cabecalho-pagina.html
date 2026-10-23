@@ -1,0 +1,19 @@
+{{- /* C6 Cabeçalho de página interna: faixa sólida azul + trilha (C18) + H1 + abertura.
+     Sem imagem de fundo: contraste garantido e sem degradê (PLANO §3.6). */ -}}
+<div class="cabecalho-pagina" data-superficie="inversa">
+  <div class="container">
+    <nav class="trilha" aria-label="{{ T "trilha" }}">
+      <ol>
+        <li><a href="{{ "/" | relLangURL }}">{{ T "inicio" }}</a></li>
+        {{- with .Parent }}{{ if not .IsHome }}
+        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+        {{- end }}{{ end }}
+        <li aria-current="page">{{ .LinkTitle }}</li>
+      </ol>
+    </nav>
+    <h1>{{ with .Params.tituloHTML }}{{ . | safeHTML }}{{ else }}{{ .Title }}{{ end }}</h1>
+    {{- with .Params.lead }}
+    <p class="cabecalho-pagina__lead">{{ . }}</p>
+    {{- end }}
+  </div>
+</div>

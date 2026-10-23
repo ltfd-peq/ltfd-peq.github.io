@@ -1,0 +1,37 @@
+id: paulo-lage
+nome: Paulo Laranjeira da Cunha Lage
+nome_exibicao: Paulo L. C. Lage
+nomes_citacao: ["LAGE, P. L. C.", "Lage, Paulo L. C.", "da Cunha Lage, Paulo Laranjeira"]
+categoria: docente
+cargo: Professor Titular
+cargo_en: Full Professor
+programa: PEQ/COPPE/UFRJ
+periodo: {inicio: 1993, fim: null}   # docente do PEQ/COPPE desde 10/1993 (Lattes)
+ids:
+  lattes: "5576851640501227"
+  orcid: 0000-0002-0396-5508
+  openalex: A5090194580
+  scholar: null
+linhas:
+  - multifasicos-balanco-populacional
+  - cfd-metodos-numericos
+  - meios-porosos-co2
+  - hidratos-garantia-escoamento
+  - calor-massa-mudanca-fase
+email: paulo@peq.coppe.ufrj.br        # e-mail institucional (kit/laboratorio.json)
+foto: null                            # sessão de fotos padronizada na Onda B
+consentimento: {foto: null, email: null, destino: null, data: null}
+bio: >-
+  Engenheiro químico pela UFRJ (1987), mestre (1988) e doutor (1992) em Engenharia
+  Química pela COPPE/UFRJ, com estágio de pesquisa na University of California,
+  Irvine. É professor do PEQ/COPPE desde 1993. Pesquisa escoamentos multifásicos em
+  equipamentos de processo, balanço populacional, cristalização, métodos numéricos e
+  CFD com OpenFOAM.
+bio_en: >-
+  Chemical Engineer (UFRJ, 1987), M.Sc. (1988) and D.Sc. (1992) in Chemical Engineering
+  from COPPE/UFRJ, with a research stay at the University of California, Irvine. Faculty
+  member of PEQ/COPPE since 1993, working on multiphase flows in process equipment,
+  population balance, crystallization, numerical methods and CFD with OpenFOAM.
+fonte: "Lattes atualizado em 25/08/2026 (PDF em 4_DataBase_Site_LTFD/Curriculos); kit/membros.json"
+verificado_em: 2026-10-23
+revisado_em: null

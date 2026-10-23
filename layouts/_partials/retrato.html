@@ -1,0 +1,16 @@
+{{- /* Retrato 4:5 do membro ou, sem foto autorizada, as iniciais em CSS (PLANO §8.5).
+     Recebe o registro do membro (hugo.Data.membros.<id>). A foto só existe no
+     repositório com consentimento.foto: true (validar_dados.py confere). */ -}}
+{{- $foto := and .foto .consentimento.foto -}}
+{{- with and $foto (resources.Get (printf "img/equipe/%s" .foto)) -}}
+  {{- $p := .Fill "480x600 webp" -}}
+  {{- $p2 := .Fill "320x400 webp" -}}
+  <img class="retrato" src="{{ $p.RelPermalink }}" srcset="{{ $p2.RelPermalink }} 320w, {{ $p.RelPermalink }} 480w" sizes="(min-width: 48em) 15rem, 6rem" width="480" height="600" alt="{{ $.nome }}" loading="lazy" decoding="async">
+{{- else -}}
+  {{- $partes := slice -}}
+  {{- range split .nome " " -}}
+    {{- if not (in (slice "de" "da" "do" "das" "dos" "e") (lower .)) }}{{ $partes = $partes | append . }}{{ end -}}
+  {{- end -}}
+  {{- $iniciais := printf "%s%s" (substr (index $partes 0) 0 1) (substr (index $partes (sub (len $partes) 1)) 0 1) -}}
+  <span class="iniciais" aria-hidden="true">{{ $iniciais }}</span>
+{{- end -}}

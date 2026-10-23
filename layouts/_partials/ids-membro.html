@@ -1,0 +1,23 @@
+{{- /* Links de identificadores (Lattes, ORCID, Scholar, e-mail). Guardamos só os IDs;
+     a URL é montada aqui (PLANO §7.1). O nome acessível começa pelo texto visível (2.5.3).
+     Recebe dict "m" (registro do membro) e "email_visivel" (bool: mostra o endereço). */ -}}
+{{- $m := .m -}}
+{{- $nome := or $m.nome_exibicao $m.nome -}}
+{{- $ctx := dict "nome" $nome -}}
+{{- $email := and $m.email (or (eq $m.categoria "docente") $m.consentimento.email) -}}
+{{- if or $m.ids.lattes $m.ids.orcid $m.ids.scholar $email }}
+<ul class="ids">
+  {{- with $m.ids.lattes }}
+  <li><a href="http://lattes.cnpq.br/{{ . }}" aria-label="{{ T "lattesDe" $ctx }}">Lattes</a></li>
+  {{- end }}
+  {{- with $m.ids.orcid }}
+  <li><a href="https://orcid.org/{{ . }}" aria-label="{{ T "orcidDe" $ctx }}">ORCID</a></li>
+  {{- end }}
+  {{- with $m.ids.scholar }}
+  <li><a href="https://scholar.google.com/citations?user={{ . }}" aria-label="{{ T "scholarDe" $ctx }}">Google Acadêmico</a></li>
+  {{- end }}
+  {{- if $email }}
+  <li><a href="mailto:{{ $m.email }}"{{ if not $.email_visivel }} aria-label="{{ T "emailDe" $ctx }}"{{ end }}>{{ if $.email_visivel }}{{ $m.email }}{{ else }}E-mail{{ end }}</a></li>
+  {{- end }}
+</ul>
+{{- end }}

@@ -1,0 +1,56 @@
+{{- define "main" }}
+{{- /* Página de linha (PLANO §6.4). Docentes e equipe são gerados dos dados (ligações
+     cruzadas, §5.6). Projetos, publicações e teses da linha entram nas Ondas A e B. */ -}}
+{{- $id := .Params.linha }}
+{{- $l := index hugo.Data.linhas $id }}
+{{- $lab := hugo.Data.laboratorio }}
+{{- partial "cabecalho-pagina.html" . }}
+<div class="secao">
+  <div class="container container--estreito">
+    <p class="lead">{{ $l.resumo }}</p>
+    {{- with $l.topicos }}
+    <h2 class="visualmente-oculto">Tópicos</h2>
+    <ul class="chips">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>
+    {{- end }}
+  </div>
+</div>
+
+<section class="secao" aria-labelledby="docentes">
+  <div class="container">
+    <div class="titulo-secao"><h2 id="docentes">{{ T "docentesResponsaveis" }}</h2></div>
+    <ul class="grade-membros grade-membros--docentes">
+      {{- range sort $l.docentes_responsaveis }}
+      <li>{{ partial "card-membro.html" (dict "id" . "nivel" 3) }}</li>
+      {{- end }}
+    </ul>
+  </div>
+</section>
+
+{{- $equipe := slice }}
+{{- range partial "membros.html" (dict "atuais" true) }}
+  {{- if and (ne .categoria "docente") (in .linhas $id) }}{{ $equipe = $equipe | append .id }}{{ end }}
+{{- end }}
+{{- with $equipe }}
+<section class="secao" aria-labelledby="equipe-linha">
+  <div class="container">
+    <div class="titulo-secao"><h2 id="equipe-linha">{{ T "equipeDaLinha" }}</h2></div>
+    <ul class="grade-membros">
+      {{- range . }}<li>{{ partial "card-membro.html" (dict "id" . "nivel" 3) }}</li>{{ end }}
+    </ul>
+  </div>
+</section>
+{{- end }}
+
+<section class="faixa" aria-labelledby="interesse" data-superficie="inversa">
+  <div class="container faixa__conteudo">
+    <div>
+      <h2 id="interesse">{{ T "interessadoLinha" }}</h2>
+      <p>Veja como ingressar no LTFD ou escreva para nós.</p>
+    </div>
+    <div class="botoes">
+      <a class="botao botao--contorno" href="{{ "/oportunidades/" | relLangURL }}">Oportunidades</a>
+      <a class="botao botao--contorno" href="{{ partial "mailto.html" (dict "email" $lab.email "assunto" (printf "[LTFD] Interesse – %s" $l.titulo)) }}">Escrever sobre esta linha</a>
+    </div>
+  </div>
+</section>
+{{- end }}

@@ -1,0 +1,16 @@
+{{- /* Content adapter: uma página por linha de pesquisa ativa, a partir de data/linhas/.
+     O id do arquivo é o slug da URL (/pesquisa/<id>/) e nunca muda (PLANO §5.5). */ -}}
+{{- range $id, $l := hugo.Data.linhas -}}
+  {{- if ne $id $l.id }}{{ errorf "data/linhas/%s.yaml: o campo id (%s) deve ser igual ao nome do arquivo" $id $l.id }}{{ end -}}
+  {{- if $l.ativa -}}
+    {{- $.AddPage (dict
+        "kind" "page"
+        "path" $id
+        "title" $l.titulo
+        "description" (printf "%s Linha de pesquisa do LTFD – PEQ/COPPE/UFRJ." $l.chamada)
+        "weight" $l.ordem
+        "params" (dict "linha" $id "lead" $l.chamada)
+        "content" (dict "mediaType" "text/markdown" "value" "")
+    ) -}}
+  {{- end -}}
+{{- end -}}

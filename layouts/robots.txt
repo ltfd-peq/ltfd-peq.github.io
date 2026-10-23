@@ -1,0 +1,6 @@
+{{- /* Nunca "Disallow: /": antes do lançamento quem impede a indexação é o noindex
+     das páginas, e o buscador precisa conseguir lê-lo (PLANO §9.6). */ -}}
+User-agent: *
+Allow: /
+
+Sitemap: {{ "sitemap.xml" | absURL }}

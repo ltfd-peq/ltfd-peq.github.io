@@ -1,0 +1,24 @@
+{{- /* Imagem do hero (PLANO §8.5). Provisória: arte do kit (hero-escuro), decorativa
+     (alt=""), sem legenda; o render OpenFOAM final traz <figcaption> (Fase 3, R14).
+     Celular: recorte 16:9 da parte direita (bolhas), acima do texto.
+     ≥ 48em: imagem inteira atrás do painel. AVIF e WebP gerados pelo Hugo. */ -}}
+{{- with resources.Get "img/hero/hero-escuro.png" -}}
+  {{- $orig := . -}}
+  {{- $desk := slice 1280 1920 2560 -}}
+  {{- $mob := slice 480 768 960 -}}
+  {{- $srcset := dict -}}
+  {{- range slice "avif" "webp" -}}
+    {{- $fmt := . -}}
+    {{- $d := slice }}{{ range $desk }}{{ $img := $orig.Resize (printf "%dx %s" . $fmt) }}{{ $d = $d | append (printf "%s %dw" $img.RelPermalink .) }}{{ end -}}
+    {{- $m := slice }}{{ range $mob }}{{ $img := $orig.Fill (printf "%dx%d right %s" . (div (mul . 9) 16) $fmt) }}{{ $m = $m | append (printf "%s %dw" $img.RelPermalink .) }}{{ end -}}
+    {{- $srcset = merge $srcset (dict (printf "%s-desk" $fmt) (delimit $d ", ") (printf "%s-mob" $fmt) (delimit $m ", ")) -}}
+  {{- end -}}
+  {{- $fallback := $orig.Fill "960x540 right webp" }}
+<picture class="hero__midia">
+  <source type="image/avif" media="(min-width: 48em)" srcset="{{ index $srcset "avif-desk" }}" sizes="100vw">
+  <source type="image/webp" media="(min-width: 48em)" srcset="{{ index $srcset "webp-desk" }}" sizes="100vw">
+  <source type="image/avif" srcset="{{ index $srcset "avif-mob" }}" sizes="100vw">
+  <source type="image/webp" srcset="{{ index $srcset "webp-mob" }}" sizes="100vw">
+  <img src="{{ $fallback.RelPermalink }}" width="960" height="540" alt="" fetchpriority="high">
+</picture>
+{{- end -}}

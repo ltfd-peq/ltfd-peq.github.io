@@ -1,0 +1,21 @@
+id: cfd-metodos-numericos
+titulo: CFD e métodos numéricos com OpenFOAM
+titulo_en: CFD and numerical methods with OpenFOAM
+ordem: 2
+ativa: true
+icone: linha-cfd
+chamada: "Modelos, solvers e algoritmos implementados no OpenFOAM®."   # uma frase, usada nos cards
+resumo: >-
+  Desenvolvimento e implementação de modelos, solvers e algoritmos no código aberto
+  OpenFOAM®: acoplamento pressão-velocidade no modelo multi-fluido euleriano,
+  método dos volumes finitos, estabilidade numérica e computação de alto desempenho.
+  É uma linha transversal, que dá suporte às demais.
+topicos:
+  - OpenFOAM®
+  - Volumes finitos
+  - Modelo multi-fluido euleriano
+  - Computação de alto desempenho
+docentes_responsaveis: [paulo-lage, gabriel-ferreira, argimiro-secchi]
+fonte: "kit/linhas_de_pesquisa.json (cfd-openfoam); Lattes de Lage (25/08/2026) e de Ferreira (22/05/2026)"
+verificado_em: 2026-10-23
+revisado_em: null

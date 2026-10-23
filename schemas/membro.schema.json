@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "membro.schema.json",
+  "title": "Membro (data/membros/<id>.yaml); egresso = periodo.fim preenchido",
+  "type": "object",
+  "$defs": {
+    "pessoa": {
+      "anyOf": [
+        {"$ref": "comum.schema.json#/$defs/id"},
+        {"type": "object", "properties": {"nome": {"type": "string"}, "instituicao": {"type": "string"}}, "required": ["nome"], "additionalProperties": false}
+      ]
+    },
+    "ano": {"anyOf": [{"type": "integer", "minimum": 1960, "maximum": 2100}, {"type": "null"}]}
+  },
+  "properties": {
+    "id": {"$ref": "comum.schema.json#/$defs/id"},
+    "nome": {"$ref": "comum.schema.json#/$defs/texto"},
+    "nome_exibicao": {"type": "string"},
+    "nomes_citacao": {"type": "array", "items": {"type": "string"}},
+    "categoria": {"enum": ["docente", "pesquisador", "pos-doutorado", "doutorado", "mestrado", "graduacao", "tecnico", "colaborador-externo"]},
+    "cargo": {"type": "string"},
+    "cargo_en": {"type": "string"},
+    "funcao_ltfd": {"type": "string"},
+    "modalidade": {"enum": ["ic", "tcc", null]},
+    "programa": {"type": "string"},
+    "periodo": {
+      "type": "object",
+      "properties": {"inicio": {"$ref": "#/$defs/ano"}, "fim": {"$ref": "#/$defs/ano"}},
+      "required": ["inicio", "fim"], "additionalProperties": false
+    },
+    "trabalho": {
+      "type": "object",
+      "properties": {
+        "titulo": {"type": "string"},
+        "orientadores": {"type": "array", "items": {"$ref": "#/$defs/pessoa"}},
+        "coorientadores": {"type": "array", "items": {"$ref": "#/$defs/pessoa"}}
+      },
+      "required": ["titulo", "orientadores"], "additionalProperties": false
+    },
+    "ids": {
+      "type": "object",
+      "properties": {
+        "lattes": {"anyOf": [{"type": "string", "pattern": "^[0-9]{16}$"}, {"type": "null"}]},
+        "orcid": {"anyOf": [{"type": "string", "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]$"}, {"type": "null"}]},
+        "openalex": {"anyOf": [{"type": "string", "pattern": "^A[0-9]+$"}, {"type": "null"}]},
+        "scholar": {"anyOf": [{"type": "string", "pattern": "^[A-Za-z0-9_-]{12}$"}, {"type": "null"}]},
+        "github": {"anyOf": [{"type": "string"}, {"type": "null"}]}
+      },
+      "additionalProperties": false
+    },
+    "linhas": {"type": "array", "items": {"$ref": "comum.schema.json#/$defs/id"}},
+    "email": {"anyOf": [{"type": "string", "format": "email", "pattern": "^[^@\\s]+@[^@\\s]+\\.[a-z]{2,}$"}, {"type": "null"}]},
+    "foto": {"anyOf": [{"type": "string", "pattern": "^[a-z0-9-]+\\.(jpg|jpeg|png|webp)$"}, {"type": "null"}]},
+    "consentimento": {
+      "type": "object",
+      "properties": {
+        "foto": {"type": ["boolean", "null"]}, "email": {"type": ["boolean", "null"]},
+        "destino": {"type": ["boolean", "null"]}, "data": {"$ref": "comum.schema.json#/$defs/dataOuNulo"}
+      },
+      "additionalProperties": false
+    },
+    "destino": {"type": "object", "properties": {"texto": {"type": "string"}, "ano": {"type": "integer"}}, "required": ["texto"]},
+    "bio": {"type": "string", "maxLength": 520},
+    "bio_en": {"type": "string", "maxLength": 520},
+    "fonte": {}, "verificado_em": {}, "revisado_em": {}
+  },
+  "required": ["id", "nome", "categoria", "periodo", "ids", "linhas", "consentimento"],
+  "allOf": [
+    {"$ref": "comum.schema.json#/$defs/proveniencia"},
+    {"if": {"properties": {"categoria": {"const": "docente"}}},
+     "then": {"required": ["cargo", "email"], "properties": {"ids": {"required": ["lattes", "orcid"]}}}},
+    {"if": {"properties": {"categoria": {"enum": ["pos-doutorado", "doutorado", "mestrado", "graduacao"]}}},
+     "then": {"required": ["trabalho"], "properties": {"periodo": {"properties": {"inicio": {"type": "integer"}}}}}}
+  ],
+  "additionalProperties": false
+}

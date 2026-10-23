@@ -1,0 +1,24 @@
+id: multifasicos-balanco-populacional
+titulo: Escoamentos multifásicos e balanço populacional
+titulo_en: Multiphase flows and population balance
+ordem: 1
+ativa: true
+icone: linha-multifasico
+chamada: "Bolhas, gotas e partículas: CFD acoplada ao balanço populacional."   # uma frase, usada nos cards
+resumo: >-
+  Modelagem de sistemas polidispersos — bolhas, gotas e partículas — acoplando a
+  fluidodinâmica computacional a equações de balanço populacional, com modelos de
+  quebra e coalescência e métodos de quadratura. Inclui suspensões e emulsões:
+  segregação de fases induzida por cisalhamento e modelos de balanço de suspensão.
+topicos:
+  - Bolhas, gotas e partículas
+  - Quebra e coalescência
+  - Métodos de quadratura (QMOM, DQMOM)
+  - Suspensões e emulsões
+docentes_responsaveis: [paulo-lage, gabriel-ferreira]
+fonte: >-
+  kit/linhas_de_pesquisa.json (linhas multifasicos-balanco-populacional e
+  reologia-fluidos-complexos, fundidas conforme PLANO §6.3); Lattes de Lage (25/08/2026)
+  e de Ferreira (22/05/2026)
+verificado_em: 2026-10-23
+revisado_em: null

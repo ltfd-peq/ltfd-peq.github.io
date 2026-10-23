@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "comum.schema.json",
+  "title": "Definições comuns (PLANO §7.1 e §7.2)",
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "description": "slug: minúsculas, sem acento, com hífen"},
+    "data": {"type": "string", "format": "date"},
+    "dataOuNulo": {"anyOf": [{"type": "string", "format": "date"}, {"type": "null"}]},
+    "texto": {"type": "string", "minLength": 1},
+    "proveniencia": {
+      "type": "object",
+      "properties": {
+        "fonte": {"type": "string", "minLength": 3},
+        "verificado_em": {"$ref": "#/$defs/data"},
+        "revisado_em": {"$ref": "#/$defs/dataOuNulo"}
+      },
+      "required": ["fonte", "verificado_em"]
+    }
+  }
+}

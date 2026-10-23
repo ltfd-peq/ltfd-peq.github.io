@@ -1,0 +1,48 @@
+{{- define "main" }}
+{{- /* Início (PLANO §6.1). Blocos do lançamento (§12.3): hero, linhas, faixa
+     Oportunidades. Publicações recentes entram na Onda A; números e parceiros, na B. */ -}}
+{{- $lab := hugo.Data.laboratorio }}
+<section class="hero" aria-labelledby="hero-titulo" data-superficie="inversa">
+  {{- partial "hero-imagem.html" . }}
+  <div class="container hero__conteudo">
+    <div class="hero__painel">
+      <span class="sobretitulo">{{ $lab.sigla }} · {{ $lab.vinculo.programa.sigla }} · {{ $lab.vinculo.instituto.sigla }} · {{ $lab.vinculo.universidade.sigla }}</span>
+      <h1 id="hero-titulo">Laboratório de <span class="hero__palavra">Termo&shy;fluido&shy;dinâmica</span></h1>
+      <p class="hero__proposta">{{ $lab.proposta }}</p>
+      <div class="botoes">
+        <a class="botao botao--contorno" href="{{ "/pesquisa/" | relLangURL }}">{{ T "conhecaPesquisa" }}</a>
+        <a class="botao botao--destaque" href="{{ "/oportunidades/" | relLangURL }}">{{ T "oportunidadesEstudantes" }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="secao" aria-labelledby="linhas-titulo">
+  <div class="container">
+    <div class="titulo-secao titulo-secao--linha">
+      <div>
+        <span class="sobretitulo">{{ T "linhasDePesquisa" }}</span>
+        <h2 id="linhas-titulo">O que pesquisamos</h2>
+      </div>
+      <a class="link-seta" href="{{ "/pesquisa/" | relLangURL }}">{{ T "todasAsLinhas" }}</a>
+    </div>
+    <ul class="grade">
+      {{- range sort hugo.Data.linhas "ordem" }}
+      {{- if .ativa }}
+      <li>{{ partial "card-linha.html" (dict "id" .id "nivel" 3) }}</li>
+      {{- end }}
+      {{- end }}
+    </ul>
+  </div>
+</section>
+
+<section class="faixa" aria-labelledby="oportunidades-titulo" data-superficie="inversa">
+  <div class="container faixa__conteudo">
+    <div>
+      <h2 id="oportunidades-titulo">Venha fazer pesquisa no LTFD</h2>
+      <p>Iniciação científica, mestrado, doutorado e pós-doutorado: veja como ingressar.</p>
+    </div>
+    <a class="botao botao--contorno" href="{{ "/oportunidades/" | relLangURL }}">Oportunidades</a>
+  </div>
+</section>
+{{- end }}

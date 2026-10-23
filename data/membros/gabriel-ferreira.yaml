@@ -1,0 +1,37 @@
+id: gabriel-ferreira
+nome: Gabriel Gonçalves da Silva Ferreira
+nome_exibicao: Gabriel G. S. Ferreira
+nomes_citacao: ["FERREIRA, G. G. S.", "Ferreira, Gabriel G. S.", "da Silva Ferreira, Gabriel Gonçalves"]
+categoria: docente
+cargo: Professor Adjunto
+cargo_en: Assistant Professor   # glossário EN a confirmar (PLANO §15, item 27)
+programa: PEQ/COPPE/UFRJ
+periodo: {inicio: 2020, fim: null}   # docente da UFRJ desde 2020 (Lattes)
+ids:
+  lattes: "7084029375140747"
+  orcid: 0000-0002-1328-5426
+  openalex: A5083326893
+  scholar: null
+linhas:
+  - cfd-metodos-numericos
+  - multifasicos-balanco-populacional
+  - hidratos-garantia-escoamento
+  - meios-porosos-co2
+  - equipamentos-reatores-separadores
+email: gferreira@peq.coppe.ufrj.br
+foto: null
+consentimento: {foto: null, email: null, destino: null, data: null}
+bio: >-
+  Engenheiro químico pela UFRJ (2012) e doutor em Engenharia Química pelo PEQ/COPPE/UFRJ
+  (2018), com tese sobre simulação de escoamentos multifásicos com formação de hidratos,
+  orientada por Paulo L. C. Lage. É professor do PEQ/COPPE desde 2020. Pesquisa formação
+  de hidratos, CFD, métodos numéricos, balanço populacional e escoamentos multifásicos
+  com transferência de calor e massa.
+bio_en: >-
+  Chemical Engineer (UFRJ, 2012) and D.Sc. in Chemical Engineering (PEQ/COPPE/UFRJ, 2018),
+  with a thesis on simulating multiphase flows with hydrate formation, supervised by
+  Paulo L. C. Lage. Faculty member of PEQ/COPPE since 2020, working on hydrate formation,
+  CFD, numerical methods, population balance and multiphase flows with heat and mass transfer.
+fonte: "Lattes atualizado em 22/05/2026 (PDF em 4_DataBase_Site_LTFD/Curriculos); kit/membros.json"
+verificado_em: 2026-10-23
+revisado_em: null

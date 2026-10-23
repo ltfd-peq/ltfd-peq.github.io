@@ -1,0 +1,11 @@
+{{- /* Lista de registros de data/membros/ em ordem alfabética de nome.
+     Recebe dict opcional: "atuais" (true: só sem periodo.fim) e "categoria".
+     Chamar com partialCached quando o resultado se repete na página. */ -}}
+{{- $lista := slice -}}
+{{- range sort hugo.Data.membros "nome" -}}
+  {{- $ok := true -}}
+  {{- if and $.atuais .periodo.fim }}{{ $ok = false }}{{ end -}}
+  {{- if and $.categoria (ne .categoria $.categoria) }}{{ $ok = false }}{{ end -}}
+  {{- if $ok }}{{ $lista = $lista | append . }}{{ end -}}
+{{- end -}}
+{{- return $lista -}}

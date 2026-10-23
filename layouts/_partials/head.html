@@ -1,0 +1,48 @@
+{{- /* <head> completo (PLANO §10.3). Nada digitado à mão: tudo sai dos dados e do baseURL. */ -}}
+{{- $lab := hugo.Data.laboratorio -}}
+<meta charset="utf-8">
+{{- if site.Params.csp }}
+{{- /* CSP logo após o charset (PLANO §10.5). worker-src e wasm-unsafe-eval: Pagefind (Onda A). */}}
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self'; img-src 'self' data:; connect-src 'self'{{ with site.Params.goatcounter }} https://{{ . }}.goatcounter.com{{ end }}; frame-src https://www.youtube-nocookie.com https://www.openstreetmap.org; base-uri 'self'; form-action 'self'">
+{{- end }}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{- $sufixo := printf "%s – PEQ/COPPE/UFRJ" $lab.sigla }}
+{{- if .IsHome }}
+<title>{{ $lab.sigla }} – {{ $lab.nome }} · PEQ/COPPE/UFRJ</title>
+{{- else }}
+<title>{{ .Title }} · {{ $sufixo }}</title>
+{{- end }}
+{{- $descricao := or .Description $lab.descricao }}
+<meta name="description" content="{{ $descricao | plainify | strings.TrimSpace }}">
+{{- if site.Params.noindex }}
+<meta name="robots" content="noindex, nofollow">
+{{- end }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{- if .IsTranslated }}{{/* pares hreflang só quando a página existe nos 2 idiomas (Fase 3) */}}
+{{- range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+{{- end }}
+<link rel="alternate" hreflang="x-default" href="{{ (index .AllTranslations 0).Permalink }}">{{/* pt-BR, o idioma de maior peso */}}
+{{- end }}
+<meta property="og:type" content="{{ if .IsHome }}website{{ else if eq .Section "equipe" }}profile{{ else }}article{{ end }}">
+<meta property="og:site_name" content="{{ $lab.sigla }}">
+<meta property="og:locale" content="{{ replace site.Language.Locale "-" "_" }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ $lab.sigla }} – {{ $lab.nome }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ $descricao | plainify | strings.TrimSpace }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ "img/og-ltfd.png" | absURL }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Marca do {{ $lab.sigla }} – {{ $lab.nome }}, sobre fundo azul">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="48x48">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
+<meta name="theme-color" content="#003366">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="preload" href="{{ "fonts/montserrat-var-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{- $css := slice (resources.Get "css/tokens.css") (resources.Get "css/main.css") | resources.Concat "css/ltfd.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{- $js := resources.Get "js/menu.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{- partial "jsonld.html" . }}

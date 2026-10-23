@@ -1,0 +1,44 @@
+# Menu principal (PLANO §5.2 e §12.3). Só entra o que está pronto:
+# Onda A acrescenta Publicações; v1.1, Software e dados. Sem dropdown.
+# Subitens (parent = "<identifier>") aparecem no painel móvel e no rodapé.
+
+[[principal]]
+  name = "Sobre"
+  pageRef = "/sobre"
+  identifier = "sobre"
+  weight = 10
+
+[[principal]]
+  name = "Pesquisa"
+  pageRef = "/pesquisa"
+  identifier = "pesquisa"
+  weight = 20
+
+[[principal]]
+  name = "Equipe"
+  pageRef = "/equipe"
+  identifier = "equipe"
+  weight = 30
+
+[[principal]]
+  name = "Oportunidades"
+  pageRef = "/oportunidades"
+  identifier = "oportunidades"
+  weight = 60
+
+[[principal]]
+  name = "Contato"
+  pageRef = "/contato"
+  identifier = "contato"
+  weight = 70
+
+# Links institucionais do rodapé
+[[rodape]]
+  name = "Privacidade"
+  pageRef = "/privacidade"
+  weight = 10
+
+[[rodape]]
+  name = "Acessibilidade"
+  pageRef = "/acessibilidade"
+  weight = 20

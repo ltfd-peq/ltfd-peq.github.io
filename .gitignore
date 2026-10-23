@@ -1,0 +1,13 @@
+# Gerados pelo Hugo
+/public/
+/resources/_gen/
+.hugo_build.lock
+# Testes
+/node_modules/
+__pycache__/
+*.pyc
+# Sistema
+.DS_Store
+*~
+# Capturas de bugs para corrigir (material de trabalho, não vai para o repositório público)
+/bugs-to-fix/

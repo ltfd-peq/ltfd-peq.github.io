@@ -1,0 +1,66 @@
+{{- /* C15 Faixa institucional + rodapé, idênticos em todas as páginas (PLANO §5.4).
+     Logos separados, cada um com link e alt; a COPPE prefere fundo branco. */ -}}
+{{- $lab := hugo.Data.laboratorio -}}
+{{- $v := $lab.vinculo -}}
+{{- $atualizado := partialCached "ultima-atualizacao.html" . "site" -}}
+<footer>
+  <div class="faixa-marcas">
+    <div class="container">
+      <ul class="faixa-marcas__lista">
+        <li class="faixa-marcas__ltfd"><a href="{{ "/" | relLangURL }}"><img src="{{ "img/marcas/ltfd-horizontal-colorida.svg" | relURL }}" alt="{{ $lab.sigla }} – {{ $lab.nome }}" width="230" height="70" loading="lazy"></a></li>
+        <li><a href="{{ $v.programa.url }}"><img src="{{ "img/marcas/peq-cor.svg" | relURL }}" alt="{{ $v.programa.sigla }} – {{ $v.programa.nome }} da COPPE/UFRJ" width="176" height="48" loading="lazy"></a></li>
+        <li><a href="{{ $v.instituto.url }}"><img src="{{ "img/marcas/coppe-cor.svg" | relURL }}" alt="{{ $v.instituto.sigla }}/UFRJ" width="109" height="48" loading="lazy"></a></li>
+        <li><a href="{{ $v.universidade.url }}"><img src="{{ "img/marcas/ufrj-horizontal-cor.svg" | relURL }}" alt="{{ $v.universidade.nome }}" width="97" height="48" loading="lazy"></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="rodape" data-superficie="inversa">
+    <div class="container">
+      <div class="rodape__colunas">
+        <div>
+          <p class="rodape__nome">{{ $lab.nome }}</p>
+          <p>{{ $v.programa.nome }} · {{ $v.instituto.sigla }} · {{ $v.universidade.sigla }}</p>
+        </div>
+
+        <div>
+          <h2>{{ T "contato" }}</h2>
+          {{- partial "endereco.html" $lab }}
+          <ul>
+            <li><a href="mailto:{{ $lab.email }}">{{ $lab.email }}</a></li>
+            {{- range $lab.telefones }}
+            <li><a href="tel:+55{{ replaceRE `\D` "" . }}">{{ . }}</a></li>
+            {{- end }}
+            <li><a href="{{ "/contato/" | relLangURL }}#como-chegar">{{ T "comoChegar" }}</a></li>
+          </ul>
+        </div>
+
+        <nav aria-labelledby="mapa-do-site">
+          <h2 id="mapa-do-site" tabindex="-1">{{ T "mapaDoSite" }}</h2>
+          <ul>
+            <li><a href="{{ "/" | relLangURL }}">{{ T "inicio" }}</a></li>
+            {{- range site.Menus.principal }}
+            <li><a href="{{ .URL }}">{{ .Name }}</a>
+              {{- if .HasChildren }}
+              <ul class="nav__sublista">
+                {{- range .Children }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+              </ul>
+              {{- end }}
+            </li>
+            {{- end }}
+          </ul>
+        </nav>
+      </div>
+
+      <div class="rodape__final">
+        <p>© {{ $atualizado.Year }} {{ $lab.sigla }} – PEQ/COPPE/UFRJ</p>
+        <p>{{ T "ultimaAtualizacao" }}: <time datetime="{{ $atualizado.Format "2006-01-02" }}">{{ $atualizado.Format "02/01/2006" }}</time></p>
+        <ul>
+          {{- range site.Menus.rodape }}
+          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          {{- end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

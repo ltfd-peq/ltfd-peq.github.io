@@ -1,0 +1,7 @@
+{{- /* Monta "mailto:<email>?subject=<assunto>" com espaços como %20 (RFC 6068).
+     urlquery codifica espaço como "+", que o cliente de e-mail mostraria literalmente;
+     um "+" do texto já sai como %2B, então a troca é segura.
+     Uso: href="{{ partial "mailto.html" (dict "email" $x "assunto" "…") }}" */ -}}
+{{- $href := printf "mailto:%s" .email -}}
+{{- with .assunto }}{{ $href = printf "%s?subject=%s" $href (replace (urlquery .) "+" "%20") }}{{ end -}}
+{{- return ($href | safeURL) -}}

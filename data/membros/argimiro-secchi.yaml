@@ -1,0 +1,39 @@
+id: argimiro-secchi
+nome: Argimiro Resende Secchi
+nome_exibicao: Argimiro R. Secchi
+nomes_citacao: ["SECCHI, A. R.", "Secchi, Argimiro R.", "Secchi, Argimiro Resende"]
+categoria: docente
+cargo: Professor Titular
+cargo_en: Full Professor
+programa: PEQ/COPPE/UFRJ
+# Papel no LTFD pelo padrão do PLANO §15, item 7: docente, com a produção filtrada
+# pela coautoria com Lage ou Ferreira (regra de escopo, §7.6). Início no LTFD: a confirmar.
+periodo: {inicio: null, fim: null}
+ids:
+  lattes: "3710340061939187"
+  orcid: 0000-0001-7297-3571
+  openalex: A5013542448
+  scholar: 3j1Is40AAAAJ
+linhas:
+  - equipamentos-reatores-separadores
+  - cfd-metodos-numericos
+  - multifasicos-balanco-populacional
+  - hidratos-garantia-escoamento
+email: arge@peq.coppe.ufrj.br
+foto: null
+consentimento: {foto: null, email: null, destino: null, data: null}
+bio: >-
+  Engenheiro químico pela UFRGS (1986), mestre (1988) e doutor (1992) em Engenharia
+  Química pela COPPE/UFRJ, com doutorado sanduíche no Caltech. Professor Titular da UFRJ,
+  pesquisa modelagem e simulação de processos, otimização dinâmica e controle não linear,
+  com interfaces com a termofluidodinâmica em cristalização, escoamentos viscoelásticos
+  e escoamento multifásico em dutos.
+bio_en: >-
+  Chemical Engineer (UFRGS, 1986), M.Sc. (1988) and D.Sc. (1992) in Chemical Engineering
+  from COPPE/UFRJ, with a sandwich period at Caltech. Full Professor at UFRJ working on
+  process modelling and simulation, dynamic optimization and nonlinear control, with
+  interfaces with thermofluid dynamics in crystallization, viscoelastic flows and
+  multiphase pipe flow.
+fonte: "Lattes atualizado em 05/09/2026 (PDF em 4_DataBase_Site_LTFD/Curriculos); kit/membros.json"
+verificado_em: 2026-10-23
+revisado_em: null

@@ -1,0 +1,11 @@
+{{- /* Lista "A, B e C" com os nomes de exibição. Recebe uma lista de ids de membro ou
+     de pessoas externas no formato {nome, instituicao} (PLANO §7.1, princípio 3). */ -}}
+{{- $nomes := slice -}}
+{{- range . -}}
+  {{- if reflect.IsMap . -}}
+    {{- $nomes = $nomes | append (cond (isset . "instituicao") (printf "%s (%s)" .nome .instituicao) .nome) -}}
+  {{- else -}}
+    {{- with index hugo.Data.membros . }}{{ $nomes = $nomes | append (or .nome_exibicao .nome) }}{{ else }}{{ errorf "Membro inexistente citado: %s" . }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+{{- delimit $nomes ", " " e " -}}

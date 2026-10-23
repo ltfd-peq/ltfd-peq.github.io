@@ -1,0 +1,8 @@
+{{- /* Mostra o trecho só se a medição de audiência (GoatCounter) estiver ligada
+     (params.goatcounter); senão, mostra o parâmetro "sem" — o aviso de privacidade
+     descreve sempre o que o site faz de fato. */ -}}
+{{- if site.Params.goatcounter -}}
+  {{- .Inner | .Page.RenderString (dict "display" "block") -}}
+{{- else -}}
+  {{- with .Get "sem" }}{{ . | $.Page.RenderString (dict "display" "block") }}{{ end -}}
+{{- end -}}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "laboratorio.schema.json",
+  "title": "Laboratório (data/laboratorio.yaml): fonte única de nome, vínculo e contatos",
+  "type": "object",
+  "allOf": [{"$ref": "comum.schema.json#/$defs/proveniencia"}],
+  "$defs": {
+    "instituicao": {"type": "object", "properties": {"sigla": {"type": "string"}, "nome": {"type": "string"}, "url": {"type": "string", "pattern": "^https://"}}, "required": ["sigla", "nome", "url"]}
+  },
+  "properties": {
+    "sigla": {"const": "LTFD"},
+    "nome": {"type": "string"},
+    "nome_en": {"type": "string"},
+    "vinculo": {"type": "object", "properties": {"programa": {"$ref": "#/$defs/instituicao"}, "instituto": {"$ref": "#/$defs/instituicao"}, "universidade": {"$ref": "#/$defs/instituicao"}}, "required": ["programa", "instituto", "universidade"]},
+    "proposta": {"type": "string", "minLength": 40},
+    "descricao": {"type": "string", "minLength": 40, "maxLength": 400},
+    "descricao_en": {"type": "string"},
+    "endereco": {"type": "object", "required": ["logradouro", "complemento", "bairro", "cidade", "uf", "cep", "pais"],
+                 "properties": {"cep": {"type": "string", "pattern": "^[0-9]{5}-[0-9]{3}$"}}},
+    "email": {"type": "string", "pattern": "^[^@\\s]+@[^@\\s]+\\.[a-z]{2,}$"},
+    "email_site": {"type": "string", "pattern": "^[^@\\s]+@[^@\\s]+\\.[a-z]{2,}$"},
+    "telefones": {"type": "array", "items": {"type": "string", "pattern": "^\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}$"}, "minItems": 1},
+    "links": {"type": "object"}
+  },
+  "required": ["sigla", "nome", "vinculo", "proposta", "descricao", "endereco", "email", "email_site", "telefones"]
+}

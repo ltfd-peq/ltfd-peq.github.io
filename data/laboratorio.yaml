@@ -1,0 +1,70 @@
+# Fonte única do nome, do vínculo e dos contatos do LTFD (PLANO §7.2).
+# Texto e mailto/tel saem do mesmo campo: nunca digitar o e-mail em outro lugar.
+sigla: LTFD
+nome: Laboratório de Termofluidodinâmica
+nome_en: Thermofluid Dynamics Laboratory   # proposta do kit (PLANO §15, item 31)
+
+vinculo:
+  programa:
+    sigla: PEQ
+    nome: Programa de Engenharia Química
+    url: https://www.peq.coppe.ufrj.br/
+  instituto:
+    sigla: COPPE
+    nome: Instituto Alberto Luiz Coimbra de Pós-Graduação e Pesquisa de Engenharia
+    url: https://coppe.ufrj.br/
+  universidade:
+    sigla: UFRJ
+    nome: Universidade Federal do Rio de Janeiro
+    url: https://ufrj.br/
+
+# Frase do hero e descrição (PLANO §15, item 19: aprovar até 06/11).
+# Base: resumo do Lattes de P. L. C. Lage e projeto CNPq "Termofluidodinâmica:
+# Modelagem e Simulação de Escoamentos Complexos" (2016–atual); rascunho A, §8.1.
+proposta: >-
+  Estudamos escoamentos com transferência de calor e massa em equipamentos de
+  processo, com ênfase em escoamentos multifásicos, balanço populacional, métodos
+  numéricos e fluidodinâmica computacional (CFD) com o código aberto OpenFOAM®.
+descricao: >-
+  O LTFD, do Programa de Engenharia Química da COPPE/UFRJ, desenvolve estudos
+  teóricos, experimentais e computacionais de escoamentos com transferência de
+  calor e massa, com ênfase em escoamentos multifásicos, balanço populacional,
+  métodos numéricos e CFD com OpenFOAM.
+descricao_en: >-
+  LTFD, at the Chemical Engineering Program of COPPE/UFRJ, carries out theoretical,
+  experimental and computational research on flows with heat and mass transfer,
+  focusing on multiphase flows, population balance modelling, numerical methods
+  and CFD with OpenFOAM.
+
+endereco:
+  logradouro: Av. Horácio Macedo, 2030
+  complemento: Centro de Tecnologia, Bloco G
+  sala: ""                     # sala do LTFD: a confirmar (PLANO §15, item 15)
+  bairro: Cidade Universitária, Ilha do Fundão
+  cidade: Rio de Janeiro
+  uf: RJ
+  cep: 21941-914
+  pais: BR
+  # Busca por texto, sem coordenadas: as coordenadas do Bloco G ainda não foram conferidas.
+  mapa_osm: https://www.openstreetmap.org/search?query=Centro%20de%20Tecnologia%20UFRJ%20Bloco%20G
+  mapa_google: https://www.google.com/maps/search/?api=1&query=Centro+de+Tecnologia+Bloco+G+UFRJ
+
+# Padrão do PLANO §15, item 15, até existir o alias ltfd@peq.coppe.ufrj.br:
+# e-mail do responsável pelo site.
+email: gferreira@peq.coppe.ufrj.br
+email_site: gferreira@peq.coppe.ufrj.br   # "Problemas no site" e /acessibilidade/
+
+# Telefones do PEQ (página de contato do PEQ: CT, Bloco G, sala 115). Ramal do LTFD: a confirmar.
+telefones:
+  - "(21) 3938-8349"
+  - "(21) 3938-8304"
+  - "(21) 3938-1575"
+
+links:
+  peq_area_tfd: https://www.peq.coppe.ufrj.br/index.php/pt-br/pesquisa/areas-de-pesquisa/termofluidodinamica
+  peq_mestrado: https://www.peq.coppe.ufrj.br/index.php/pt-br/mestrado
+  peq_doutorado: https://www.peq.coppe.ufrj.br/index.php/pt-br/doutorado
+
+fonte: "kit/laboratorio.json (21/10/2026); páginas do PEQ (contato, mestrado, doutorado) conferidas em 23/10/2026"
+verificado_em: 2026-10-23
+revisado_em: null

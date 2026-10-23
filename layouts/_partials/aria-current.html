@@ -1,0 +1,11 @@
+{{- /* Valor de aria-current para um link do menu: "page" na própria página,
+     "true" nas páginas internas da seção, "" fora dela.
+     Uso: {{ with partial "aria-current.html" (dict "pagina" . "url" $url) }} aria-current="{{ . }}"{{ end }} */ -}}
+{{- $p := .pagina -}}
+{{- $valor := "" -}}
+{{- if eq $p.RelPermalink .url -}}
+  {{- $valor = "page" -}}
+{{- else if and (not $p.IsHome) (ne .url "/") (strings.HasPrefix $p.RelPermalink .url) -}}
+  {{- $valor = "true" -}}
+{{- end -}}
+{{- return $valor -}}

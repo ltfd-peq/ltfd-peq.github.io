@@ -1,0 +1,17 @@
+id: cesar-gustavo-timana-beteta
+nome: César Gustavo Timaná Beteta
+categoria: doutorado
+# Início: 2025 no Lattes de Lage (orientador) e 2026 no de Ferreira (coorientador). Vale o do orientador.
+periodo: {inicio: 2025, fim: null}
+trabalho:
+  titulo: Modelagem e simulação multi-escala de escoamento em meios porosos
+  orientadores: [paulo-lage]
+  coorientadores: [gabriel-ferreira]
+linhas: [meios-porosos-co2]
+ids: {lattes: null, orcid: null}
+email: null
+foto: null
+consentimento: {foto: null, email: null, destino: null, data: null}
+fonte: "Lattes de P. L. C. Lage (25/08/2026) e de G. G. S. Ferreira (22/05/2026): tese em andamento"
+verificado_em: 2026-10-23
+revisado_em: null

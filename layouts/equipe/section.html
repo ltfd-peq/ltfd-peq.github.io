@@ -1,0 +1,34 @@
+{{- define "main" }}
+{{- /* Equipe (PLANO §6.7): índice de âncoras, categorias na ordem do plano, ordem
+     alfabética dentro de cada uma; categoria vazia não aparece. Membro atual = sem
+     periodo.fim (egresso é calculado, nunca digitado; Egressos entram na Onda B). */ -}}
+{{- partial "cabecalho-pagina.html" . }}
+{{- $ordem := slice "docente" "pesquisador" "pos-doutorado" "doutorado" "mestrado" "graduacao" "tecnico" "colaborador-externo" }}
+{{- $atuais := partial "membros.html" (dict "atuais" true) }}
+{{- $presentes := slice }}
+{{- range $ordem }}{{ if where $atuais "categoria" . }}{{ $presentes = $presentes | append . }}{{ end }}{{ end }}
+
+<div class="secao">
+  <div class="container">
+    {{- with .Content }}<div class="prosa">{{ . }}</div>{{ end }}
+    <nav class="ir-para" aria-label="Categorias da equipe">
+      <span>{{ T "irPara" }}</span>
+      <ul class="chips">
+        {{- range $presentes }}<li><a href="#{{ . }}">{{ T (printf "categoria_%s" .) }}</a></li>{{ end }}
+      </ul>
+    </nav>
+
+    {{- range $presentes }}
+    {{- $cat := . }}
+    <section class="secao-equipe" aria-labelledby="{{ $cat }}">
+      <h2 id="{{ $cat }}">{{ T (printf "categoria_%s" $cat) }}</h2>
+      <ul class="grade-membros{{ if eq $cat "docente" }} grade-membros--docentes{{ end }}">
+        {{- range where $atuais "categoria" $cat }}
+        <li>{{ partial "card-membro.html" (dict "id" .id "nivel" 3) }}</li>
+        {{- end }}
+      </ul>
+    </section>
+    {{- end }}
+  </div>
+</div>
+{{- end }}

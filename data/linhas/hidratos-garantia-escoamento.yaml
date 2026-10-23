@@ -1,0 +1,21 @@
+id: hidratos-garantia-escoamento
+titulo: Hidratos e garantia de escoamento
+titulo_en: Hydrates and flow assurance
+ordem: 4
+ativa: true
+icone: linha-hidratos
+chamada: "Formação de hidratos em emulsões e em escoamentos multifásicos."   # uma frase, usada nos cards
+resumo: >-
+  Simulação da formação de hidratos em emulsões e em escoamentos multifásicos, com
+  acoplamento entre CFD e balanço populacional, e problemas de garantia de
+  escoamento em linhas de produção de petróleo.
+topicos:
+  - Formação de hidratos
+  - Emulsões
+  - CFD acoplada ao balanço populacional
+docentes_responsaveis: [paulo-lage, gabriel-ferreira, argimiro-secchi]
+fonte: >-
+  kit/linhas_de_pesquisa.json (garantia-de-escoamento); tese de G. G. S. Ferreira (2018)
+  e projetos com a Petrobras sobre hidratos (2014–2021) nos Lattes
+verificado_em: 2026-10-23
+revisado_em: null
