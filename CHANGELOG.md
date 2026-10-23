@@ -3,6 +3,17 @@
 Registro de mudanças de tema, menus, dados e domínio (PLANO §11.5). Conteúdo do dia a dia
 não entra aqui: ele fica no histórico do Git.
 
+## 0.1.2 — 23/10/2026 — revisão do Prof. Paulo L. C. Lage
+
+- E-mail de contato do laboratório: `paulo@peq.coppe.ufrj.br` ("Problemas no site" continua
+  com o responsável pelo site).
+- "Como chegar": lugares do Google Maps do LTFD e do PEQ (identificador e coordenadas em
+  `data/laboratorio.yaml` → `locais`), com links para Google Maps e OpenStreetMap; coordenadas
+  também no JSON-LD (`geo`, `hasMap`).
+- Google Acadêmico de P. L. C. Lage no card e no perfil.
+- Faixa institucional: logo do PEQ sem "COPPE/UFRJ" (a COPPE e a UFRJ aparecem ao lado);
+  5,3 KB gzip em vez de 26,7 KB.
+
 ## 0.1.1 — 23/10/2026 — correção
 
 - Página inicial: "Termofluidodinâmica" era cortada numa letra qualquer ("…dinâmic/a") a partir

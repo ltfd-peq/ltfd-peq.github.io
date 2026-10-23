@@ -34,8 +34,11 @@ def servir(pasta: Path) -> tuple[socketserver.TCPServer, str]:
     class Silencioso(http.server.SimpleHTTPRequestHandler):
         def log_message(self, *args):
             pass
+    class Servidor(socketserver.ThreadingTCPServer):
+        def handle_error(self, request, client_address):
+            pass  # o navegador cancela downloads (BrokenPipe): não é falha do site
     handler = functools.partial(Silencioso, directory=str(pasta))
-    servidor = socketserver.ThreadingTCPServer(("127.0.0.1", 0), handler)
+    servidor = Servidor(("127.0.0.1", 0), handler)
     threading.Thread(target=servidor.serve_forever, daemon=True).start()
     return servidor, f"http://127.0.0.1:{servidor.server_address[1]}"
 

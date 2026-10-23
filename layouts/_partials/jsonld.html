@@ -28,6 +28,11 @@
         "address" $endereco
         "parentOrganization" $peq
         "knowsAbout" $temas -}}
+  {{- with index $lab.locais 0 -}}
+    {{- $org = merge $org (dict
+          "geo" (dict "@type" "GeoCoordinates" "latitude" .lat "longitude" .lon)
+          "hasMap" (printf "https://www.google.com/maps/search/?api=1&query=%s&query_place_id=%s" (.nome | urlquery) .google_place_id)) -}}
+  {{- end -}}
   {{- $site := dict "@type" "WebSite" "@id" (printf "%s#site" $raiz) "url" $raiz "name" $lab.sigla "inLanguage" site.Language.Locale "publisher" (dict "@id" $orgId) -}}
   {{- $grafo = $grafo | append $org $site -}}
 {{- end -}}

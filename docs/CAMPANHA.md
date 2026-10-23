@@ -1,12 +1,12 @@
 # Campanha de implantação do site do LTFD
 
 Acompanhamento da execução do `PLANO_IMPLEMENTACAO_SITE_LTFD.md` (v1.3). Atualizar a cada
-semana. **Situação em 23/10/2026: Fase 0 em curso; Fase 1, semana 1, com o código-base pronto.**
+semana. **Situação em 23/10/2026: Fase 0 em curso; Fase 1, semana 1: código-base pronto e site provisório publicado.**
 
 | Marco | Data | Situação |
 |---|---|---|
 | Decisões da Fase 0 (ou padrões aceitos) | 30/10/2026 | em aberto — ver §3 |
-| Site provisório no ar, com `noindex`, para revisão | 06/11/2026 | depende da organização no GitHub (§2) |
+| Site provisório no ar, com `noindex`, para revisão | 06/11/2026 | **no ar desde 23/10/2026** em https://ltfd-peq.github.io/ |
 | Revisão dos docentes (≈1–2 h cada) | 06 a 11/11/2026 | roteiro em `docs/revisao_mvp.md` |
 | **Lançamento público** (ambiente `producao`) | **16/11/2026** | — |
 | Onda A (Publicações, Projetos, Infraestrutura, busca) | até 18/12/2026 | — |
@@ -45,13 +45,12 @@ São ações externas (contas, e-mails, publicação): o Claude Code não as faz
 
 1. [x] **Organização `ltfd-peq` criada no GitHub** (22/10/2026). Falta: exigir 2FA e convidar o
    2º docente como *owner* (§10.5).
-2. Criar o repositório **público** `ltfd-peq.github.io` (nome exato), vazio: sem README,
-   licença nem .gitignore.
-3. No repositório: *Settings → Pages → Build and deployment → Source*: **GitHub Actions**
-   (antes do primeiro *push*, para a primeira publicação já funcionar).
-4. **Primeiro commit e push** — o Claude Code faz quando autorizado (a chave SSH desta máquina
-   já autentica como GGSFerreira). O *push* dispara o workflow "Publicação", que publica o site
-   provisório (com `noindex`) em `https://ltfd-peq.github.io/`.
+2. [x] Repositório público `ltfd-peq/ltfd-peq.github.io` (criado na conta pessoal e transferido
+   para a organização em 23/10/2026).
+3. [x] Pages com *Source* = GitHub Actions.
+4. [x] Primeiro commit (`41115dd`) e *push* em 23/10/2026. Workflow "Publicação" verde; site
+   provisório (com `noindex`) em https://ltfd-peq.github.io/, conferido no navegador. Workflow
+   de PR verde no PR #1 do Dependabot (Playwright 1.63.0 → 1.64.0), à espera de *merge*.
 5. *Settings → Rules*: *ruleset* do `main` com PR obrigatório, 1 aprovação, verificação
    "verificar" obrigatória, revisão de *code owners*; os 2 donos na lista de *bypass* (§10.5).
 6. Criar a equipe `docentes` na organização (usada pelo `CODEOWNERS`).
@@ -87,7 +86,7 @@ Sem resposta até 30/10, vale o padrão (PLANO §15). Para mudar, edite o arquiv
 
 **Semana 2 (03 a 06/11)** — até o site provisório:
 
-- [ ] Primeiro *deploy* provisório e conferência no endereço real (CSP, `noindex`, datas do Git).
+- [x] Primeiro *deploy* provisório e conferência no endereço real (CSP, `noindex`, datas do Git) — 23/10/2026.
 - [ ] `scripts/checar_imagens.py` (rejeita EXIF/GPS e imagens grandes) antes de qualquer foto.
 - [ ] `static/.well-known/security.txt` com `Expires` (e-mail do responsável).
 - [ ] Meta de verificação do Search Console (parâmetro), a usar no lançamento.

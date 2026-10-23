@@ -45,14 +45,25 @@ endereco:
   uf: RJ
   cep: 21941-914
   pais: BR
-  # Busca por texto, sem coordenadas: as coordenadas do Bloco G ainda não foram conferidas.
-  mapa_osm: https://www.openstreetmap.org/search?query=Centro%20de%20Tecnologia%20UFRJ%20Bloco%20G
-  mapa_google: https://www.google.com/maps/search/?api=1&query=Centro+de+Tecnologia+Bloco+G+UFRJ
 
-# Padrão do PLANO §15, item 15, até existir o alias ltfd@peq.coppe.ufrj.br:
-# e-mail do responsável pelo site.
-email: gferreira@peq.coppe.ufrj.br
-email_site: gferreira@peq.coppe.ufrj.br   # "Problemas no site" e /acessibilidade/
+# "Como chegar": lugares do Google Maps indicados pelo Prof. Paulo L. C. Lage (o do LTFD foi
+# criado por ele). Guardamos o identificador do lugar e as coordenadas, consultados em
+# 23/10/2026; os links para Google Maps e OpenStreetMap são montados no template.
+locais:
+  - nome: Laboratório de Termofluidodinâmica (LTFD)
+    google_place_id: ChIJFWhL0zB5mQARN2FHzFDYTr4
+    lat: -22.863229
+    lon: -43.2283178
+  - nome: Secretaria do Programa de Engenharia Química (PEQ), Bloco G, sala 115
+    google_place_id: ChIJi9ZRFTd5mQAR_obtL509ppg
+    lat: -22.8616004
+    lon: -43.2291764
+
+# E-mail de contato do laboratório: indicado pelo Prof. Paulo L. C. Lage na revisão de
+# 23/10/2026 (até existir um alias como ltfd@peq.coppe.ufrj.br).
+email: paulo@peq.coppe.ufrj.br
+# "Problemas no site" e /acessibilidade/: vai para o responsável pelo site (PLANO §6.15).
+email_site: gferreira@peq.coppe.ufrj.br
 
 # Telefones do PEQ (página de contato do PEQ: CT, Bloco G, sala 115). Ramal do LTFD: a confirmar.
 telefones:
@@ -65,6 +76,6 @@ links:
   peq_mestrado: https://www.peq.coppe.ufrj.br/index.php/pt-br/mestrado
   peq_doutorado: https://www.peq.coppe.ufrj.br/index.php/pt-br/doutorado
 
-fonte: "kit/laboratorio.json (21/10/2026); páginas do PEQ (contato, mestrado, doutorado) conferidas em 23/10/2026"
+fonte: "kit/laboratorio.json (21/10/2026); páginas do PEQ (contato, mestrado, doutorado) conferidas em 23/10/2026; revisão do Prof. Paulo L. C. Lage (23/10/2026): e-mail de contato e lugares no Google Maps"
 verificado_em: 2026-10-23
 revisado_em: null

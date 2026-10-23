@@ -533,3 +533,6 @@ a:hover { color: var(--cor-link-hover); text-decoration-thickness: 2px; }
 
 /* Perfil sem foto: iniciais em quadrado compacto */
 .perfil__lateral .iniciais { aspect-ratio: 1; max-width: 8rem; font-size: 2.25rem; }
+
+/* Contato: nome de cada lugar em "Como chegar" */
+.local__nome { font-size: var(--fs-corpo); margin: var(--space-5) 0 0; }

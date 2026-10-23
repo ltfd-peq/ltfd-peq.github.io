@@ -7,7 +7,7 @@ Cada docente revisa sobretudo o que diz respeito a si e aos próprios orientando
 ## Toda página
 
 - [ ] Endereço no rodapé: Av. Horácio Macedo, 2030 – Centro de Tecnologia, **Bloco G**, CEP 21941-914. **Qual é a sala do LTFD?**
-- [ ] E-mail de contato: hoje é o do Prof. Gabriel (`gferreira@peq.coppe.ufrj.br`). Vamos pedir o alias `ltfd@peq.coppe.ufrj.br`?
+- [x] E-mail de contato: `paulo@peq.coppe.ufrj.br` (P. Lage, 23/10). "Problemas no site" segue para o Prof. Gabriel. Vamos pedir o alias `ltfd@peq.coppe.ufrj.br`?
 - [ ] Telefones: os três da secretaria do PEQ. O LTFD tem ramal próprio?
 
 ## Início
@@ -36,7 +36,7 @@ Cada docente revisa sobretudo o que diz respeito a si e aos próprios orientando
 
 ## Equipe e perfis
 
-- [ ] Docentes: cargo, minibiografia (até 60 palavras), linhas, Lattes, ORCID, e-mail.
+- [ ] Docentes: cargo, minibiografia (até 60 palavras), linhas, Lattes, ORCID, e-mail. (Google Acadêmico de P. Lage incluído em 23/10.)
 - [ ] A. R. Secchi como docente do LTFD (com publicações filtradas pela coautoria com P. Lage ou G. Ferreira)?
 - [ ] Barbara de Farias Esteves — pós-doutorado, supervisão de P. Lage, desde 2025. Título do projeto e linha?
 - [ ] César Gustavo Timaná Beteta — doutorado, orientação de P. Lage e coorientação de G. Ferreira. Início em **2025** (Lattes de Lage) ou **2026** (Lattes de Ferreira)?
@@ -55,7 +55,8 @@ Cada docente revisa sobretudo o que diz respeito a si e aos próprios orientando
 ## Contato
 
 - [ ] Os seis assuntos de e-mail e para quem vão.
-- [ ] "Como chegar": links para OpenStreetMap e Google Maps. Há planta do CT ou indicação de acesso ao Bloco G?
+- [x] "Como chegar": lugares do Google Maps "Laboratório de Termofluidodinâmica" e "Programa de Engenharia Química (PEQ)" (P. Lage, 23/10), com links também para o OpenStreetMap.
+- [ ] No Google Maps, o ponto do LTFD fica ≈ 180 m ao sul do ponto do PEQ (Bloco G, sala 115). O laboratório fica em outro prédio ou bloco? Se sim, qual endereço mostrar no site?
 
 ## Privacidade e Acessibilidade
 

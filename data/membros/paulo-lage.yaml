@@ -11,7 +11,7 @@ ids:
   lattes: "5576851640501227"
   orcid: 0000-0002-0396-5508
   openalex: A5090194580
-  scholar: null
+  scholar: hQdYS9cAAAAJ   # informado pelo docente em 23/10/2026; perfil "Paulo L. C. Lage" conferido
 linhas:
   - multifasicos-balanco-populacional
   - cfd-metodos-numericos
@@ -32,6 +32,6 @@ bio_en: >-
   from COPPE/UFRJ, with a research stay at the University of California, Irvine. Faculty
   member of PEQ/COPPE since 1993, working on multiphase flows in process equipment,
   population balance, crystallization, numerical methods and CFD with OpenFOAM.
-fonte: "Lattes atualizado em 25/08/2026 (PDF em 4_DataBase_Site_LTFD/Curriculos); kit/membros.json"
+fonte: "Lattes atualizado em 25/08/2026 (PDF em 4_DataBase_Site_LTFD/Curriculos); kit/membros.json; Google Acadêmico informado pelo docente (23/10/2026)"
 verificado_em: 2026-10-23
 revisado_em: null

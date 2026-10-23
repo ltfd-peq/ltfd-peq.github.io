@@ -23,10 +23,13 @@
       <div class="titulo-secao"><h2 id="como-chegar">{{ T "comoChegar" }}</h2></div>
       <p>{{ $lab.vinculo.programa.nome }} – {{ $lab.vinculo.instituto.sigla }}/{{ $lab.vinculo.universidade.sigla }}</p>
       {{- partial "endereco.html" $lab }}
-      <ul class="lista-simples">
-        <li><a href="{{ $lab.endereco.mapa_osm }}">{{ T "abrirOSM" }}</a></li>
-        <li><a href="{{ $lab.endereco.mapa_google }}">{{ T "abrirGoogle" }}</a></li>
+      {{- range $lab.locais }}
+      <h3 class="local__nome">{{ .nome }}</h3>
+      <ul class="ids">
+        <li><a href="https://www.google.com/maps/search/?api=1&query={{ .nome | urlquery }}&query_place_id={{ .google_place_id }}" aria-label="{{ T "abrirGoogle" }}: {{ .nome }}">{{ T "abrirGoogle" }}</a></li>
+        <li><a href="https://www.openstreetmap.org/?mlat={{ .lat }}&mlon={{ .lon }}#map=18/{{ .lat }}/{{ .lon }}" aria-label="{{ T "abrirOSM" }}: {{ .nome }}">{{ T "abrirOSM" }}</a></li>
       </ul>
+      {{- end }}
     </div>
     <div>
       <div class="titulo-secao"><h2 id="telefones">{{ T "telefones" }}</h2></div>
