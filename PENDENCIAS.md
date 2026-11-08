@@ -61,9 +61,9 @@ indicação. Ao resolver um item, marque-o, atualize o YAML correspondente (com 
   | CFD aplicada à garantia de escoamento | Lage, Ferreira. Secchi tem trabalhos sobre formação de hidratos em linhas de produção (ex.: Guedes et al., CHERD, 2026): entra? |
   | Reatores não ideais em processos sustentáveis | Lage, Secchi, Ferreira |
 
-- [ ] Imagens das linhas: "Reatores não ideais" já tem a figura dos reatores compactos
-      (`assets/img/pesquisas/`). Falta a legenda técnica dela (caso, modelo, solver; PLANO
-      §6.4) e o crédito, se houver. Para as outras linhas, a apresentação tem figuras de
+- [ ] Imagens das linhas: "Reatores não ideais" tem a figura dos reatores compactos e
+      "Escoamento reativo em reservatórios", a do arenito Berea (`assets/img/pesquisas/`).
+      Falta a legenda técnica delas (caso, modelo, solver; PLANO §6.4) e o crédito, se houver. Para as outras linhas, a apresentação tem figuras de
       resultados: usar só as do LTFD que não estão sob direitos de editora, com legenda e fonte.
 
 ## Pesquisa: métodos e ferramentas

@@ -34,7 +34,8 @@ não entra aqui: ele fica no histórico do Git.
   7 itens). Teste novo do submenu
   pelo teclado e do menu numa linha a 1024 px.
 - Página de linha com figura e legenda (`imagem` em `data/linhas/`; `assets/img/pesquisas/`):
-  reatores compactos na linha "Reatores não ideais em processos sustentáveis".
+  reatores compactos na linha "Reatores não ideais em processos sustentáveis" e arenito Berea
+  na linha "Escoamento reativo em reservatórios de petróleo".
 - Mapa do site do rodapé com os subitens de Pesquisa e Equipe; corrigido o atributo espúrio
   (`ZgotmplZ`) nos subitens do menu.
 - CI: `bib2json.py` antes do build; `validar_dados.py` valida as coleções novas.
