@@ -1,0 +1,48 @@
+{{- define "main" }}
+{{- /* Projetos (PLANO §6.5; subpágina de Pesquisa pela revisão de 08/11/2026). Fonte:
+     data/projetos/<id>.yaml. A situação é calculada (sem "fim" = em andamento) e o
+     período fica sempre escrito. Em andamento primeiro; concluídos por década. */ -}}
+{{- partial "cabecalho-pagina.html" . }}
+{{- $andamento := slice }}
+{{- $concluidos := slice }}
+{{- range hugo.Data.projetos }}
+  {{- if .fim }}{{ $concluidos = $concluidos | append . }}{{ else }}{{ $andamento = $andamento | append . }}{{ end }}
+{{- end }}
+{{- $decadas := slice }}
+{{- range $concluidos }}{{ $decadas = $decadas | append (mul (div .fim 10) 10) }}{{ end }}
+{{- $decadas = $decadas | uniq | sort | collections.Reverse }}
+<div class="secao">
+  <div class="container container--estreito">
+    <div class="prosa">{{ .Content }}</div>
+    <nav class="ir-para" aria-label="Seções">
+      <span>{{ T "irPara" }}</span>
+      <ul class="chips">
+        {{- with $andamento }}<li><a href="#em-andamento">Em andamento</a></li>{{ end }}
+        {{- with $concluidos }}<li><a href="#concluidos">Concluídos</a></li>{{ end }}
+      </ul>
+    </nav>
+    {{- with $andamento }}
+    <section class="grupo-ano secao-equipe" aria-labelledby="em-andamento">
+      <h2 id="em-andamento">Em andamento ({{ len . }})</h2>
+      <ul class="referencias">
+        {{- range sort . "inicio" "desc" }}{{ partial "item-projeto.html" (dict "p" . "nivel" 3) }}{{ end }}
+      </ul>
+    </section>
+    {{- end }}
+    {{- with $concluidos }}
+    <section class="grupo-ano secao-equipe" aria-labelledby="concluidos">
+      <h2 id="concluidos">Concluídos ({{ len . }})</h2>
+      {{- range $decadas }}
+      {{- $d := . }}
+      <div class="grupo-ano">
+        <h3>Terminados entre {{ $d }} e {{ add $d 9 }}</h3>
+        <ul class="referencias">
+          {{- range sort (where $concluidos "fim" "ge" $d) "fim" "desc" }}{{ if lt .fim (add $d 10) }}{{ partial "item-projeto.html" (dict "p" . "nivel" 4) }}{{ end }}{{ end }}
+        </ul>
+      </div>
+      {{- end }}
+    </section>
+    {{- end }}
+  </div>
+</div>
+{{- end }}

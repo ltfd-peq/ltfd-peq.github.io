@@ -1,3 +1,5 @@
+# Gerado por scripts/bib2json.py antes do build (local e CI)
+/data/gerado/
 # Gerados pelo Hugo
 /public/
 /resources/_gen/
@@ -11,3 +13,5 @@ __pycache__/
 *~
 # Capturas de bugs para corrigir (material de trabalho, não vai para o repositório público)
 /bugs-to-fix/
+# Material de referência (apresentações etc.), fora do repositório público
+/inspiration/

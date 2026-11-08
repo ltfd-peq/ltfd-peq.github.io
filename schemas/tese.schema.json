@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "tese.schema.json",
+  "title": "Tese ou dissertação defendida (data/teses/<id>.yaml); alimenta a página Egressos",
+  "description": "Só trabalhos defendidos (PLANO §7.2). Os em andamento vêm da Equipe. id = <nivel>-<ano>-<slug do nome do autor>.",
+  "type": "object",
+  "allOf": [{"$ref": "comum.schema.json#/$defs/proveniencia"}],
+  "properties": {
+    "id": {"$ref": "comum.schema.json#/$defs/id"},
+    "nivel": {"enum": ["mestrado", "doutorado"]},
+    "autor": {"$ref": "comum.schema.json#/$defs/texto", "description": "nome completo, como no Lattes"},
+    "autor_membro": {"anyOf": [{"$ref": "comum.schema.json#/$defs/id"}, {"type": "null"}], "description": "id em data/membros quando o autor é membro atual"},
+    "titulo": {"$ref": "comum.schema.json#/$defs/texto"},
+    "titulo_en": {"type": "string"},
+    "ano": {"type": "integer", "minimum": 1970, "maximum": 2100},
+    "programa": {"$ref": "comum.schema.json#/$defs/texto", "description": "curso como o Lattes o escreve, ex.: Engenharia Química"},
+    "instituicao": {"$ref": "comum.schema.json#/$defs/texto"},
+    "orientadores": {"type": "array", "items": {"$ref": "membro.schema.json#/$defs/pessoa"}},
+    "coorientadores": {"type": "array", "items": {"$ref": "membro.schema.json#/$defs/pessoa"}},
+    "link_repositorio": {"anyOf": [{"type": "string", "format": "uri", "pattern": "^https://"}, {"type": "null"}], "description": "null = link ainda não levantado (aparece sem link)"},
+    "fonte": {}, "verificado_em": {}, "revisado_em": {}
+  },
+  "required": ["id", "nivel", "autor", "titulo", "ano", "programa", "instituicao", "orientadores", "coorientadores", "link_repositorio"],
+  "additionalProperties": false
+}

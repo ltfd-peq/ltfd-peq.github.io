@@ -1,0 +1,46 @@
+{{- define "main" }}
+{{- /* Artigos publicados (PLANO §6.9; subpágina de Pesquisa pela revisão de 08/11/2026).
+     Fonte: bib/ltfd.bib, convertido por scripts/bib2json.py em data/gerado/publicacoes.json
+     (gerado antes do build; não editar). Um H2 por ano; autores do LTFD em negrito, pelo
+     campo "membros" do BibTeX. A exportação BibTeX sai dos mesmos registros. */ -}}
+{{- partial "cabecalho-pagina.html" . }}
+{{- $pubs := slice }}
+{{- with hugo.Data.gerado }}{{ with .publicacoes }}{{ $pubs = . }}{{ end }}{{ end }}
+{{- if not $pubs }}{{ errorf "data/gerado/publicacoes.json ausente ou vazio: rode python3 -I scripts/bib2json.py" }}{{ end }}
+{{- $anos := slice }}
+{{- range $pubs }}{{ $anos = $anos | append .ano }}{{ end }}
+{{- $anos = $anos | uniq | sort | collections.Reverse }}
+{{- $bib := slice }}
+{{- range $pubs }}{{ $bib = $bib | append .bibtex }}{{ end }}
+{{- $arquivo := resources.FromString "pesquisa/publicacoes/ltfd.bib" (delimit $bib "\n\n") }}
+<div class="secao">
+  <div class="container container--estreito">
+    <div class="prosa">{{ .Content }}</div>
+    <p><a class="link-seta" href="{{ $arquivo.RelPermalink }}" download>Baixar a lista em BibTeX ({{ len $pubs }} artigos)</a></p>
+    <nav class="ir-para" aria-label="Anos">
+      <span>{{ T "irPara" }}</span>
+      <ul class="chips">
+        {{- range $anos }}<li><a href="#ano-{{ . }}">{{ . }}</a></li>{{ end }}
+      </ul>
+    </nav>
+
+    {{- range $anos }}
+    {{- $ano := . }}
+    <section class="grupo-ano secao-equipe" aria-labelledby="ano-{{ $ano }}">
+      <h2 id="ano-{{ $ano }}">{{ $ano }}</h2>
+      <ol class="referencias">
+        {{- range where $pubs "ano" $ano }}
+        <li>
+          {{- /* Ponto final só se o texto já não terminar em pontuação ("Lage, P. L. C."). */}}
+          <p>{{ range $i, $a := .autores }}{{ if $i }}; {{ end }}{{ if $a.membro }}<strong>{{ $a.nome }}</strong>{{ else }}{{ $a.nome }}{{ end }}{{ end }}{{ if not (strings.HasSuffix (index (last 1 .autores) 0).nome ".") }}.{{ end }}</p>
+          <p{{ if eq .idioma "en" }} lang="en"{{ end }}>{{ .titulo }}{{ if not (findRE `[.?!]$` .titulo) }}.{{ end }}</p>
+          <p class="referencias__meta"><cite>{{ .veiculo }}</cite>{{ with .volume }}, v. {{ . }}{{ end }}{{ with .numero }}, n. {{ . }}{{ end }}{{ with .paginas }}, p. {{ . }}{{ end }}, {{ .ano }}.
+            {{- with .doi }} <a href="https://doi.org/{{ . }}">doi:{{ . }}</a>{{ end }}</p>
+        </li>
+        {{- end }}
+      </ol>
+    </section>
+    {{- end }}
+  </div>
+</div>
+{{- end }}

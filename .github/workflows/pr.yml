@@ -30,6 +30,9 @@ jobs:
       - name: Dados (esquemas, ids, consentimentos)
         run: python -I scripts/validar_dados.py
 
+      - name: Publicações (bib/ltfd.bib → data/gerado/publicacoes.json; chaves e DOIs únicos)
+        run: python -I scripts/bib2json.py
+
       - name: Contraste das cores do tema
         run: python -I scripts/contraste.py
 

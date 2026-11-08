@@ -1,0 +1,30 @@
+id: cfd-garantia-escoamento
+titulo: CFD aplicada à garantia de escoamento
+titulo_en: CFD applied to flow assurance
+ordem: 4
+ativa: true
+icone: linha-dutos
+chamada: "Deslocamento de óleos em dutos e formação de hidratos em linhas de produção."   # uma frase, usada nos cards
+resumo: >-
+  Simulação física e computacional de problemas de garantia de escoamento em linhas de
+  produção offshore. Um código para o deslocamento miscível monofásico entre óleos cobre
+  as etapas de produção, parada, deslocamento e retomada. Na formação de hidratos em
+  escoamentos com óleo como fase contínua, um modelo de balanço populacional trivariado
+  descreve o crescimento dos hidratos em emulsões de água em óleo, acoplado a um modelo
+  de reologia da mistura.
+topicos:
+  - Deslocamento miscível
+  - Linhas de produção offshore
+  - Formação de hidratos
+  - Emulsões de água em óleo
+  - Balanço populacional trivariado
+docentes_responsaveis: [paulo-lage, gabriel-ferreira]
+# Junta "Deslocamento de fluidos miscíveis em dutos" e a modelagem da formação de
+# hidratos (revisão do Prof. Gabriel G. S. Ferreira, 08/11/2026).
+fonte: >-
+  Apresentação institucional do LTFD (Prof. Gabriel G. S. Ferreira, 30/05/2025), seção "Ongoing Research", slides "Miscible fluid displacement in
+  pipelines" e "Complex multiphase mixtures rheology modeling"; Lattes de P. L. C. Lage
+  (25/08/2026): Favero et al. (2023), Can. J. Chem. Eng. 102; Lattes de G. G. S. Ferreira
+  (tese sobre hidratos, 2018); revisão do Prof. Gabriel G. S. Ferreira (08/11/2026)
+verificado_em: 2026-11-08
+revisado_em: null

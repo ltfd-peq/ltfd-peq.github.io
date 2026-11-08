@@ -9,12 +9,13 @@
   <div class="card-membro__foto">{{ partial "retrato.html" $m }}</div>
   <div class="card-membro__corpo">
     {{ printf "<%s>" $h | safeHTML }}<a class="card__link" href="{{ $perfil.RelPermalink }}">{{ or $m.nome_exibicao $m.nome }}</a>{{ printf "</%s>" $h | safeHTML }}
+    {{- /* Vínculo sob o nome: cargo, se houver (docentes, pesquisador), a modalidade
+         (graduação: IC ou Projeto Final) ou o nível. */}}
     <p class="card-membro__papel">
-      {{- if eq $m.categoria "docente" }}{{ $m.cargo }}
-      {{- else }}{{ T (printf "nivel_%s" $m.categoria) }}{{ with $m.periodo.inicio }} · {{ T "desde" }} {{ . }}{{ end }}
-      {{- end }}
+      {{- partial "papel-membro.html" $m }}
+      {{- if ne $m.categoria "docente" }}{{ with $m.periodo.inicio }} · {{ T "desde" }} {{ . }}{{ end }}{{ end -}}
     </p>
-    {{- if ne $m.categoria "docente" }}
+    {{- if and (ne $m.categoria "docente") $m.trabalho }}
     <dl class="card-membro__detalhe">
       {{- with $m.trabalho.titulo }}
       <div><dt>{{ T "tema" }}:</dt> <dd>{{ . }}</dd></div>

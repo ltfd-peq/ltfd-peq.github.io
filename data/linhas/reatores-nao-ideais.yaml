@@ -1,0 +1,36 @@
+id: reatores-nao-ideais
+titulo: Reatores não ideais em processos sustentáveis
+titulo_en: Non-ideal reactors in sustainable processes
+ordem: 5
+ativa: true
+icone: linha-reatores
+chamada: "Reatores com membrana para hidrogênio e reatores para combustíveis de baixo carbono."   # uma frase, usada nos cards
+resumo: >-
+  Modelagem de reatores não ideais em processos sustentáveis. Com o OpenFOAM®,
+  avaliamos o efeito da geometria e das condições de operação sobre o desempenho de
+  reatores com membrana para a produção de hidrogênio, na reforma a vapor do metano e
+  na reforma autotérmica do etanol em reatores compactos. Para reatores de produção de
+  combustíveis de baixo carbono, simulações numéricas diretas de sistemas reativos
+  fornecem perfis médios usados para estimar os parâmetros de modelos unidimensionais e
+  transientes, resolvidos pelo método dos volumes finitos.
+topicos:
+  - Reatores com membrana
+  - Produção de hidrogênio
+  - Combustíveis de baixo carbono
+  - Reatores compactos
+  - Estimação de parâmetros
+imagem:
+  arquivo: reatores-compactos.png   # assets/img/pesquisas/
+  alt: "Renderização de dois reatores compactos cilíndricos: um fechado, com a estrutura interna celular visível no topo, e outro em corte, com a estrutura interna colorida e linhas de corrente azuis entrando e saindo."
+  legenda: "Reatores compactos: estrutura interna e linhas de corrente do escoamento."
+docentes_responsaveis: [paulo-lage, argimiro-secchi, gabriel-ferreira]
+# Junta "Reatores com membrana para produção de hidrogênio" e "Reatores para combustíveis
+# de baixo carbono"; o Prof. Paulo L. C. Lage também participa (revisão do Prof. Gabriel
+# G. S. Ferreira, 08/11/2026).
+fonte: >-
+  Apresentação institucional do LTFD (Prof. Gabriel G. S. Ferreira, 30/05/2025), seção "Ongoing Research", slides "Modeling of Membrane Reactors for
+  Hydrogen Production" e "CFD Modeling of Reactors for Low-Carbon Fuel Production";
+  Lattes de G. G. S. Ferreira (22/05/2026) e de A. R. Secchi; revisão do Prof. Gabriel
+  G. S. Ferreira (08/11/2026); figura "reatores_compactos.png" enviada por ele (08/11/2026)
+verificado_em: 2026-11-08
+revisado_em: null

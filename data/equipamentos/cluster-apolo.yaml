@@ -1,0 +1,21 @@
+id: cluster-apolo
+nome: Cluster Apolo
+categoria: computacional
+status: ativo
+ordem: 1
+especificacoes:
+  - {parametro: Nós de computação, valor: "28 lâminas (blades) em 7 chassis HPE Cray XD2000"}
+  - {parametro: Processadores por lâmina, valor: "48 núcleos Intel Xeon Gold 6442Y"}
+  - {parametro: Memória por lâmina, valor: "192 GB de RAM"}
+  # Totais = 28 × 48 e 28 × 192; batem com a apresentação institucional (1.344 núcleos Xeon
+  # 6442Y e 5.376 GB, "New server cluster").
+  - {parametro: Total, valor: "1.344 núcleos e 5.376 GB de RAM"}
+foto:
+  arquivo: cluster-apolo.jpg
+  alt: "Rack preto com a porta aberta, com servidores e lâminas de computação montados, numa sala com uma mesa de trabalho ao fundo."
+fonte: >-
+  Descrição do cluster Apolo enviada pelo Prof. Gabriel G. S. Ferreira (08/11/2026,
+  "apolo-simple-description"); figura "apolo-rack" (imagem gerada por IA: ChatGPT/gpt-image,
+  segundo os metadados C2PA do arquivo)
+verificado_em: 2026-11-08
+revisado_em: null

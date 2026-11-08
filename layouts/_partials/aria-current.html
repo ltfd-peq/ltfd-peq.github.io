@@ -7,5 +7,7 @@
   {{- $valor = "page" -}}
 {{- else if and (not $p.IsHome) (ne .url "/") (strings.HasPrefix $p.RelPermalink .url) -}}
   {{- $valor = "true" -}}
+{{- else if and $p.Params.linha (strings.HasSuffix .url "/pesquisa/linhas/") -}}
+  {{- $valor = "true" -}}{{/* página de uma linha (/pesquisa/<id>/) */}}
 {{- end -}}
 {{- return $valor -}}

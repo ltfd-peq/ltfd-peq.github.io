@@ -13,6 +13,11 @@
     </aside>
 
     <div>
+      {{- /* Sem biografia, trabalho nem linha (ex.: corpo técnico recém-incluído): uma
+           frase com o vínculo, para a página não ficar vazia. */}}
+      {{- if not (or $m.bio $m.trabalho $m.linhas (eq $m.categoria "docente")) }}
+      <p>{{ or $m.nome_exibicao $m.nome }} integra a equipe do {{ hugo.Data.laboratorio.sigla }} ({{ lower (or $m.cargo (T (printf "nivel_%s" $m.categoria))) }}).</p>
+      {{- end }}
       {{- with $m.bio }}
       <h2 id="sobre">Sobre</h2>
       <p>{{ . }}</p>

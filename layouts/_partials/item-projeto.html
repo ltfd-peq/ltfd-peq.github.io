@@ -1,0 +1,16 @@
+{{- /* C12 Item de projeto (PLANO §6.5): título e a linha "período · natureza ·
+     coordenação · financiadores". Recebe dict "p" (registro) e "nivel" (3 ou 4). */ -}}
+{{- $p := .p -}}
+{{- $h := printf "h%d" .nivel -}}
+<li>
+  {{ printf "<%s>" $h | safeHTML }}{{ $p.titulo }}{{ printf "</%s>" $h | safeHTML }}
+  <p class="referencias__meta">{{ $p.inicio }}–{{ with $p.fim }}{{ . }}{{ else }}{{ T "atual" }}{{ end }}
+    · {{ T (printf "natureza_%s" $p.natureza) }}
+    · {{ T "coordenacao" }}: {{ partial "nomes-membros.html" (slice $p.coordenacao) }}
+    {{- with $p.financiadores }} · {{ T "financiamento" }}: {{ delimit . ", " " e " }}{{ end }}</p>
+  {{- $outros := slice }}
+  {{- range $p.membros_ltfd }}{{ if ne . $p.coordenacao }}{{ $outros = $outros | append . }}{{ end }}{{ end }}
+  {{- with $outros }}
+  <p class="referencias__meta">{{ T "equipeLtfd" }}: {{ partial "nomes-membros.html" (partial "ordenar-membros.html" .) }}</p>
+  {{- end }}
+</li>

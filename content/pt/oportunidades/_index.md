@@ -11,11 +11,11 @@ description: >-
 ### Mestrado e doutorado
 
 O ingresso é pelo processo seletivo do Programa de Engenharia Química (PEQ) da COPPE/UFRJ.
-Editais, prazos e documentos estão nas páginas do
+Editais de seleção, prazos, documentos e o link de inscrição estão nas abas de admissão do
 [mestrado](https://www.peq.coppe.ufrj.br/index.php/pt-br/mestrado) e do
 [doutorado](https://www.peq.coppe.ufrj.br/index.php/pt-br/doutorado) no site do PEQ.
-Antes de se inscrever, escreva para o docente da linha que lhe interessa para conversar
-sobre temas e orientação.
+Antes de se inscrever, escreva para o docente da [linha de pesquisa](/pesquisa/linhas/) que lhe
+interessa para conversar sobre temas e orientação.
 
 ### Iniciação científica e trabalho de conclusão de curso
 

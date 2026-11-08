@@ -1,0 +1,12 @@
+id: antonio-goncalves-neto
+nome: Antônio Gonçalves Neto
+categoria: tecnico
+periodo: {inicio: null, fim: null}   # ano de início: a coletar
+ids: {lattes: null, orcid: null}
+linhas: []
+email: null
+foto: null
+consentimento: {foto: null, email: null, destino: null, data: null}
+fonte: "Revisão do Prof. Gabriel G. S. Ferreira (08/11/2026): corpo técnico do LTFD"
+verificado_em: 2026-11-08
+revisado_em: null

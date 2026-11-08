@@ -34,8 +34,11 @@ jobs:
       - name: Dados (esquemas, ids, consentimentos)
         run: python -I scripts/validar_dados.py
 
-      - name: Data da última atualização (último commit em content/ e data/)
-        run: echo "HUGO_PARAMS_ULTIMAATUALIZACAO=$(git log -1 --format=%cI -- content data)" >> "$GITHUB_ENV"
+      - name: Publicações (bib/ltfd.bib → data/gerado/publicacoes.json; chaves e DOIs únicos)
+        run: python -I scripts/bib2json.py
+
+      - name: Data da última atualização (último commit em content/, data/ e bib/)
+        run: echo "HUGO_PARAMS_ULTIMAATUALIZACAO=$(git log -1 --format=%cI -- content data bib)" >> "$GITHUB_ENV"
 
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 

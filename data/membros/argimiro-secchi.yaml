@@ -15,10 +15,8 @@ ids:
   openalex: A5013542448
   scholar: 3j1Is40AAAAJ
 linhas:
-  - equipamentos-reatores-separadores
-  - cfd-metodos-numericos
-  - multifasicos-balanco-populacional
-  - hidratos-garantia-escoamento
+  - reologia-fluidos-complexos
+  - reatores-nao-ideais
 email: arge@peq.coppe.ufrj.br
 foto: null
 consentimento: {foto: null, email: null, destino: null, data: null}

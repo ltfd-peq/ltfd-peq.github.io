@@ -3,6 +3,68 @@
 Registro de mudanças de tema, menus, dados e domínio (PLANO §11.5). Conteúdo do dia a dia
 não entra aqui: ele fica no histórico do Git.
 
+## 0.3.0 — 08/11/2026 — 2ª revisão do Prof. Gabriel G. S. Ferreira (anotações e `TO_DO`)
+
+- **Linhas de pesquisa**: de 7 para 5 — escoamento reativo em reservatórios de petróleo (a
+  principal, em primeiro); reologia de fluidos complexos (junta polímeros e suspensões); processos
+  de separação e balanço populacional; CFD aplicada à garantia de escoamento (junta deslocamento
+  em dutos e formação de hidratos); reatores não ideais em processos sustentáveis (junta
+  membrana/hidrogênio e combustíveis de baixo carbono, com o Prof. Paulo L. C. Lage). Sai a
+  palavra-chave "média volumétrica".
+- **Coordenador sempre primeiro**: o Prof. Paulo L. C. Lage abre toda lista de docentes (Sobre,
+  Contato, linhas, projetos).
+- **Contato**: sem os cartões de assunto. Colaboração científica direto com os professores
+  (coordenador primeiro, identificado); `ltfd@peq.coppe.ufrj.br` para problemas no site. A
+  página de linha escreve aos docentes da linha; Oportunidades sem o botão "Escrever para o
+  LTFD", com link para Contato. Sai o campo `email_cientifico` de `data/laboratorio.yaml`.
+- **Equipe**: André Moreira de Castro (doutorado, orientação de Secchi) e a seção "Alunos de
+  graduação", com Glauter Henrique Sotero Martins (Projeto Final, Profs. Argimiro e Gabriel).
+- **Oportunidades**: "Vagas abertas" só aparece se houver vaga; sai a grade das linhas.
+- **Pesquisa**: ferramentas com nome por extenso e link (OpenFOAM®, foam-extend, OpenPNM,
+  Reaktoro) e aviso de marca do OpenFOAM®. Subpáginas novas (ADR 0005): Artigos publicados
+  (`bib/ltfd.bib`, 100 artigos, `scripts/bib2json.py`), Repositórios de código
+  (`data/software/`, 3), Projetos de pesquisa (`data/projetos/`, 33) e Infraestrutura
+  (`data/equipamentos/`: cluster Apolo e sala dos alunos, com figuras).
+- **Alumni** (egressos; item próprio do menu, `/alumni/`, `data/teses/`): 23 doutores e 36 mestres
+  em Engenharia Química, do Lattes de Lage, títulos ainda sem link para o texto completo.
+- **Menu** (ADR 0006): Pesquisa abre um submenu no desktop — Linhas de pesquisa
+  (`/pesquisa/linhas/`, com métodos e ferramentas), Produção científica, Repositórios de código
+  aberto e Projetos de pesquisa; `/pesquisa/` virou a página-hub dessas quatro partes.
+  Infraestrutura e Alumni são páginas próprias no menu principal (`/infraestrutura/`, `/alumni/`;
+  7 itens). Teste novo do submenu
+  pelo teclado e do menu numa linha a 1024 px.
+- Página de linha com figura e legenda (`imagem` em `data/linhas/`; `assets/img/pesquisas/`):
+  reatores compactos na linha "Reatores não ideais em processos sustentáveis".
+- Mapa do site do rodapé com os subitens de Pesquisa e Equipe; corrigido o atributo espúrio
+  (`ZgotmplZ`) nos subitens do menu.
+- CI: `bib2json.py` antes do build; `validar_dados.py` valida as coleções novas.
+
+## 0.2.0 — 08/11/2026 — revisão do Prof. Gabriel G. S. Ferreira e manual da marca v1.1
+
+- **Linhas de pesquisa** redefinidas pela apresentação institucional do LTFD (30/05/2025):
+  saem as 6 linhas anteriores e entram 7 — processabilidade de polímeros; processos de
+  separação e balanço populacional; escoamento reativo em reservatórios de petróleo; reologia
+  de misturas multifásicas complexas; deslocamento de fluidos miscíveis em dutos; reatores com
+  membrana para produção de hidrogênio; reatores para combustíveis de baixo carbono. Docentes
+  responsáveis pelos Lattes. Ícones novos: `linha-dutos` e `linha-membrana`.
+- Hero, descrição e hub de Pesquisa sem restringir o software ao OpenFOAM (códigos próprios,
+  OpenFOAM, foam-extend, OpenPNM, Reaktoro).
+- **Equipe** em seções: Coordenador do laboratório (`data/laboratorio.yaml` → `coordenador`),
+  Docentes, Pesquisadores (todos os vínculos juntos, com o vínculo sob o nome) e Corpo técnico.
+  Novos registros: Alex Vinicius Lopes Machado (pesquisador) e Antônio Gonçalves Neto (corpo
+  técnico). Leonardo de Souza Sá: orientação também do Prof. Gabriel G. S. Ferreira.
+- **Contato**: e-mail geral `ltfd@peq.coppe.ufrj.br` (problemas no site, outros assuntos,
+  rodapé, JSON-LD) e `paulo@peq.coppe.ufrj.br` para questões científicas (campo novo
+  `email_cientifico`; sai `email_site`).
+- Início: faixa de oportunidades com links para as abas de admissão do mestrado e do doutorado
+  do PEQ (editais e inscrição).
+- Sobre: sai a seção "Nossa trajetória" (os marcos continuam em `data/historico.yaml`); texto
+  inclui a Engenharia de Petróleo e áreas afins.
+- **Manual da marca v1.1** (ADR 0004): bordô só em detalhes; sobretítulos em preto; sem faixa
+  bordô no cabeçalho de página e na imagem Open Graph; botão de destaque sem bordô; hero com 3
+  bolhas bordô em vez de 16 vermelhas.
+- Pendências da revisão em `PENDENCIAS.md`.
+
 ## 0.1.2 — 23/10/2026 — revisão do Prof. Paulo L. C. Lage
 
 - E-mail de contato do laboratório: `paulo@peq.coppe.ufrj.br` ("Problemas no site" continua

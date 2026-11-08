@@ -1,12 +1,15 @@
 /* =============================================================================
-   LTFD — Design tokens · v0.3 (2026-10-23)
+   LTFD — Design tokens · v0.4 (2026-11-08)
    Base: 3_Referencias_Sites/00_Sintese/design_tokens_ltfd.css (v0.2), ajustada ao
    Manual de Identidade Visual do LTFD v1.0 (out/2026, 2_logo_LTFD_2026/Manual_Uso):
    - tipografia institucional: Montserrat (o plano previa Poppins + Source Sans 3);
    - paleta oficial: Azul LTFD #003366, Bordô LTFD #8A2432, Azul profundo #022C53,
      Preto 90 % #1A1A1A; proporção 60 % azul · 30 % branco · 10 % bordô;
    - saem #A61E29 e #CC1B21, que não constam do manual.
-   Ver docs/decisoes/0002-manual-da-marca-2026.md.
+   v0.4 — manual v1.1 (nov/2026): bordô só em detalhes (fios, marcadores, ícones),
+   nunca em texto, botão com texto, faixa ou fundo. Sobretítulos passam a Preto 90 %,
+   o botão de destaque deixa de ser bordô e sai a faixa bordô do cabeçalho de página.
+   Ver docs/decisoes/0002-manual-da-marca-2026.md e 0004-manual-da-marca-v1-1.md.
 
    Regras:
    - Componentes usam só os tokens semânticos (--cor-*, --fs-*, --space-*…).
@@ -51,7 +54,7 @@
 
 :root {
   /* 1. Primitivas -------------------------------------------------------------- */
-  /* Marca (manual v1.0, seção "Paleta cromática") */
+  /* Marca (manual v1.1, seção "Paleta cromática") */
   --ltfd-azul:           #003366; /* Azul LTFD · Pantone 2955 C */
   --ltfd-bordo:          #8A2432; /* Bordô LTFD · Pantone 202 C */
   --ltfd-azul-profundo:  #022C53; /* Azul profundo · descritor do logo */
@@ -61,7 +64,6 @@
   --ltfd-azul-medio:     #1F4E80; /* links */
   --ltfd-azul-claro:     #8FB0D3; /* links sobre fundo escuro */
   --ltfd-azul-gelo:      #E8EEF5; /* fundos de destaque, chips */
-  --ltfd-bordo-gelo:     #F6E9EB; /* fundo de selos de tipo */
   --ltfd-ardosia:        #4F5B69; /* texto secundário */
   --ltfd-cinza-controle: #7A8594; /* bordas de campos e chips (≥ 3:1) */
   --ltfd-cinza-claro:    #D5DAE1; /* divisores decorativos */
@@ -86,7 +88,7 @@
   --cor-texto:              var(--ltfd-preto-90);
   --cor-texto-suave:        var(--ltfd-ardosia);        /* metadados, cargos, datas */
   --cor-titulo:             var(--ltfd-azul);
-  --cor-sobretitulo:        var(--ltfd-bordo);
+  --cor-sobretitulo:        var(--ltfd-preto-90);     /* manual v1.1: rótulo em preto, nunca bordô */
   --cor-texto-inverso:      var(--ltfd-branco);
   --cor-texto-inverso-suave:var(--ltfd-rodape-texto-2);
 
@@ -94,7 +96,7 @@
   --cor-link-hover:         var(--ltfd-azul);
   --cor-link-inverso:       var(--ltfd-azul-claro);
 
-  --cor-acento:             var(--ltfd-bordo);          /* filete do item ativo, marcadores */
+  --cor-acento:             var(--ltfd-bordo);          /* só detalhes: filetes, marcadores, ícones */
   --cor-borda:              var(--ltfd-cinza-claro);    /* decorativa */
   --cor-borda-controle:     var(--ltfd-cinza-controle);
 
@@ -106,13 +108,11 @@
   --cor-botao-fundo:        var(--ltfd-azul);
   --cor-botao-fundo-hover:  var(--ltfd-azul-profundo);
   --cor-botao-texto:        var(--ltfd-branco);
-  --cor-botao2-fundo:       var(--ltfd-bordo);          /* um botão de destaque por tela */
-  --cor-botao2-fundo-hover: #6E1D28;                    /* bordô escurecido: o contraste só aumenta */
 
   --cor-chip:               var(--ltfd-azul);
   --cor-chip-fundo:         var(--ltfd-azul-gelo);
-  --cor-selo:               var(--ltfd-bordo);
-  --cor-selo-fundo:         var(--ltfd-bordo-gelo);
+  --cor-selo:               var(--ltfd-azul);
+  --cor-selo-fundo:         var(--ltfd-azul-gelo);
   --cor-sucesso:            var(--ltfd-verde);
   --cor-sucesso-fundo:      var(--ltfd-verde-gelo);
 

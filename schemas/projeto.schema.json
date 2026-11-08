@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "projeto.schema.json",
+  "title": "Projeto (data/projetos/<id>.yaml)",
+  "description": "A situação (em andamento ou concluído) é calculada por 'fim' e nunca digitada (PLANO §7.1). Projeto confidencial não entra no repositório.",
+  "type": "object",
+  "allOf": [{"$ref": "comum.schema.json#/$defs/proveniencia"}],
+  "properties": {
+    "id": {"$ref": "comum.schema.json#/$defs/id"},
+    "titulo": {"$ref": "comum.schema.json#/$defs/texto"},
+    "natureza": {"enum": ["pesquisa", "desenvolvimento", "extensao", "infraestrutura", "outra"]},
+    "inicio": {"type": "integer", "minimum": 1970, "maximum": 2100},
+    "fim": {"anyOf": [{"type": "integer", "minimum": 1970, "maximum": 2100}, {"type": "null"}]},
+    "coordenacao": {"$ref": "membro.schema.json#/$defs/pessoa"},
+    "membros_ltfd": {"type": "array", "items": {"$ref": "comum.schema.json#/$defs/id"}, "minItems": 1},
+    "financiadores": {"type": "array", "items": {"type": "string", "minLength": 2}},
+    "resumo": {"type": "string", "maxLength": 400},
+    "linhas": {"type": "array", "items": {"$ref": "comum.schema.json#/$defs/id"}},
+    "fonte": {}, "verificado_em": {}, "revisado_em": {}
+  },
+  "required": ["id", "titulo", "natureza", "inicio", "fim", "coordenacao", "membros_ltfd", "financiadores"],
+  "additionalProperties": false
+}

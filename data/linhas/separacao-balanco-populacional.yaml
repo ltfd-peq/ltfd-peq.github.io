@@ -1,0 +1,24 @@
+id: separacao-balanco-populacional
+titulo: Processos de separação e balanço populacional
+titulo_en: Separation processes and population balance
+ordem: 3
+ativa: true
+icone: linha-multifasico
+chamada: "Balanço populacional de sistemas polidispersos em colunas líquido-líquido e de bolhas."   # uma frase, usada nos cards
+resumo: >-
+  Modelagem de sistemas polidispersos — gotas e bolhas — por equações de balanço
+  populacional acopladas à fluidodinâmica computacional, aplicada a processos de
+  separação em colunas líquido-líquido e em colunas de bolhas, com modelos de quebra
+  e coalescência e métodos de quadratura.
+topicos:
+  - Colunas líquido-líquido
+  - Colunas de bolhas
+  - Quebra e coalescência
+  - Métodos de quadratura (QMOM, DQMOM)
+docentes_responsaveis: [paulo-lage, gabriel-ferreira]
+fonte: >-
+  Apresentação institucional do LTFD (Prof. Gabriel G. S. Ferreira, 30/05/2025), seção "Ongoing Research", slide "Separation processes"; Lattes de P. L. C. Lage (25/08/2026: colunas
+  líquido-líquido e de bolhas, quebra e coalescência, métodos de quadratura) e de
+  G. G. S. Ferreira (22/05/2026: coluna de bolhas)
+verificado_em: 2026-11-08
+revisado_em: null

@@ -18,23 +18,31 @@ vinculo:
     nome: Universidade Federal do Rio de Janeiro
     url: https://ufrj.br/
 
-# Frase do hero e descrição (PLANO §15, item 19: aprovar até 06/11).
+# Frase do hero e descrição (PLANO §15, item 19).
 # Base: resumo do Lattes de P. L. C. Lage e projeto CNPq "Termofluidodinâmica:
 # Modelagem e Simulação de Escoamentos Complexos" (2016–atual); rascunho A, §8.1.
+# Revisão de 08/11/2026: não restringir o software ao OpenFOAM (apresentação
+# institucional de 30/05/2025, slide "Infrastructure": OpenFOAM, foam-extend, OpenPNM,
+# códigos próprios; slide "Reactive flow in oil reservoirs": Reaktoro).
 proposta: >-
   Estudamos escoamentos com transferência de calor e massa em equipamentos de
-  processo, com ênfase em escoamentos multifásicos, balanço populacional, métodos
-  numéricos e fluidodinâmica computacional (CFD) com o código aberto OpenFOAM®.
+  processo e em meios porosos, com ênfase em escoamentos multifásicos, balanço
+  populacional, métodos numéricos e fluidodinâmica computacional (CFD), com códigos
+  próprios e ferramentas de código aberto como OpenFOAM®, OpenPNM e Reaktoro.
 descricao: >-
   O LTFD, do Programa de Engenharia Química da COPPE/UFRJ, desenvolve estudos
   teóricos, experimentais e computacionais de escoamentos com transferência de
   calor e massa, com ênfase em escoamentos multifásicos, balanço populacional,
-  métodos numéricos e CFD com OpenFOAM.
+  meios porosos, métodos numéricos e CFD com códigos abertos.
 descricao_en: >-
   LTFD, at the Chemical Engineering Program of COPPE/UFRJ, carries out theoretical,
   experimental and computational research on flows with heat and mass transfer,
-  focusing on multiphase flows, population balance modelling, numerical methods
-  and CFD with OpenFOAM.
+  focusing on multiphase flows, population balance modelling, porous media,
+  numerical methods and CFD with open-source codes.
+
+# Coordenador do laboratório: "Full Professor Paulo Lage (Head)" na apresentação
+# institucional (30/05/2025); confirmado na revisão de 08/11/2026. Abre a página Equipe.
+coordenador: paulo-lage
 
 endereco:
   logradouro: Av. Horácio Macedo, 2030
@@ -59,23 +67,26 @@ locais:
     lat: -22.8616004
     lon: -43.2291764
 
-# E-mail de contato do laboratório: indicado pelo Prof. Paulo L. C. Lage na revisão de
-# 23/10/2026 (até existir um alias como ltfd@peq.coppe.ufrj.br).
-email: paulo@peq.coppe.ufrj.br
-# "Problemas no site" e /acessibilidade/: vai para o responsável pelo site (PLANO §6.15).
-email_site: gferreira@peq.coppe.ufrj.br
+# E-mail geral do laboratório (revisão do Prof. Gabriel G. S. Ferreira, 08/11/2026): recebe
+# "Problemas no site" (Contato e /acessibilidade/) e aparece no rodapé e no JSON-LD. Questões
+# científicas e interesse em estudar no LTFD vão direto aos docentes (Contato).
+email: ltfd@peq.coppe.ufrj.br
 
 # Telefones do PEQ (página de contato do PEQ: CT, Bloco G, sala 115). Ramal do LTFD: a confirmar.
+# Revisão de 08/11/2026: os três números precisam ser conferidos (PENDENCIAS.md).
 telefones:
   - "(21) 3938-8349"
   - "(21) 3938-8304"
   - "(21) 3938-1575"
 
+# peq_mestrado e peq_doutorado: abas "Admissão → Mestrado/Doutorado" do PEQ, com os
+# editais de seleção e o link de inscrição de cada edital (conferidas em 08/11/2026).
+# O link do formulário muda a cada edital; por isso o site aponta para a aba.
 links:
   peq_area_tfd: https://www.peq.coppe.ufrj.br/index.php/pt-br/pesquisa/areas-de-pesquisa/termofluidodinamica
   peq_mestrado: https://www.peq.coppe.ufrj.br/index.php/pt-br/mestrado
   peq_doutorado: https://www.peq.coppe.ufrj.br/index.php/pt-br/doutorado
 
-fonte: "kit/laboratorio.json (21/10/2026); páginas do PEQ (contato, mestrado, doutorado) conferidas em 23/10/2026; revisão do Prof. Paulo L. C. Lage (23/10/2026): e-mail de contato e lugares no Google Maps"
-verificado_em: 2026-10-23
+fonte: "kit/laboratorio.json (21/10/2026); páginas do PEQ (contato, mestrado, doutorado) conferidas em 23/10/2026 e 08/11/2026; revisão do Prof. Paulo L. C. Lage (23/10/2026): lugares no Google Maps; revisão do Prof. Gabriel G. S. Ferreira (08/11/2026): e-mails de contato e coordenador; apresentação institucional (30/05/2025)"
+verificado_em: 2026-11-08
 revisado_em: null

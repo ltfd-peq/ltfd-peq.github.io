@@ -1,0 +1,28 @@
+{{- define "main" }}
+{{- /* Infraestrutura (PLANO §6.6; página própria no menu principal, revisão de 08/11/2026).
+     Fonte: data/equipamentos/<id>.yaml; só itens ativos, em seções por categoria:
+     computação de alto desempenho e espaço físico. Cada item: partial item-equipamento. */ -}}
+{{- partial "cabecalho-pagina.html" . }}
+{{- $itens := where (sort hugo.Data.equipamentos "ordem") "status" "ativo" }}
+<div class="secao">
+  <div class="container">
+    <div class="prosa container--estreito">{{ .Content }}</div>
+    {{- range slice (dict "categoria" "computacional" "ancora" "computacao" "titulo" "Computação de alto desempenho") (dict "categoria" "espaco" "ancora" "espaco-fisico" "titulo" "Espaço físico") }}
+    {{- $s := . }}
+    {{- with where $itens "categoria" $s.categoria }}
+    <section class="secao-equipe" aria-labelledby="{{ $s.ancora }}">
+      <h2 id="{{ $s.ancora }}">{{ $s.titulo }}</h2>
+      {{- range . }}{{ partial "item-equipamento.html" . }}{{ end }}
+    </section>
+    {{- end }}
+    {{- end }}
+    <section class="secao-equipe" aria-labelledby="software">
+      <h2 id="software">Software</h2>
+      <p>Fazemos pesquisa desenvolvendo códigos próprios e também projetos de código livre:
+        OpenFOAM®, foam-extend, OpenPNM e Reaktoro. Para mais informações, veja
+        <a href="{{ "/pesquisa/linhas/" | relLangURL }}#metodos">métodos e ferramentas</a> e os
+        <a href="{{ "/pesquisa/repositorios/" | relLangURL }}">repositórios de código aberto</a> dos nossos artigos.</p>
+    </section>
+  </div>
+</div>
+{{- end }}

@@ -1,0 +1,29 @@
+id: reologia-fluidos-complexos
+titulo: Reologia de fluidos complexos
+titulo_en: Rheology of complex fluids
+ordem: 2
+ativa: true
+icone: linha-reologia
+chamada: "Escoamento de polímeros viscoelásticos e de suspensões: experimentos e simulação."   # uma frase, usada nos cards
+resumo: >-
+  Reologia e escoamento de fluidos complexos. Estudamos a processabilidade de polímeros
+  pela análise experimental e pela simulação do escoamento de fluidos viscoelásticos,
+  com métodos de simulação em códigos abertos de fluidodinâmica computacional. Em
+  suspensões, avaliamos o efeito da migração de partículas induzida por cisalhamento
+  sobre a viscosidade aparente em escoamentos de Taylor-Couette e de Poiseuille.
+topicos:
+  - Fluidos viscoelásticos
+  - Processabilidade de polímeros
+  - Suspensões
+  - Migração de partículas induzida por cisalhamento
+docentes_responsaveis: [paulo-lage, argimiro-secchi, gabriel-ferreira]
+# Junta "Processabilidade de polímeros" e a parte de suspensões de "Reologia de misturas
+# multifásicas complexas" (revisão do Prof. Gabriel G. S. Ferreira, 08/11/2026).
+fonte: >-
+  Apresentação institucional do LTFD (Prof. Gabriel G. S. Ferreira, 30/05/2025), seção "Ongoing Research", slides "Polymer processability" e
+  "Complex multiphase mixtures rheology modeling"; Lattes de A. R. Secchi (projeto
+  "Modelagem Matemática e Análise do Escoamento de Fluidos Viscoelásticos", 2010–2014) e
+  de P. L. C. Lage e G. G. S. Ferreira (segregação de fases induzida por cisalhamento);
+  revisão do Prof. Gabriel G. S. Ferreira (08/11/2026)
+verificado_em: 2026-11-08
+revisado_em: null

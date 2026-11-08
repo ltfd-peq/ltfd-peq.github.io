@@ -38,15 +38,13 @@ supervisao: Supervisão
 orientandosAtuais: Orientações em andamento
 trabalhoAtual: Trabalho em andamento
 identificadores: Identificadores
-# Categorias (títulos de seção na Equipe) e níveis (no card)
-categoria_docente: Docentes
-categoria_pesquisador: Pesquisadores
-categoria_pos-doutorado: Pós-doutorado
-categoria_doutorado: Doutorado
-categoria_mestrado: Mestrado
-categoria_graduacao: Graduação (IC e TCC)
-categoria_tecnico: Técnicos e apoio
-categoria_colaborador-externo: Colaboradores externos
+# Seções da página Equipe (revisão de 08/11/2026) e níveis (sob o nome, no card)
+equipe_coordenacao: Coordenador do laboratório
+equipe_docentes: Docentes
+equipe_pesquisadores: Pesquisadores
+equipe_graduacao: Alunos de graduação
+equipe_corpo-tecnico: Corpo técnico
+equipe_colaboradores-externos: Colaboradores externos
 nivel_docente: Docente
 nivel_pesquisador: Pesquisador(a)
 nivel_pos-doutorado: Pós-doutorado
@@ -55,5 +53,20 @@ nivel_mestrado: Mestrado
 nivel_graduacao: Graduação
 nivel_tecnico: Técnico(a)
 nivel_colaborador-externo: Colaborador(a) externo(a)
+modalidade_ic: Iniciação científica
+modalidade_tcc: Projeto Final de graduação
 irPara: "Ir para:"
 paginaNaoEncontrada: Página não encontrada
+# Subpáginas de Pesquisa e Egressos (revisão de 08/11/2026)
+responsavel: Responsável
+atual: atual
+coordenacao: Coordenação
+financiamento: Financiamento
+equipeLtfd: Equipe do LTFD
+natureza_pesquisa: Pesquisa
+natureza_desenvolvimento: Desenvolvimento
+natureza_extensao: Extensão
+natureza_infraestrutura: Infraestrutura
+natureza_outra: Outra natureza
+nivel_tese_mestrado: Mestrado
+nivel_tese_doutorado: Doutorado

@@ -1,0 +1,19 @@
+id: andre-moreira-de-castro
+nome: André Moreira de Castro
+categoria: doutorado
+programa: Engenharia de Processos Químicos e Bioquímicos (UFRJ)
+periodo: {inicio: 2019, fim: null}
+trabalho:
+  titulo: Reologia de Polímero Fundido Usando Reômetro de Duplo Pistão e Simulação Computacional em OpenFoam
+  orientadores: [argimiro-secchi]
+linhas: [reologia-fluidos-complexos]
+ids: {lattes: null, orcid: null}
+email: null
+foto: null
+consentimento: {foto: null, email: null, destino: null, data: null}
+fonte: >-
+  Revisão do Prof. Gabriel G. S. Ferreira (08/11/2026): incluir como aluno de doutorado do
+  Prof. Argimiro; Lattes de A. R. Secchi (05/09/2026): tese de doutorado em andamento,
+  início 2019, Engenharia de Processos Químicos e Bioquímicos, UFRJ (orientador)
+verificado_em: 2026-11-08
+revisado_em: null

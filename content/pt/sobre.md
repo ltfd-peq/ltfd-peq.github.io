@@ -5,7 +5,7 @@ layout: sobre
 lead: Laboratório do Programa de Engenharia Química da COPPE/UFRJ.
 description: >-
   O LTFD faz parte do Programa de Engenharia Química (PEQ) da COPPE/UFRJ: o que
-  estudamos, o que fazemos em ensino, pesquisa e extensão e nossa trajetória.
+  estudamos, o que fazemos em ensino, pesquisa e extensão, docentes e onde estamos.
 ---
 
 <!-- Fontes: projeto CNPq "Termofluidodinâmica: Modelagem e Simulação de Escoamentos
@@ -19,7 +19,8 @@ da Universidade Federal do Rio de Janeiro (UFRJ).
 
 A termofluidodinâmica estuda processos que envolvem escoamentos de fluidos com transporte
 de calor e massa, na área de Fenômenos de Transporte, onde atuam profissionais da
-Engenharia Química e da Engenharia Mecânica. Com o crescimento da capacidade computacional,
+Engenharia Química e também da Engenharia Mecânica, da Engenharia de Petróleo e de
+outras áreas afins. Com o crescimento da capacidade computacional,
 a melhoria dos métodos numéricos e a disponibilidade de códigos abertos, a área tem se
 voltado à análise de processos químicos com escoamentos complexos — com mais de uma fase,
 com fluidos de reologia complexa ou com misturas de muitos componentes — usando a

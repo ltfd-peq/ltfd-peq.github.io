@@ -1,0 +1,42 @@
+{{- define "main" }}
+{{- /* Repositórios de código (PLANO §6.11 "Software e dados", antecipado como subpágina
+     de Pesquisa pela revisão de 08/11/2026). Fonte: data/software/<id>.yaml; só entra
+     repositório público ligado a artigo publicado. O artigo de referência é citado a
+     partir de data/gerado/publicacoes.json quando o DOI está lá. */ -}}
+{{- partial "cabecalho-pagina.html" . }}
+{{- $pubs := slice }}
+{{- with hugo.Data.gerado }}{{ with .publicacoes }}{{ $pubs = . }}{{ end }}{{ end }}
+{{- $plataformas := dict "github" (dict "nome" "GitHub" "url" "https://github.com/") "gitlab" (dict "nome" "GitLab" "url" "https://gitlab.com/") }}
+<div class="secao">
+  <div class="container">
+    <div class="prosa container--estreito">{{ .Content }}</div>
+    <h2 class="visualmente-oculto">Repositórios</h2>
+    <ul class="grade grade--largo">
+      {{- range sort hugo.Data.software "nome" }}
+      {{- $p := index $plataformas .repositorio.plataforma }}
+      {{- $doi := .publicacao_referencia }}
+      <li>
+        <article class="card">
+          <h3>{{ .nome }}</h3>
+          <p>{{ .descricao }}</p>
+          <dl class="card-membro__detalhe">
+            {{- with first 1 (where $pubs "doi" (lower $doi)) }}{{ with index . 0 }}
+            <div><dt>Artigo:</dt> <dd>{{ (index .autores 0).nome }}{{ if gt (len .autores) 1 }} et al.{{ end }} ({{ .ano }}), <cite>{{ .veiculo }}</cite>. <a href="https://doi.org/{{ .doi }}">doi:{{ .doi }}</a></dd></div>
+            {{- end }}{{ else }}
+            <div><dt>Artigo:</dt> <dd><a href="https://doi.org/{{ $doi }}">doi:{{ $doi }}</a></dd></div>
+            {{- end }}
+            {{- with .linguagem }}<div><dt>Linguagem:</dt> <dd>{{ . }}</dd></div>{{ end }}
+            {{- with .openfoam_versoes }}<div><dt>Versão:</dt> <dd>{{ . }}</dd></div>{{ end }}
+            <div><dt>Licença:</dt> <dd>{{ or .licenca "não declarada no repositório" }}</dd></div>
+            <div><dt>{{ T "responsavel" }}:</dt> <dd>{{ partial "nomes-membros.html" .mantenedores }}</dd></div>
+          </dl>
+          <ul class="ids">
+            <li><a href="{{ $p.url }}{{ .repositorio.caminho }}" rel="external">{{ .repositorio.caminho }} ({{ $p.nome }})</a></li>
+          </ul>
+        </article>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+</div>
+{{- end }}

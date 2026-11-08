@@ -3,8 +3,7 @@
 {{- range $id, $m := hugo.Data.membros -}}
   {{- if ne $id $m.id }}{{ errorf "data/membros/%s.yaml: o campo id (%s) deve ser igual ao nome do arquivo" $id $m.id }}{{ end -}}
   {{- if not $m.periodo.fim -}}
-    {{- $papel := $m.cargo -}}
-    {{- if ne $m.categoria "docente" }}{{ $papel = T (printf "nivel_%s" $m.categoria) }}{{ end -}}
+    {{- $papel := partial "papel-membro.html" $m -}}
     {{- $.AddPage (dict
         "kind" "page"
         "path" $id

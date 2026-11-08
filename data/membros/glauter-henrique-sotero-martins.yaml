@@ -1,0 +1,21 @@
+id: glauter-henrique-sotero-martins
+nome: Glauter Henrique Sotero Martins
+categoria: graduacao
+modalidade: tcc
+programa: Engenharia Química (UFRJ)
+periodo: {inicio: null, fim: null}   # ano de início do Projeto Final: a coletar
+trabalho:                            # título do Projeto Final: a coletar (PENDENCIAS.md)
+  orientadores: [argimiro-secchi, gabriel-ferreira]
+linhas: [reatores-nao-ideais]   # IC concluída em 2025: reatores tubulares para hidrogênio
+ids: {lattes: null, orcid: null}   # o Lattes dele usa o identificador K2873493P1 (não numérico)
+email: null
+foto: null
+consentimento: {foto: null, email: null, destino: null, data: null}
+fonte: >-
+  Revisão do Prof. Gabriel G. S. Ferreira (08/11/2026): aluno de Projeto Final dos Profs.
+  Argimiro e Gabriel; Lattes de A. R. Secchi (05/09/2026): iniciação científica concluída
+  em 2025, "Modelagem fluidodinâmica de reatores tubulares para produção de hidrogênio por
+  reforma a vapor do metano", graduando em Engenharia Química (UFRJ); Biblioteca Virtual
+  da FAPESP (consultada em 08/11/2026)
+verificado_em: 2026-11-08
+revisado_em: null

@@ -1,19 +1,25 @@
 {{- define "main" }}
-{{- /* Contato (PLANO §6.15): mailto por assunto (sem formulário, nada coletado),
-     endereço em <address>, telefones com tel:, como chegar e contatos dos docentes.
-     O mapa estático + iframe por clique entra quando as coordenadas forem conferidas. */ -}}
+{{- /* Contato (PLANO §6.15; revisão de 08/11/2026): colaboração científica direto com os
+     professores — o coordenador primeiro, identificado como tal, e os demais abaixo —;
+     depois o e-mail do LTFD para problemas no site. Sem formulário: nada é coletado.
+     Endereço em <address>, telefones com tel: e como chegar. */ -}}
 {{- $lab := hugo.Data.laboratorio }}
 {{- partial "cabecalho-pagina.html" . }}
-<section class="secao" aria-labelledby="assuntos">
-  <div class="container">
-    <div class="titulo-secao"><h2 id="assuntos">Escreva para o LTFD</h2></div>
-    <p>Escolha o assunto: seu programa de e-mail abre com a mensagem já endereçada.</p>
-    <ul class="assuntos">
-      {{- range .Params.assuntos }}
-      <li><a href="{{ partial "mailto.html" (dict "email" (cond .site $lab.email_site $lab.email) "assunto" (printf "[LTFD] %s" .titulo)) }}"><strong>{{ .titulo }}</strong><span>{{ .descricao }}</span></a></li>
+<section class="secao" aria-labelledby="escreva">
+  <div class="container container--estreito">
+    <div class="titulo-secao"><h2 id="escreva">Escreva para o LTFD</h2></div>
+    <p>Para colaboração científica, escreva diretamente para os professores:</p>
+    <ul class="contatos">
+      {{- range partial "membros.html" (dict "atuais" true "categoria" "docente") }}
+      <li>
+        <a class="contatos__nome" href="{{ (site.GetPage (printf "/equipe/%s" .id)).RelPermalink }}">{{ or .nome_exibicao .nome }}</a>
+        <span class="contatos__papel">{{ if eq .id $lab.coordenador }}{{ T "equipe_coordenacao" }}{{ else }}{{ .cargo }}{{ end }}</span>
+        <a class="contatos__email" href="mailto:{{ .email }}">{{ .email }}</a>
+      </li>
       {{- end }}
     </ul>
-    <p>Ou escreva diretamente para <a href="mailto:{{ $lab.email }}">{{ $lab.email }}</a>.</p>
+    <p>Problemas no site (links quebrados, erros ou barreiras de acessibilidade): escreva para
+      <a href="{{ partial "mailto.html" (dict "email" $lab.email "assunto" "[LTFD] Problema no site") }}">{{ $lab.email }}</a>.</p>
   </div>
 </section>
 
@@ -41,14 +47,4 @@
   </div>
 </section>
 
-<section class="secao" aria-labelledby="docentes">
-  <div class="container">
-    <div class="titulo-secao"><h2 id="docentes">Docentes</h2></div>
-    <ul class="grade-membros grade-membros--docentes">
-      {{- range partial "membros.html" (dict "atuais" true "categoria" "docente") }}
-      <li>{{ partial "card-membro.html" (dict "id" .id "nivel" 3) }}</li>
-      {{- end }}
-    </ul>
-  </div>
-</section>
 {{- end }}

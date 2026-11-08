@@ -1,0 +1,43 @@
+{{- define "main" }}
+{{- /* Alumni = egressos (PLANO §6.8; revisão de 08/11/2026: item próprio do menu, em
+     /alumni/, ADR 0006). Fonte: data/teses/<id>.yaml, um
+     registro por trabalho defendido, por enquanto tirado do Lattes de P. L. C. Lage.
+     Doutorado e mestrado, do mais recente ao mais antigo. O título vira link quando
+     link_repositorio é preenchido ("links inativos" até lá). Destino do egresso só com
+     consentimento (PLANO §7.1): não há esse campo aqui. */ -}}
+{{- partial "cabecalho-pagina.html" . }}
+{{- $teses := slice }}
+{{- range hugo.Data.teses }}{{ $teses = $teses | append . }}{{ end }}
+<div class="secao">
+  <div class="container container--estreito">
+    {{- with .Content }}<div class="prosa">{{ . }}</div>{{ end }}
+    <nav class="ir-para" aria-label="Níveis">
+      <span>{{ T "irPara" }}</span>
+      <ul class="chips">
+        {{- range slice "doutorado" "mestrado" }}{{ with where $teses "nivel" . }}<li><a href="#{{ (index . 0).nivel }}">{{ T (printf "nivel_tese_%s" (index . 0).nivel) }} ({{ len . }})</a></li>{{ end }}{{ end }}
+      </ul>
+    </nav>
+    {{- range slice "doutorado" "mestrado" }}
+    {{- with where $teses "nivel" . }}
+    {{- $nivel := (index . 0).nivel }}
+    <section class="grupo-ano secao-equipe" aria-labelledby="{{ $nivel }}">
+      <h2 id="{{ $nivel }}">{{ T (printf "nivel_tese_%s" $nivel) }} ({{ len . }})</h2>
+      <ol class="referencias">
+        {{- range sort (sort . "autor") "ano" "desc" }}
+        {{- $t := . }}
+        <li>
+          <h3>{{ with $t.autor_membro }}<a href="{{ (site.GetPage (printf "/equipe/%s" .)).RelPermalink }}">{{ $t.autor }}</a>{{ else }}{{ $t.autor }}{{ end }} <span class="referencias__meta">· {{ $t.ano }}</span></h3>
+          <p>{{ with $t.link_repositorio }}<a href="{{ . }}">{{ $t.titulo }}</a>{{ else }}{{ $t.titulo }}{{ end }}</p>
+          <p class="referencias__meta">
+            {{- with $t.orientadores }}{{ T "orientacao" }}: {{ partial "nomes-membros.html" . }}{{ end }}
+            {{- with $t.coorientadores }}{{ if $t.orientadores }}; {{ lower (T "coorientacao") }}{{ else }}{{ T "coorientacao" }}{{ end }}: {{ partial "nomes-membros.html" . }}{{ end }}
+            · {{ $t.programa }}, {{ $t.instituicao }}</p>
+        </li>
+        {{- end }}
+      </ol>
+    </section>
+    {{- end }}
+    {{- end }}
+  </div>
+</div>
+{{- end }}

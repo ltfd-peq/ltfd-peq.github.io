@@ -1,0 +1,14 @@
+id: corrected-micro-continuum
+nome: Corrected micro-continuum model for single-phase flows
+tipo: solver
+descricao: "Solvers em OpenFOAM para escoamento monofásico incompressível em meios porosos pelos modelos micro-contínuo (simpleMCFoam) e micro-contínuo corrigido (simpleCMCFoam), com os casos do artigo: canal 2D, leito de partículas 2D e imagens de micro-CT de rochas."
+repositorio: {plataforma: gitlab, caminho: alexvlmachado/corrected-micro-continuum-approach}
+licenca: CC-BY-SA-4.0                # arquivo LICENSE e API do GitLab (cc-by-sa-4.0)
+linguagem: C++
+openfoam_versoes: "OpenFOAM v2212"
+mantenedores: [alex-vinicius-lopes-machado]
+publicacao_referencia: 10.1007/s11242-025-02184-2   # Machado, Lage e Couto, Transp. Porous Media 152 (2025) 45
+status: ativo
+fonte: "README e LICENSE do repositório e API pública do GitLab (consultados em 2026-11-08); Crossref (DOI 10.1007/s11242-025-02184-2)"
+verificado_em: 2026-11-08
+revisado_em: null

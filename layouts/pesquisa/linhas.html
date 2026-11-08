@@ -1,0 +1,51 @@
+{{- define "main" }}
+{{- /* Linhas de pesquisa (PLANO §6.3; revisão de 08/11/2026: item do submenu Pesquisa):
+     introdução, cards das linhas ativas e métodos e ferramentas, com nome por extenso e
+     link para o site oficial. As páginas de cada linha ficam em /pesquisa/<id>/. */ -}}
+{{- partial "cabecalho-pagina.html" . }}
+<div class="secao">
+  <div class="container">
+    <div class="prosa">{{ .Content }}</div>
+    <h2 class="visualmente-oculto">{{ T "linhasDePesquisa" }}</h2>
+    <ul class="grade">
+      {{- range sort hugo.Data.linhas "ordem" }}
+      {{- if .ativa }}
+      <li>{{ partial "card-linha.html" (dict "id" .id "nivel" 3) }}</li>
+      {{- end }}
+      {{- end }}
+    </ul>
+  </div>
+</div>
+
+<section class="secao secao--alt" aria-labelledby="metodos">
+  <div class="container">
+    <div class="titulo-secao">
+      <span class="sobretitulo">Como trabalhamos</span>
+      <h2 id="metodos">Métodos e ferramentas</h2>
+    </div>
+    {{- with .Params.ferramentas }}
+    <ul class="grade ferramentas">
+      {{- range . }}
+      <li>
+        <article class="card">
+          <h3>{{ .nome }}</h3>
+          {{- with .sigla }}<p class="ferramentas__sigla" lang="en">{{ . }}</p>{{ end }}
+          <p>{{ .descricao }}</p>
+          <ul class="ids">
+            {{- range .links }}<li><a href="{{ .url }}" rel="external">{{ .texto }}</a></li>{{ end }}
+          </ul>
+        </article>
+      </li>
+      {{- end }}
+    </ul>
+    {{- end }}
+    {{- with .Params.metodos }}
+    <h3 class="visualmente-oculto">Métodos</h3>
+    <ul class="chips ferramentas__metodos">
+      {{- range . }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    {{- end }}
+    <p class="nota">OpenFOAM® é marca registrada da OpenCFD Ltd. Este site não é aprovado nem endossado pela OpenCFD Ltd., produtora e distribuidora do OpenFOAM.</p>
+  </div>
+</section>
+{{- end }}

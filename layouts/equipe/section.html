@@ -1,33 +1,49 @@
 {{- define "main" }}
-{{- /* Equipe (PLANO §6.7): índice de âncoras, categorias na ordem do plano, ordem
-     alfabética dentro de cada uma; categoria vazia não aparece. Membro atual = sem
-     periodo.fim (egresso é calculado, nunca digitado; Egressos entram na Onda B). */ -}}
+{{- /* Equipe (PLANO §6.7; revisão de 08/11/2026): coordenador do laboratório
+     (data/laboratorio.yaml → coordenador), demais docentes, pesquisadores (pesquisadores,
+     pós-doutorado, doutorado e mestrado juntos, com o vínculo sob o nome no card), alunos
+     de graduação, corpo técnico e colaboradores externos. Ordem alfabética dentro de cada seção;
+     seção vazia não aparece. Membro atual = sem periodo.fim (egresso é calculado). */ -}}
 {{- partial "cabecalho-pagina.html" . }}
-{{- $ordem := slice "docente" "pesquisador" "pos-doutorado" "doutorado" "mestrado" "graduacao" "tecnico" "colaborador-externo" }}
-{{- $atuais := partial "membros.html" (dict "atuais" true) }}
+{{- $coordenador := hugo.Data.laboratorio.coordenador }}
+{{- $grupos := dict "coordenacao" slice "docentes" slice "pesquisadores" slice "graduacao" slice "corpo-tecnico" slice "colaboradores-externos" slice }}
+{{- range partial "membros.html" (dict "atuais" true) }}
+  {{- $g := "pesquisadores" }}
+  {{- if eq .id $coordenador }}{{ $g = "coordenacao" }}
+  {{- else if eq .categoria "docente" }}{{ $g = "docentes" }}
+  {{- else if eq .categoria "graduacao" }}{{ $g = "graduacao" }}
+  {{- else if eq .categoria "tecnico" }}{{ $g = "corpo-tecnico" }}
+  {{- else if eq .categoria "colaborador-externo" }}{{ $g = "colaboradores-externos" }}
+  {{- end }}
+  {{- $grupos = merge $grupos (dict $g ((index $grupos $g) | append .id)) }}
+{{- end }}
+{{- $ordem := slice "coordenacao" "docentes" "pesquisadores" "graduacao" "corpo-tecnico" "colaboradores-externos" }}
 {{- $presentes := slice }}
-{{- range $ordem }}{{ if where $atuais "categoria" . }}{{ $presentes = $presentes | append . }}{{ end }}{{ end }}
+{{- range $ordem }}{{ if index $grupos . }}{{ $presentes = $presentes | append . }}{{ end }}{{ end }}
 
 <div class="secao">
   <div class="container">
     {{- with .Content }}<div class="prosa">{{ . }}</div>{{ end }}
-    <nav class="ir-para" aria-label="Categorias da equipe">
+    <nav class="ir-para" aria-label="Seções da equipe">
       <span>{{ T "irPara" }}</span>
       <ul class="chips">
-        {{- range $presentes }}<li><a href="#{{ . }}">{{ T (printf "categoria_%s" .) }}</a></li>{{ end }}
+        {{- range $presentes }}<li><a href="#{{ . }}">{{ T (printf "equipe_%s" .) }}</a></li>{{ end }}
       </ul>
     </nav>
 
     {{- range $presentes }}
-    {{- $cat := . }}
-    <section class="secao-equipe" aria-labelledby="{{ $cat }}">
-      <h2 id="{{ $cat }}">{{ T (printf "categoria_%s" $cat) }}</h2>
-      <ul class="grade-membros{{ if eq $cat "docente" }} grade-membros--docentes{{ end }}">
-        {{- range where $atuais "categoria" $cat }}
-        <li>{{ partial "card-membro.html" (dict "id" .id "nivel" 3) }}</li>
+    {{- $g := . }}
+    <section class="secao-equipe" aria-labelledby="{{ $g }}">
+      <h2 id="{{ $g }}">{{ T (printf "equipe_%s" $g) }}</h2>
+      <ul class="grade-membros{{ if in (slice "coordenacao" "docentes") $g }} grade-membros--docentes{{ end }}">
+        {{- range index $grupos $g }}
+        <li>{{ partial "card-membro.html" (dict "id" . "nivel" 3) }}</li>
         {{- end }}
       </ul>
     </section>
+    {{- end }}
+    {{- with site.GetPage "/alumni" }}
+    <p class="secao-equipe"><a class="link-seta" href="{{ .RelPermalink }}">{{ .Title }}: mestres e doutores formados no LTFD</a></p>
     {{- end }}
   </div>
 </div>

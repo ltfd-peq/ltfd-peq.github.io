@@ -1,5 +1,6 @@
 # Menu principal (PLANO §5.2 e §12.3). Só entra o que está pronto:
-# Onda A acrescenta Publicações; v1.1, Software e dados. Sem dropdown.
+# Revisão de 08/11/2026 (ADR 0006): Pesquisa com submenu (linhas, produção científica,
+# repositórios, projetos) e Infraestrutura no 1º nível.
 # Subitens (parent = "<identifier>") aparecem no painel móvel e no rodapé.
 
 [[principal]]
@@ -8,17 +9,58 @@
   identifier = "sobre"
   weight = 10
 
+# Pesquisa abre um submenu no desktop (params.submenu; botão com aria-expanded, assets/js/
+# menu.js); no celular e no rodapé, os subitens aparecem abaixo (revisão de 08/11/2026).
 [[principal]]
   name = "Pesquisa"
   pageRef = "/pesquisa"
   identifier = "pesquisa"
   weight = 20
+  [principal.params]
+    submenu = true
+
+[[principal]]
+  name = "Linhas de pesquisa"
+  pageRef = "/pesquisa/linhas"
+  parent = "pesquisa"
+  weight = 21
+
+[[principal]]
+  name = "Produção científica"
+  pageRef = "/pesquisa/publicacoes"
+  parent = "pesquisa"
+  weight = 22
+
+[[principal]]
+  name = "Repositórios de código aberto"
+  pageRef = "/pesquisa/repositorios"
+  parent = "pesquisa"
+  weight = 23
+
+[[principal]]
+  name = "Projetos de pesquisa"
+  pageRef = "/pesquisa/projetos"
+  parent = "pesquisa"
+  weight = 24
+
+[[principal]]
+  name = "Infraestrutura"
+  pageRef = "/infraestrutura"
+  identifier = "infraestrutura"
+  weight = 25
 
 [[principal]]
   name = "Equipe"
   pageRef = "/equipe"
   identifier = "equipe"
   weight = 30
+
+# Alumni (egressos): item próprio do menu (revisão de 08/11/2026).
+[[principal]]
+  name = "Alumni"
+  pageRef = "/alumni"
+  identifier = "alumni"
+  weight = 40
 
 [[principal]]
   name = "Oportunidades"

@@ -13,11 +13,11 @@ ids:
   openalex: A5083326893
   scholar: null
 linhas:
-  - cfd-metodos-numericos
-  - multifasicos-balanco-populacional
-  - hidratos-garantia-escoamento
-  - meios-porosos-co2
-  - equipamentos-reatores-separadores
+  - escoamento-reativo-reservatorios
+  - reologia-fluidos-complexos
+  - separacao-balanco-populacional
+  - cfd-garantia-escoamento
+  - reatores-nao-ideais
 email: gferreira@peq.coppe.ufrj.br
 foto: null
 consentimento: {foto: null, email: null, destino: null, data: null}

@@ -1,11 +1,14 @@
-{{- /* Lista de registros de data/membros/ em ordem alfabética de nome.
-     Recebe dict opcional: "atuais" (true: só sem periodo.fim) e "categoria".
+{{- /* Lista de registros de data/membros/ em ordem alfabética de nome, com o coordenador
+     do laboratório (data/laboratorio.yaml → coordenador) sempre em primeiro (revisão de
+     08/11/2026). Recebe dict opcional: "atuais" (true: só sem periodo.fim) e "categoria".
      Chamar com partialCached quando o resultado se repete na página. */ -}}
+{{- $coord := hugo.Data.laboratorio.coordenador -}}
+{{- $primeiro := slice -}}
 {{- $lista := slice -}}
 {{- range sort hugo.Data.membros "nome" -}}
   {{- $ok := true -}}
   {{- if and $.atuais .periodo.fim }}{{ $ok = false }}{{ end -}}
   {{- if and $.categoria (ne .categoria $.categoria) }}{{ $ok = false }}{{ end -}}
-  {{- if $ok }}{{ $lista = $lista | append . }}{{ end -}}
+  {{- if $ok }}{{ if eq .id $coord }}{{ $primeiro = $primeiro | append . }}{{ else }}{{ $lista = $lista | append . }}{{ end }}{{ end -}}
 {{- end -}}
-{{- return $lista -}}
+{{- return ($primeiro | append $lista) -}}

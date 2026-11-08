@@ -71,6 +71,10 @@
     "descricao_en": {
       "type": "string"
     },
+    "coordenador": {
+      "$ref": "comum.schema.json#/$defs/id",
+      "description": "id do docente que coordena o LTFD (data/membros/<id>.yaml)"
+    },
     "endereco": {
       "type": "object",
       "required": [
@@ -90,10 +94,6 @@
       }
     },
     "email": {
-      "type": "string",
-      "pattern": "^[^@\\s]+@[^@\\s]+\\.[a-z]{2,}$"
-    },
-    "email_site": {
       "type": "string",
       "pattern": "^[^@\\s]+@[^@\\s]+\\.[a-z]{2,}$"
     },
@@ -150,8 +150,8 @@
     "proposta",
     "descricao",
     "endereco",
+    "coordenador",
     "email",
-    "email_site",
     "telefones",
     "locais"
   ]

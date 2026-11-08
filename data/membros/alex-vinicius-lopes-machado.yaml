@@ -1,0 +1,13 @@
+id: alex-vinicius-lopes-machado
+nome: Alex Vinícius Lopes Machado    # grafia do Lattes de P. L. C. Lage (doutorado concluído em 2026)
+categoria: pesquisador
+cargo: Pesquisador                   # como indicado na revisão de 08/11/2026
+periodo: {inicio: null, fim: null}   # ano de início: a coletar
+ids: {lattes: "6406128592981346", orcid: null}
+linhas: [escoamento-reativo-reservatorios]   # pelos artigos em meios porosos (2023, 2025) e repositórios; conferir
+email: null
+foto: null
+consentimento: {foto: null, email: null, destino: null, data: null}
+fonte: "Revisão do Prof. Gabriel G. S. Ferreira (08/11/2026): incluir como pesquisador, com o Lattes 6406128592981346; nome e linha: Lattes de P. L. C. Lage (25/08/2026) e artigos com DOI em data/software/"
+verificado_em: 2026-11-08
+revisado_em: null

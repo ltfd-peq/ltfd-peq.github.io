@@ -35,7 +35,7 @@
         "orientadores": {"type": "array", "items": {"$ref": "#/$defs/pessoa"}},
         "coorientadores": {"type": "array", "items": {"$ref": "#/$defs/pessoa"}}
       },
-      "required": ["titulo", "orientadores"], "additionalProperties": false
+      "required": ["orientadores"], "additionalProperties": false
     },
     "ids": {
       "type": "object",
@@ -70,7 +70,9 @@
     {"if": {"properties": {"categoria": {"const": "docente"}}},
      "then": {"required": ["cargo", "email"], "properties": {"ids": {"required": ["lattes", "orcid"]}}}},
     {"if": {"properties": {"categoria": {"enum": ["pos-doutorado", "doutorado", "mestrado", "graduacao"]}}},
-     "then": {"required": ["trabalho"], "properties": {"periodo": {"properties": {"inicio": {"type": "integer"}}}}}}
+     "then": {"required": ["trabalho"]}},
+    {"if": {"properties": {"categoria": {"enum": ["pos-doutorado", "doutorado", "mestrado"]}}},
+     "then": {"properties": {"periodo": {"properties": {"inicio": {"type": "integer"}}}}}}
   ],
   "additionalProperties": false
 }

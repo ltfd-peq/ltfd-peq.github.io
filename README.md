@@ -13,6 +13,7 @@ Requisitos: [Hugo 0.168.0](https://github.com/gohugoio/hugo/releases/tag/v0.168.
 ```bash
 git clone https://github.com/ltfd-peq/ltfd-peq.github.io.git
 cd ltfd-peq.github.io
+python3 -I scripts/bib2json.py   # gera a lista de publicações a partir de bib/ltfd.bib
 hugo server        # abre em http://localhost:1313 e recarrega a cada mudança
 ```
 
@@ -21,6 +22,7 @@ Antes de abrir um pull request, rode as verificações:
 ```bash
 pip install -r requirements.txt
 python3 -I scripts/validar_dados.py
+python3 -I scripts/bib2json.py
 hugo build --environment provisorio --gc --minify --panicOnWarning
 python3 -I scripts/checar_peso.py
 ```

@@ -1,6 +1,7 @@
 {{- define "main" }}
-{{- /* Sobre (PLANO §6.2): apresentação e "o que fazemos" (Markdown), trajetória só com
-     marcos que têm fonte (data/historico.yaml), docentes, onde estamos. */ -}}
+{{- /* Sobre (PLANO §6.2): apresentação e "o que fazemos" (Markdown), docentes, onde
+     estamos. A seção "Nossa trajetória" saiu na revisão de 08/11/2026; os marcos com
+     fonte continuam em data/historico.yaml. */ -}}
 {{- $lab := hugo.Data.laboratorio }}
 {{- partial "cabecalho-pagina.html" . }}
 <div class="secao">
@@ -9,21 +10,7 @@
   </div>
 </div>
 
-<section class="secao secao--alt" aria-labelledby="trajetoria">
-  <div class="container container--estreito">
-    <div class="titulo-secao">
-      <span class="sobretitulo">Desde 1993</span>
-      <h2 id="trajetoria">Nossa trajetória</h2>
-    </div>
-    <ol class="linha-tempo">
-      {{- range hugo.Data.historico.marcos }}
-      <li><span class="linha-tempo__ano">{{ .ano }}</span><p>{{ .texto }}</p></li>
-      {{- end }}
-    </ol>
-  </div>
-</section>
-
-<section class="secao" aria-labelledby="docentes">
+<section class="secao secao--alt" aria-labelledby="docentes">
   <div class="container">
     <div class="titulo-secao titulo-secao--linha">
       <div>
@@ -40,7 +27,7 @@
   </div>
 </section>
 
-<section class="secao secao--alt" aria-labelledby="onde-estamos">
+<section class="secao" aria-labelledby="onde-estamos">
   <div class="container container--estreito">
     <div class="titulo-secao">
       <span class="sobretitulo">{{ T "contato" }}</span>

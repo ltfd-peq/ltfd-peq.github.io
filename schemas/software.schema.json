@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "software.schema.json",
+  "title": "Software ou repositório público (data/software/<id>.yaml)",
+  "description": "Só entra com repositório público (PLANO §7.2). Guarda plataforma + caminho, não a URL; o template monta o link.",
+  "type": "object",
+  "allOf": [{"$ref": "comum.schema.json#/$defs/proveniencia"}],
+  "properties": {
+    "id": {"$ref": "comum.schema.json#/$defs/id"},
+    "nome": {"$ref": "comum.schema.json#/$defs/texto"},
+    "tipo": {"enum": ["solver", "biblioteca", "notebooks", "dados", "material-de-curso"]},
+    "descricao": {"type": "string", "minLength": 20, "maxLength": 300},
+    "repositorio": {
+      "type": "object",
+      "properties": {
+        "plataforma": {"enum": ["github", "gitlab"]},
+        "caminho": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+(/[A-Za-z0-9_.-]+)+$"}
+      },
+      "required": ["plataforma", "caminho"], "additionalProperties": false
+    },
+    "licenca": {"anyOf": [{"type": "string", "description": "identificador SPDX"}, {"type": "null"}]},
+    "linguagem": {"type": "string"},
+    "openfoam_versoes": {"type": "string"},
+    "mantenedores": {"type": "array", "items": {"$ref": "membro.schema.json#/$defs/pessoa"}, "minItems": 1},
+    "publicacao_referencia": {"type": "string", "pattern": "^10\\.[0-9]{4,9}/\\S+$", "description": "DOI do artigo que usa o código"},
+    "status": {"enum": ["ativo", "arquivado"]},
+    "fonte": {}, "verificado_em": {}, "revisado_em": {}
+  },
+  "required": ["id", "nome", "tipo", "descricao", "repositorio", "licenca", "mantenedores", "publicacao_referencia", "status"],
+  "additionalProperties": false
+}

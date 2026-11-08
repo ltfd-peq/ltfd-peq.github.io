@@ -1,0 +1,13 @@
+id: sub-volume-analysis
+nome: Sub-volume analysis of pore-network simulations
+tipo: biblioteca
+descricao: "Códigos em Python, com uma versão modificada do OpenPNM 2.6.0, para simular o transporte de traçador em redes de poros e aplicar a análise de subvolumes na determinação do coeficiente de dispersão longitudinal assintótico."
+repositorio: {plataforma: gitlab, caminho: alexvlmachado/sub-volume-analysis}
+licenca: null                        # sem LICENSE na raiz (só a cópia do OpenPNM em OpenPNM_260/ traz a licença MIT da PMEAL)
+linguagem: Python
+mantenedores: [alex-vinicius-lopes-machado]
+publicacao_referencia: 10.1016/j.advwatres.2023.104541   # Machado, Lage e Couto, Adv. Water Resour. 181 (2023) 104541
+status: ativo
+fonte: "README e árvore de arquivos do repositório e API pública do GitLab (consultados em 2026-11-08); Crossref (DOI 10.1016/j.advwatres.2023.104541)"
+verificado_em: 2026-11-08
+revisado_em: null

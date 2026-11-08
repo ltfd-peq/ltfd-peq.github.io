@@ -13,11 +13,11 @@ ids:
   openalex: A5090194580
   scholar: hQdYS9cAAAAJ   # informado pelo docente em 23/10/2026; perfil "Paulo L. C. Lage" conferido
 linhas:
-  - multifasicos-balanco-populacional
-  - cfd-metodos-numericos
-  - meios-porosos-co2
-  - hidratos-garantia-escoamento
-  - calor-massa-mudanca-fase
+  - escoamento-reativo-reservatorios
+  - reologia-fluidos-complexos
+  - separacao-balanco-populacional
+  - cfd-garantia-escoamento
+  - reatores-nao-ideais
 email: paulo@peq.coppe.ufrj.br        # e-mail institucional (kit/laboratorio.json)
 foto: null                            # sessão de fotos padronizada na Onda B
 consentimento: {foto: null, email: null, destino: null, data: null}

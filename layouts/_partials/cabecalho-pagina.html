@@ -8,6 +8,9 @@
         {{- with .Parent }}{{ if not .IsHome }}
         <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
         {{- end }}{{ end }}
+        {{- if .Params.linha }}{{ with site.GetPage "/pesquisa/linhas" }}
+        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+        {{- end }}{{ end }}
         <li aria-current="page">{{ .LinkTitle }}</li>
       </ol>
     </nav>

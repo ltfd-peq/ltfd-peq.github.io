@@ -8,6 +8,7 @@ Erros (saída com código 1):
 - esquema JSON de cada coleção (schemas/*.schema.json);
 - id diferente do nome do arquivo;
 - referência a linha ou membro inexistente; docente responsável que não é docente;
+- teses, projetos, software e equipamentos: pessoas citadas por id existem; foto existe;
 - dígito verificador do ORCID;
 - regra do repositório público (PLANO §7.1, princípio 9): e-mail de quem não é docente,
   foto ou destino sem o consentimento correspondente.
@@ -71,7 +72,9 @@ def main() -> None:
     validar(dados / "historico.yaml", hist, "historico.schema.json")
 
     colecoes = {}
-    for colecao, esquema in (("linhas", "linha.schema.json"), ("membros", "membro.schema.json")):
+    for colecao, esquema in (("linhas", "linha.schema.json"), ("membros", "membro.schema.json"),
+                             ("teses", "tese.schema.json"), ("projetos", "projeto.schema.json"),
+                             ("software", "software.schema.json"), ("equipamentos", "equipamento.schema.json")):
         colecoes[colecao] = {}
         for arq in sorted((dados / colecao).glob("*.yaml")):
             reg = carregar_yaml(arq)
@@ -81,6 +84,11 @@ def main() -> None:
             colecoes[colecao][arq.stem] = reg
 
     linhas, membros = colecoes["linhas"], colecoes["membros"]
+    coord = lab.get("coordenador")
+    if coord not in membros:
+        erros.append(f"data/laboratorio.yaml: coordenador inexistente: {coord}")
+    elif membros[coord].get("categoria") != "docente":
+        erros.append(f"data/laboratorio.yaml: o coordenador {coord} não é docente")
     ordens = [l.get("ordem") for l in linhas.values()]
     if len(ordens) != len(set(ordens)):
         erros.append("data/linhas: há linhas com a mesma 'ordem'")
@@ -124,16 +132,50 @@ def main() -> None:
             avisos.append(f"{arq}: membro atual sem Lattes")
         if atual and cat in CATEGORIAS_ORCID and not orcid:
             avisos.append(f"{arq}: {cat} sem ORCID")
-        if cat != "docente" and atual and not trabalho.get("titulo"):
+        if cat in ("pos-doutorado", "doutorado", "mestrado", "graduacao") and atual and not trabalho.get("titulo"):
             avisos.append(f"{arq}: sem título do trabalho")
         if atual and not m.get("linhas"):
             avisos.append(f"{arq}: sem linha de pesquisa")
+
+    # Coleções das subpáginas de Pesquisa e de Egressos (revisão de 08/11/2026)
+    def conferir_pessoas(arq, papel, lista):
+        for p in lista or []:
+            if isinstance(p, str) and p not in membros:
+                erros.append(f"{arq}: {papel}: membro inexistente: {p} (pessoa externa: use {{nome, instituicao}})")
+
+    for tid, te in colecoes["teses"].items():
+        arq = f"data/teses/{tid}.yaml"
+        conferir_pessoas(arq, "orientadores", te.get("orientadores"))
+        conferir_pessoas(arq, "coorientadores", te.get("coorientadores"))
+        conferir_pessoas(arq, "autor_membro", [te["autor_membro"]] if te.get("autor_membro") else [])
+        if not te.get("orientadores") and not te.get("coorientadores"):
+            erros.append(f"{arq}: sem orientador nem coorientador")
+    for pid, pr in colecoes["projetos"].items():
+        arq = f"data/projetos/{pid}.yaml"
+        conferir_pessoas(arq, "coordenacao", [pr.get("coordenacao")])
+        conferir_pessoas(arq, "membros_ltfd", pr.get("membros_ltfd"))
+        for l in pr.get("linhas", []):
+            if l not in linhas:
+                erros.append(f"{arq}: linha inexistente: {l}")
+        if pr.get("fim") and pr["fim"] < pr.get("inicio", 0):
+            erros.append(f"{arq}: fim antes do início")
+        if not pr.get("fim") and dt.date.today().year - pr.get("inicio", 0) > 5:
+            avisos.append(f"{arq}: em andamento há mais de 5 anos (conferir o término)")
+    for sid, so in colecoes["software"].items():
+        conferir_pessoas(f"data/software/{sid}.yaml", "mantenedores", so.get("mantenedores"))
+        if so.get("licenca") is None:
+            avisos.append(f"data/software/{sid}.yaml: repositório sem licença declarada")
+    for eid, eq in colecoes["equipamentos"].items():
+        foto = (eq.get("foto") or {}).get("arquivo")
+        if foto and not (raiz / "assets" / "img" / "infraestrutura" / foto).exists():
+            erros.append(f"data/equipamentos/{eid}.yaml: arquivo de foto inexistente: assets/img/infraestrutura/{foto}")
 
     for a in avisos:
         print("AVISO ", a)
     for e in erros:
         print("ERRO  ", e)
-    print(f"\n{len(linhas)} linhas e {len(membros)} membros conferidos: {len(erros)} erro(s), {len(avisos)} aviso(s).")
+    resumo = ", ".join(f"{len(v)} {k}" for k, v in colecoes.items())
+    print(f"\n{resumo} conferidos: {len(erros)} erro(s), {len(avisos)} aviso(s).")
     if erros:
         sys.exit(1)
 

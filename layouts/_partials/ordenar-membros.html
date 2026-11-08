@@ -1,0 +1,9 @@
+{{- /* Ordena uma lista de ids de membro: o coordenador do laboratório primeiro, os demais
+     em ordem alfabética de nome (revisão de 08/11/2026: "o Prof. Paulo é o coordenador e
+     deve aparecer sempre primeiro"). Uso: range partial "ordenar-membros.html" $ids */ -}}
+{{- $ids := . -}}
+{{- $ordenados := slice -}}
+{{- range partial "membros.html" dict -}}
+  {{- if in $ids .id }}{{ $ordenados = $ordenados | append .id }}{{ end -}}
+{{- end -}}
+{{- return $ordenados -}}

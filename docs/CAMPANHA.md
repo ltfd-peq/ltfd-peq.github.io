@@ -7,9 +7,10 @@ semana. **Situação em 23/10/2026: Fase 0 em curso; Fase 1, semana 1: código-b
 |---|---|---|
 | Decisões da Fase 0 (ou padrões aceitos) | 30/10/2026 | em aberto — ver §3 |
 | Site provisório no ar, com `noindex`, para revisão | 06/11/2026 | **no ar desde 23/10/2026** em https://ltfd-peq.github.io/ |
-| Revisão dos docentes (≈1–2 h cada) | 06 a 11/11/2026 | roteiro em `docs/revisao_mvp.md` |
+| Revisão dos docentes (≈1–2 h cada) | 06 a 11/11/2026 | roteiro em `docs/revisao_mvp.md`; revisões do Prof. Gabriel aplicadas em 08/11/2026 (CHANGELOG 0.2.0 e 0.3.0; o que falta em `PENDENCIAS.md`) |
 | **Lançamento público** (ambiente `producao`) | **16/11/2026** | — |
-| Onda A (Publicações, Projetos, Infraestrutura, busca) | até 18/12/2026 | — |
+| Onda A (Publicações, Projetos, Infraestrutura, busca) | até 18/12/2026 | Publicações, Projetos, Infraestrutura e Repositórios antecipados como subpáginas de Pesquisa em 08/11/2026 (ADR 0005); faltam a revisão docente das listas, filtros e busca |
+| Egressos (Onda B) | — | antecipado em 08/11/2026 como "Alumni" (`/alumni/`, item do menu) com o Lattes de Lage (ADR 0005 e 0006); faltam os links das teses e os egressos de Secchi e Ferreira |
 | Onda B (Teses, Egressos, Parceiros) | até 19/02/2027 | — |
 | v1.0 e anúncio oficial | 05/03/2027 | — |
 

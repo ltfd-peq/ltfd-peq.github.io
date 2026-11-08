@@ -1,6 +1,8 @@
 {{- define "main" }}
 {{- /* Início (PLANO §6.1). Blocos do lançamento (§12.3): hero, linhas, faixa
-     Oportunidades. Publicações recentes entram na Onda A; números e parceiros, na B. */ -}}
+     Oportunidades. Publicações recentes entram na Onda A; números e parceiros, na B.
+     A faixa leva às abas de admissão do PEQ (editais e inscrição de mestrado e
+     doutorado), a principal porta de entrada de alunos (revisão de 08/11/2026). */ -}}
 {{- $lab := hugo.Data.laboratorio }}
 <section class="hero" aria-labelledby="hero-titulo" data-superficie="inversa">
   {{- partial "hero-imagem.html" . }}
@@ -24,7 +26,7 @@
         <span class="sobretitulo">{{ T "linhasDePesquisa" }}</span>
         <h2 id="linhas-titulo">O que pesquisamos</h2>
       </div>
-      <a class="link-seta" href="{{ "/pesquisa/" | relLangURL }}">{{ T "todasAsLinhas" }}</a>
+      <a class="link-seta" href="{{ "/pesquisa/linhas/" | relLangURL }}">{{ T "todasAsLinhas" }}</a>
     </div>
     <ul class="grade">
       {{- range sort hugo.Data.linhas "ordem" }}
@@ -40,9 +42,13 @@
   <div class="container faixa__conteudo">
     <div>
       <h2 id="oportunidades-titulo">Venha fazer pesquisa no LTFD</h2>
-      <p>Iniciação científica, mestrado, doutorado e pós-doutorado: veja como ingressar.</p>
+      <p>O ingresso no mestrado e no doutorado é pelos editais de seleção do {{ $lab.vinculo.programa.sigla }}, com inscrição no site do programa. Iniciação científica e pós-doutorado: veja as oportunidades.</p>
     </div>
-    <a class="botao botao--contorno" href="{{ "/oportunidades/" | relLangURL }}">Oportunidades</a>
+    <div class="botoes">
+      <a class="botao botao--destaque" href="{{ $lab.links.peq_mestrado }}">Inscrição no mestrado</a>
+      <a class="botao botao--destaque" href="{{ $lab.links.peq_doutorado }}">Inscrição no doutorado</a>
+      <a class="botao botao--contorno" href="{{ "/oportunidades/" | relLangURL }}">Oportunidades</a>
+    </div>
   </div>
 </section>
 {{- end }}

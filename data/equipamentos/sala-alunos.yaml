@@ -1,0 +1,14 @@
+id: sala-alunos
+nome: Sala dos alunos
+categoria: espaco
+status: ativo
+ordem: 2
+descricao: "Sala de trabalho dos alunos do LTFD."   # detalhes (lugares, computadores): a coletar
+foto:
+  arquivo: sala-alunos.jpg
+  alt: "Sala ampla com mesas de madeira em L, cada uma com monitor e cadeira azul, armários nas paredes e piso claro."
+fonte: >-
+  Figura "sala_alunos.png" enviada pelo Prof. Gabriel G. S. Ferreira (08/11/2026; imagem
+  gerada por IA: ChatGPT/gpt-image, segundo os metadados C2PA do arquivo)
+verificado_em: 2026-11-08
+revisado_em: null

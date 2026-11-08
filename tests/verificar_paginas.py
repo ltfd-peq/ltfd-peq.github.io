@@ -12,7 +12,8 @@ Para cada página HTML de public/:
 3. nenhum título (H1–H3) com palavra partida fora de um ponto de hifenização, de 320 a
    1920 px (o overflow-wrap corta em qualquer letra quando a palavra não cabe).
 Na página inicial, também o menu móvel pelo teclado: Enter abre, Esc fecha e o foco
-volta ao botão (C4). Com --capturas, grava telas de 390 e 1440 px de cada página.
+volta ao botão (C4); e o submenu do desktop: cabe numa linha a 1024 px, abre com Enter,
+passa no axe aberto, Esc fecha e devolve o foco (ADR 0006). Com --capturas, grava telas de 390 e 1440 px de cada página.
 
 O axe-core não fica no repositório: o CI instala a versão fixada com npm
 (ver .github/workflows/pr.yml); localmente, baixe o pacote axe-core e aponte o arquivo.
@@ -115,6 +116,44 @@ def testar_menu(navegador, base: str) -> list[str]:
     return erros
 
 
+def testar_submenu(navegador, base: str, axe_js: str) -> list[str]:
+    """Desktop (ADR 0006): o menu cabe numa linha a 1024 px; o botão "Pesquisa" abre o
+    submenu com Enter, o axe passa com ele aberto, e Esc fecha e devolve o foco ao botão."""
+    erros = []
+    contexto = navegador.new_context(viewport={"width": 1024, "height": 800})
+    p = contexto.new_page()
+    p.goto(base + "/")
+    alturas = p.evaluate("[...document.querySelectorAll('.nav__lista > li')].filter(li => li.offsetParent).map(li => li.getBoundingClientRect().top)")
+    if len(set(round(a) for a in alturas)) > 1:
+        erros.append("submenu: o menu não cabe numa linha a 1024 px")
+    contexto.close()
+
+    contexto = navegador.new_context(viewport={"width": 1280, "height": 900}, locale="pt-BR", bypass_csp=True)
+    p = contexto.new_page()
+    p.goto(base + "/")
+    botao = p.locator(".nav__sub-botao").first
+    if not botao.is_visible():
+        contexto.close()
+        return erros + ["submenu: o botão do submenu não aparece a 1280 px"]
+    sub = p.locator("#" + botao.get_attribute("aria-controls"))
+    botao.focus()
+    p.keyboard.press("Enter")
+    if botao.get_attribute("aria-expanded") != "true" or not sub.is_visible():
+        erros.append("submenu: Enter não abriu o submenu (aria-expanded/visibilidade)")
+    for v in rodar_axe(p, axe_js):
+        erros.append(f"submenu aberto @1280px: [{v['impacto']}] {v['id']} – {v['ajuda']} → {v['alvos']}")
+    p.keyboard.press("Tab")
+    if not p.evaluate("document.activeElement.closest('.nav__sublista') !== null"):
+        erros.append("submenu: Tab não leva ao primeiro subitem")
+    p.keyboard.press("Escape")
+    if botao.get_attribute("aria-expanded") != "false" or sub.is_visible():
+        erros.append("submenu: Esc não fechou o submenu")
+    if not p.evaluate("document.activeElement === document.querySelector('.nav__sub-botao')"):
+        erros.append("submenu: o foco não voltou ao botão depois do Esc")
+    contexto.close()
+    return erros
+
+
 def main() -> None:
     args = argparse.ArgumentParser(description=__doc__)
     args.add_argument("--public", default="public")
@@ -166,6 +205,7 @@ def main() -> None:
                     falhas.append(f"{caminho} @{largura}px: [{v['impacto']}] {v['id']} – {v['ajuda']} → {v['alvos']}")
             contexto.close()
         falhas += testar_menu(navegador, base)
+        falhas += testar_submenu(navegador, base, axe_js)
 
         if opcoes.capturas:
             destino = Path(opcoes.capturas)

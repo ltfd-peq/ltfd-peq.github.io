@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "equipamento.schema.json",
+  "title": "Item de infraestrutura (data/equipamentos/<id>.yaml)",
+  "description": "PLANO §6.6 e §7.2. Item desativado vai para a trajetória, não para a lista atual. Foto em assets/img/infraestrutura/, sem EXIF/GPS.",
+  "type": "object",
+  "allOf": [{"$ref": "comum.schema.json#/$defs/proveniencia"}],
+  "properties": {
+    "id": {"$ref": "comum.schema.json#/$defs/id"},
+    "nome": {"$ref": "comum.schema.json#/$defs/texto"},
+    "categoria": {"enum": ["experimental", "computacional", "software-licenca", "espaco"]},
+    "status": {"enum": ["ativo", "em-manutencao", "desativado", "historico"]},
+    "ordem": {"type": "integer", "minimum": 1},
+    "descricao": {"type": "string", "maxLength": 400},
+    "especificacoes": {
+      "type": "array",
+      "items": {"type": "object", "properties": {"parametro": {"type": "string"}, "valor": {"type": "string"}}, "required": ["parametro", "valor"], "additionalProperties": false}
+    },
+    "foto": {
+      "type": "object",
+      "properties": {
+        "arquivo": {"type": "string", "pattern": "^[a-z0-9-]+\\.(jpg|jpeg|png|webp)$"},
+        "alt": {"type": "string", "minLength": 10},
+        "legenda": {"type": "string"}
+      },
+      "required": ["arquivo", "alt"], "additionalProperties": false
+    },
+    "fonte": {}, "verificado_em": {}, "revisado_em": {}
+  },
+  "required": ["id", "nome", "categoria", "status", "ordem"],
+  "additionalProperties": false
+}

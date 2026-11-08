@@ -1,5 +1,7 @@
 {{- /* C2 Header + C4 menu móvel (PLANO §8.6). Item ativo: aria-current="page" na
-     própria página e "true" nas páginas internas da seção. */ -}}
+     própria página e "true" nas páginas internas da seção. Item com params.submenu
+     (Pesquisa) abre um submenu no desktop (ADR 0006); no celular, os subitens ficam
+     sempre visíveis abaixo do item. */ -}}
 {{- $atual := . -}}
 <header class="cabecalho-site">
   <div class="container cabecalho-site__barra">
@@ -18,12 +20,22 @@
         <ul class="nav__lista">
           <li class="nav__item nav__item--inicio"><a href="{{ "/" | relLangURL }}"{{ if .IsHome }} aria-current="page"{{ end }}>{{ T "inicio" }}</a></li>
           {{- range site.Menus.principal }}
-          <li class="nav__item">
-            <a href="{{ .URL }}"{{ with partial "aria-current.html" (dict "pagina" $atual "url" .URL) }} aria-current="{{ . }}"{{ end }}>{{ .Name }}</a>
+          {{- $sub := and .HasChildren .Params.submenu }}
+          {{- $ativo := partial "aria-current.html" (dict "pagina" $atual "url" .URL) }}
+          <li class="nav__item{{ if $sub }} nav__item--sub{{ end }}">
+            <a class="nav__topo" href="{{ .URL }}"{{ with $ativo }} aria-current="{{ . }}"{{ end }}>{{ .Name }}</a>
+            {{- if $sub }}
+            {{- /* Desktop com JS: o link dá lugar a este botão, que abre o submenu (padrão
+                 "disclosure" do APG). Sem JS, o link leva à página-hub. */}}
+            <button class="nav__sub-botao{{ if $ativo }} nav__sub-botao--ativo{{ end }}" type="button" aria-expanded="false" aria-controls="sub-{{ .Identifier }}" hidden>
+              {{- .Name }}<svg class="nav__seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            {{- end }}
             {{- if .HasChildren }}
-            <ul class="nav__sublista">
+            <ul class="nav__sublista"{{ if $sub }} id="sub-{{ .Identifier }}"{{ end }}>
               {{- range .Children }}
-              <li><a href="{{ .URL }}"{{ with partial "aria-current.html" (dict "pagina" $atual "url" .URL) }} aria-current="{{ . }}"{{ end }}>{{ .Name }}</a></li>
+              {{- $ativoSub := partial "aria-current.html" (dict "pagina" $atual "url" .URL) }}
+              <li><a href="{{ .URL }}"{{ with $ativoSub }} aria-current="{{ . }}"{{ end }}>{{ .Name }}</a></li>
               {{- end }}
             </ul>
             {{- end }}

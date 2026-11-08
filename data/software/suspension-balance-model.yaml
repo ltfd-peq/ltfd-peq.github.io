@@ -1,0 +1,14 @@
+id: suspension-balance-model
+nome: An Improved Suspension Balance Model
+tipo: solver
+descricao: "Solver em OpenFOAM do modelo de balanço de suspensão para o escoamento viscosimétrico de suspensões não brownianas no regime de Stokes, com tensão normal das partículas independente do referencial e interpolação de momento que evita oscilações numéricas."
+repositorio: {plataforma: github, caminho: lauschlatter/An-Improved-Suspension-Balance-Model}
+licenca: CC-BY-SA-4.0                # arquivo LICENSE e API do GitHub
+linguagem: C++
+openfoam_versoes: "OpenFOAM 7 (openfoam.org)"
+mantenedores: [lauren-schlatter-fernandes]
+publicacao_referencia: 10.1016/j.ijmultiphaseflow.2024.105120   # Schlatter, Ferreira e Lage, Int. J. Multiphase Flow 184 (2025) 105120
+status: ativo
+fonte: "README e LICENSE do repositório e API pública do GitHub (consultados em 2026-11-08); Crossref (DOI 10.1016/j.ijmultiphaseflow.2024.105120)"
+verificado_em: 2026-11-08
+revisado_em: null

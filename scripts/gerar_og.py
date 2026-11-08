@@ -4,9 +4,10 @@
 Uso:
     python3 -I scripts/gerar_og.py <ltfd-vertical-branca.svg> static/img/og-ltfd.png
 
-Composição como a capa do Manual de Identidade Visual: fundo Azul LTFD (#003366),
-faixa Bordô LTFD (#8A2432) na base e a marca vertical na versão negativa (branca),
-centralizada, com folga maior que a área de proteção. Requer Inkscape e Pillow.
+Composição de capa permitida pelo Manual de Identidade Visual v1.1 (Seção 07): fundo
+Azul LTFD (#003366) e a marca vertical na versão negativa (branca), centralizada, com folga
+maior que a área de proteção. Sem faixa bordô (manual v1.1: bordô só em detalhes).
+Requer Inkscape e Pillow.
 """
 import subprocess
 import sys
@@ -15,8 +16,8 @@ from pathlib import Path
 
 from PIL import Image
 
-LARGURA, ALTURA, FAIXA = 1200, 630, 28
-AZUL, BORDO = (0, 51, 102), (138, 36, 50)
+LARGURA, ALTURA = 1200, 630
+AZUL = (0, 51, 102)
 
 
 def main() -> None:
@@ -30,9 +31,7 @@ def main() -> None:
                        check=True, capture_output=True)
         logo = Image.open(png).convert("RGBA")
     tela = Image.new("RGBA", (LARGURA, ALTURA), AZUL + (255,))
-    tela.paste(Image.new("RGBA", (LARGURA, FAIXA), BORDO + (255,)), (0, ALTURA - FAIXA))
-    util = ALTURA - FAIXA
-    tela.alpha_composite(logo, ((LARGURA - logo.width) // 2, (util - logo.height) // 2))
+    tela.alpha_composite(logo, ((LARGURA - logo.width) // 2, (ALTURA - logo.height) // 2))
     saida.parent.mkdir(parents=True, exist_ok=True)
     tela.convert("RGB").save(saida, optimize=True)
     print(saida, saida.stat().st_size, "bytes")

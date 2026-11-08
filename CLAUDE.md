@@ -33,11 +33,12 @@ pode conter o que pode ir ao ar.
   O CI usa `--panicOnWarning`: qualquer aviso derruba o build.
 - Python 3.12 nos scripts, sempre com `python3 -I`. Dependências em `requirements.txt`.
 
-## Marca (manual v1.0, out/2026)
+## Marca (manual v1.1, nov/2026; skill `marca-ltfd`)
 
 - Fonte única: **Montserrat** (variável 400–800 + itálico 400), auto-hospedada em `static/fonts/`.
 - Cores só pelos tokens de `assets/css/tokens.css`. Azul LTFD `#003366` domina; bordô
-  `#8A2432` só em acentos (≈10 %). **Cor nova só depois de `scripts/contraste.py`.**
+  `#8A2432` só em detalhes (fios, marcadores, ícones; ≈10 %), **nunca** em texto, rótulo,
+  botão com texto, faixa ou fundo (ADR 0004). **Cor nova só depois de `scripts/contraste.py`.**
 - Logo no header: versão **reduzida** (≥ 110 px de largura). Faixa institucional: **horizontal**
   (≥ 220 px). Fundo escuro: versão **branca**. Não pôr o emblema ao lado da marca principal.
   Nunca redigitar a sigla "LTFD" como logotipo; nunca distorcer, recolorir ou aplicar efeitos.
@@ -55,6 +56,10 @@ pode conter o que pode ir ao ar.
   `consentimento.<campo>: true` (o `validar_dados.py` bloqueia). Termos assinados ficam no
   drive institucional, nunca aqui.
 - Esquemas em `schemas/*.schema.json`; mudar um campo = mudar o esquema no mesmo PR.
+- Coleções: `linhas`, `membros`, `teses` (Alumni, os egressos), `projetos`, `software` (Repositórios de
+  código), `equipamentos` (Infraestrutura). Publicações: `bib/ltfd.bib` (BibTeX curado, DOI
+  conferido no Crossref), convertido por `scripts/bib2json.py`; `data/gerado/` não vai ao Git.
+- Fotos em `assets/img/` sem EXIF/GPS (remover antes de copiar para o repositório).
 
 ## Qualidade (bloqueia o merge)
 
@@ -78,6 +83,7 @@ pode conter o que pode ir ao ar.
 ## Comandos
 
 ```bash
+python3 -I scripts/bib2json.py                # bib/ltfd.bib → data/gerado/publicacoes.json (antes do Hugo)
 hugo server                                   # http://localhost:1313 (sem CSP, por causa do livereload)
 python3 -I scripts/validar_dados.py           # esquemas, ids, referências, consentimentos
 python3 -I scripts/contraste.py               # pares de cor (WCAG)

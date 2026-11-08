@@ -1,0 +1,23 @@
+id: escoamento-reativo-reservatorios
+titulo: Escoamento reativo em reservatórios de petróleo
+titulo_en: Reactive flow in oil reservoirs
+ordem: 1
+ativa: true
+icone: linha-meios-porosos
+chamada: "Modelagem multiescala de meios porosos com OpenFOAM®, OpenPNM e Reaktoro."   # uma frase, usada nos cards
+resumo: >-
+  Modelagem multiescala do escoamento em meios porosos, acoplando o OpenFOAM® às redes
+  de poros do OpenPNM, com o Reaktoro para as reações geoquímicas, como a dissolução de
+  minerais. Inclui o transporte reativo com dissolução de sólidos em redes de
+  percolação e a abordagem micro-contínua.
+topicos:
+  - Redes de poros
+  - Simulação multiescala
+  - Transporte reativo
+  - Dissolução de minerais
+docentes_responsaveis: [paulo-lage, gabriel-ferreira]
+fonte: >-
+  Apresentação institucional do LTFD (Prof. Gabriel G. S. Ferreira, 30/05/2025), seção "Ongoing Research", slide "Reactive flow in oil reservoirs" (cita Esteves et al., 2021, Adv. Water
+  Resources); Lattes de P. L. C. Lage (25/08/2026) e de G. G. S. Ferreira (22/05/2026)
+verificado_em: 2026-11-08
+revisado_em: null

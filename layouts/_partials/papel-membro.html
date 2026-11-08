@@ -1,0 +1,6 @@
+{{- /* Vínculo de um membro, em texto: o cargo, se houver (docentes, pesquisadores); senão
+     a modalidade da graduação (IC ou Projeto Final); senão o nível. Recebe o registro. */ -}}
+{{- $papel := T (printf "nivel_%s" .categoria) -}}
+{{- with .modalidade }}{{ $papel = T (printf "modalidade_%s" .) }}{{ end -}}
+{{- with .cargo }}{{ $papel = . }}{{ end -}}
+{{- return $papel -}}

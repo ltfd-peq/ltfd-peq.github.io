@@ -1,0 +1,32 @@
+{{- /* Item de infraestrutura (PLANO §6.6): nome (H3), descrição, especificações em tabela
+     (nunca em prosa) e foto ou figura com legenda (assets/img/infraestrutura/, sem EXIF),
+     em WebP. Recebe o registro de data/equipamentos/. */ -}}
+{{- $e := . -}}
+<div class="equipamento{{ if $e.foto }} equipamento--com-foto{{ end }}">
+  <div>
+    <h3 id="{{ $e.id }}">{{ $e.nome }}</h3>
+    {{- with $e.descricao }}<p>{{ . }}</p>{{ end }}
+    {{- with $e.especificacoes }}
+    <table class="especificacoes">
+      <caption class="visualmente-oculto">Especificações: {{ $e.nome }}</caption>
+      <tbody>
+        {{- range . }}
+        <tr><th scope="row">{{ .parametro }}</th><td>{{ .valor }}</td></tr>
+        {{- end }}
+      </tbody>
+    </table>
+    {{- end }}
+  </div>
+  {{- with $e.foto }}
+  {{- $foto := . }}
+  {{- with resources.Get (printf "img/infraestrutura/%s" $foto.arquivo) }}
+  {{- $img := .Resize "480x webp q80" }}
+  {{- $img2 := .Resize "960x webp q75" }}
+  <figure class="figura">
+    <img src="{{ $img.RelPermalink }}" srcset="{{ $img.RelPermalink }} 480w, {{ $img2.RelPermalink }} 960w" sizes="20rem" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $foto.alt }}" loading="lazy">
+    {{- with $foto.legenda }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+  {{- else }}{{ errorf "Foto inexistente: assets/img/infraestrutura/%s" $foto.arquivo }}
+  {{- end }}
+  {{- end }}
+</div>
