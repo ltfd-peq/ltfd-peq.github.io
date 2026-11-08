@@ -17,7 +17,7 @@ linhas:
   - reologia-fluidos-complexos
   - separacao-balanco-populacional
   - cfd-garantia-escoamento
-  - reatores-nao-ideais
+  - reatores-compactos
 email: paulo@peq.coppe.ufrj.br        # e-mail institucional (kit/laboratorio.json)
 foto: null                            # sessão de fotos padronizada na Onda B
 consentimento: {foto: null, email: null, destino: null, data: null}

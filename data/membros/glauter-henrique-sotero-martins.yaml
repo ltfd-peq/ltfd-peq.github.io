@@ -6,7 +6,7 @@ programa: Engenharia Química (UFRJ)
 periodo: {inicio: null, fim: null}   # ano de início do Projeto Final: a coletar
 trabalho:                            # título do Projeto Final: a coletar (PENDENCIAS.md)
   orientadores: [argimiro-secchi, gabriel-ferreira]
-linhas: [reatores-nao-ideais]   # IC concluída em 2025: reatores tubulares para hidrogênio
+linhas: [reatores-compactos]   # IC concluída em 2025: reatores tubulares para hidrogênio
 ids: {lattes: null, orcid: null}   # o Lattes dele usa o identificador K2873493P1 (não numérico)
 email: null
 foto: null

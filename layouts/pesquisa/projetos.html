@@ -13,7 +13,7 @@
 {{- $decadas = $decadas | uniq | sort | collections.Reverse }}
 <div class="secao">
   <div class="container container--estreito">
-    <div class="prosa">{{ .Content }}</div>
+    {{- with .Content }}<div class="prosa">{{ . }}</div>{{ end }}
     <nav class="ir-para" aria-label="Seções">
       <span>{{ T "irPara" }}</span>
       <ul class="chips">

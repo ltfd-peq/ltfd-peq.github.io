@@ -9,7 +9,7 @@
 {{- $plataformas := dict "github" (dict "nome" "GitHub" "url" "https://github.com/") "gitlab" (dict "nome" "GitLab" "url" "https://gitlab.com/") }}
 <div class="secao">
   <div class="container">
-    <div class="prosa container--estreito">{{ .Content }}</div>
+    {{- with .Content }}<div class="prosa container--estreito">{{ . }}</div>{{ end }}
     <h2 class="visualmente-oculto">Repositórios</h2>
     <ul class="grade grade--largo">
       {{- range sort hugo.Data.software "nome" }}

@@ -30,5 +30,9 @@ projetos de pesquisa em andamento. Escreva para o docente da linha de interesse.
 ## Cursos e extensão
 
 Oferecemos cursos de curta duração sobre ferramentas computacionais. O curso de extensão
-"Introdução à CFD usando OpenFOAM" teve quatro edições, de 2019 a 2022. Novas edições
-serão anunciadas nesta página.
+"Introdução à CFD usando OpenFOAM" teve quatro edições, de 2019 a 2022. Para saber de novos
+cursos, acompanhe o site da
+[Escola Piloto Prof. Giulio Massarani](https://escolapiloto.peq.coppe.ufrj.br/index.php/pt/),
+do PEQ.
+
+{{< escola-piloto >}}

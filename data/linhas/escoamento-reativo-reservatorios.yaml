@@ -17,12 +17,12 @@ topicos:
   - Dissolução de minerais
 imagem:
   arquivo: berea.jpg   # assets/img/pesquisas/
-  alt: "Renderização de um cubo de arenito Berea, com um recorte que mostra o interior, e linhas de corrente coloridas, do azul ao amarelo, atravessando o espaço poroso."
-  legenda: "Arenito Berea: linhas de corrente do escoamento no espaço poroso."
+  alt: "Renderização de vários blocos de arenito Berea com poros visíveis; no bloco do centro, um recorte mostra linhas de corrente coloridas, do azul ao amarelo, atravessando o espaço poroso."
+  legenda: "Blocos de arenito Berea; no centro, um recorte com as linhas de corrente do escoamento no espaço poroso."
 docentes_responsaveis: [paulo-lage, gabriel-ferreira]
 fonte: >-
   Apresentação institucional do LTFD (Prof. Gabriel G. S. Ferreira, 30/05/2025), seção "Ongoing Research", slide "Reactive flow in oil reservoirs" (cita Esteves et al., 2021, Adv. Water
   Resources); Lattes de P. L. C. Lage (25/08/2026) e de G. G. S. Ferreira (22/05/2026); figura
-  "berea.jpg" enviada pelo Prof. Gabriel G. S. Ferreira (08/11/2026)
+  "berea_cut.jpg" enviada pelo Prof. Gabriel G. S. Ferreira (08/11/2026)
 verificado_em: 2026-11-08
 revisado_em: null

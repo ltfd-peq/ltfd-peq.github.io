@@ -24,11 +24,12 @@ vinculo:
 # Revisão de 08/11/2026: não restringir o software ao OpenFOAM (apresentação
 # institucional de 30/05/2025, slide "Infrastructure": OpenFOAM, foam-extend, OpenPNM,
 # códigos próprios; slide "Reactive flow in oil reservoirs": Reaktoro).
+# Texto da revisão do Prof. Gabriel G. S. Ferreira (TO_DO de 08/11/2026, 2ª versão).
 proposta: >-
   Estudamos escoamentos com transferência de calor e massa em equipamentos de
-  processo e em meios porosos, com ênfase em escoamentos multifásicos, balanço
-  populacional, métodos numéricos e fluidodinâmica computacional (CFD), com códigos
-  próprios e ferramentas de código aberto como OpenFOAM®, OpenPNM e Reaktoro.
+  processo e meios porosos, com ênfase em processos multifásicos, modelagem usando
+  balanço populacional, métodos numéricos e fluidodinâmica computacional (CFD), com
+  códigos próprios e ferramentas de código aberto como OpenFOAM®, OpenPNM e Reaktoro.
 descricao: >-
   O LTFD, do Programa de Engenharia Química da COPPE/UFRJ, desenvolve estudos
   teóricos, experimentais e computacionais de escoamentos com transferência de

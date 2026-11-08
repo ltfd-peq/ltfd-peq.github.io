@@ -599,3 +599,5 @@ a:hover { color: var(--cor-link-hover); text-decoration-thickness: 2px; }
 .figura--linha { margin-top: var(--space-6); }
 .figura figcaption { font-size: var(--fs-pequeno); color: var(--cor-texto-suave); margin-top: var(--space-2); }
 .grade--largo { --card-min: 22rem; }
+.logo-parceiro a { display: inline-block; }
+.logo-parceiro img { display: block; width: 280px; max-width: 100%; height: auto; }

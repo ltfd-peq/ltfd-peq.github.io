@@ -41,7 +41,7 @@ indicação. Ao resolver um item, marque-o, atualize o YAML correspondente (com 
       Bioquímicos (Escola de Química/UFRJ), não no PEQ, com orientação de Secchi desde 2019
       (Lattes de Secchi). Confirmar a linha "Reologia de fluidos complexos".
 - [ ] **Glauter Henrique Sotero Martins:** título e ano de início do Projeto Final. Linha
-      "Reatores não ideais" atribuída pela IC concluída em 2025 (reatores tubulares para
+      "Modelagem de reatores compactos" atribuída pela IC concluída em 2025 (reatores tubulares para
       hidrogênio).
 - [ ] **Leonardo de Souza Sá:** confirmar se o Prof. Gabriel é orientador ou coorientador do
       doutorado. Hoje o site mostra "Orientação: Paulo L. C. Lage e Gabriel G. S. Ferreira";
@@ -59,9 +59,9 @@ indicação. Ao resolver um item, marque-o, atualize o YAML correspondente (com 
   | Reologia de fluidos complexos | Lage, Secchi, Ferreira |
   | Processos de separação e balanço populacional | Lage, Ferreira |
   | CFD aplicada à garantia de escoamento | Lage, Ferreira. Secchi tem trabalhos sobre formação de hidratos em linhas de produção (ex.: Guedes et al., CHERD, 2026): entra? |
-  | Reatores não ideais em processos sustentáveis | Lage, Secchi, Ferreira |
+  | Modelagem de reatores compactos | Lage, Secchi, Ferreira |
 
-- [ ] Imagens das linhas: "Reatores não ideais" tem a figura dos reatores compactos e
+- [ ] Imagens das linhas: "Modelagem de reatores compactos" tem a figura dos reatores compactos e
       "Escoamento reativo em reservatórios", a do arenito Berea (`assets/img/pesquisas/`).
       Falta a legenda técnica delas (caso, modelo, solver; PLANO §6.4) e o crédito, se houver. Para as outras linhas, a apresentação tem figuras de
       resultados: usar só as do LTFD que não estão sob direitos de editora, com legenda e fonte.

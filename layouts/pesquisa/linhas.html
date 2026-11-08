@@ -5,7 +5,7 @@
 {{- partial "cabecalho-pagina.html" . }}
 <div class="secao">
   <div class="container">
-    <div class="prosa">{{ .Content }}</div>
+    {{- with .Content }}<div class="prosa">{{ . }}</div>{{ end }}
     <h2 class="visualmente-oculto">{{ T "linhasDePesquisa" }}</h2>
     <ul class="grade">
       {{- range sort hugo.Data.linhas "ordem" }}

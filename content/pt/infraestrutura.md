@@ -7,5 +7,3 @@ description: >-
   Infraestrutura do Laboratório de Termofluidodinâmica (LTFD): o cluster Apolo, de computação
   de alto desempenho, a sala dos alunos e o software das simulações.
 ---
-
-As simulações do LTFD rodam no cluster Apolo, de computação de alto desempenho.

@@ -3,6 +3,20 @@
 Registro de mudanças de tema, menus, dados e domínio (PLANO §11.5). Conteúdo do dia a dia
 não entra aqui: ele fica no histórico do Git.
 
+## 0.3.1 — 08/11/2026 — 3ª rodada de revisão (`TO_DO`)
+
+- Textos novos: frase da página inicial, abertura de Pesquisa e áreas em Sobre (Engenharias
+  Química, Mecânica, Civil e afins); Sobre com links para os sites do PEQ, da COPPE e da UFRJ.
+- Saem os textos de abertura de Linhas de pesquisa, Produção científica, Repositórios de
+  código aberto, Projetos de pesquisa e Infraestrutura.
+- A linha "Reatores não ideais em processos sustentáveis" passa a se chamar "Modelagem de
+  reatores compactos", com novo endereço (`/pesquisa/reatores-compactos/`; antes do
+  lançamento).
+- Oportunidades › Cursos e extensão: em vez de "Novas edições serão anunciadas nesta página",
+  link e logo da Escola Piloto Prof. Giulio Massarani, do PEQ (shortcode `escola-piloto`).
+- Figuras novas nas linhas de reservatórios (blocos de arenito Berea) e de reatores compactos
+  (reatores e estruturas internas); a figura da linha nunca é ampliada além do original.
+
 ## 0.3.0 — 08/11/2026 — 2ª revisão do Prof. Gabriel G. S. Ferreira (anotações e `TO_DO`)
 
 - **Linhas de pesquisa**: de 7 para 5 — escoamento reativo em reservatórios de petróleo (a

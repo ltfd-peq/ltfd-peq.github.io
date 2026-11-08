@@ -1,0 +1,13 @@
+{{- /* Logo da Escola Piloto Prof. Giulio Massarani (PEQ/COPPE/UFRJ), com link para o site
+     dela (revisão de 08/11/2026: Oportunidades › Cursos e extensão). Arquivo em
+     assets/img/marcas/escola-piloto.jpg, do site da Escola Piloto, sem metadados. */ -}}
+{{- with resources.Get "img/marcas/escola-piloto.jpg" -}}
+{{- $p := .Resize "280x webp q85" -}}
+{{- $g := .Resize "560x webp q80" -}}
+<p class="logo-parceiro">
+  <a href="https://escolapiloto.peq.coppe.ufrj.br/index.php/pt/">
+    <img src="{{ $p.RelPermalink }}" srcset="{{ $p.RelPermalink }} 1x, {{ $g.RelPermalink }} 2x" width="{{ $p.Width }}" height="{{ $p.Height }}" alt="Escola Piloto Prof. Giulio Massarani – site">
+  </a>
+</p>
+{{- else -}}{{ errorf "Logo inexistente: assets/img/marcas/escola-piloto.jpg" }}
+{{- end -}}

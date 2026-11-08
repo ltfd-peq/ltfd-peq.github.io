@@ -6,5 +6,6 @@ description: >-
   pesquisa, produção científica, repositórios de código aberto e projetos de pesquisa.
 ---
 
-Estudamos escoamentos com transferência de calor e massa em equipamentos de processo e
-em meios porosos, combinando modelagem teórica, simulação computacional e experimentos.
+As nossas linhas de pesquisa em atividade tratam de escoamentos com transferência de calor
+e massa em equipamentos de processo e em meios porosos, combinando modelagem teórica,
+simulação computacional e experimentos.

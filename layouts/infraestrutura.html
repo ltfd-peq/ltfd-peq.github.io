@@ -6,7 +6,7 @@
 {{- $itens := where (sort hugo.Data.equipamentos "ordem") "status" "ativo" }}
 <div class="secao">
   <div class="container">
-    <div class="prosa container--estreito">{{ .Content }}</div>
+    {{- with .Content }}<div class="prosa container--estreito">{{ . }}</div>{{ end }}
     {{- range slice (dict "categoria" "computacional" "ancora" "computacao" "titulo" "Computação de alto desempenho") (dict "categoria" "espaco" "ancora" "espaco-fisico" "titulo" "Espaço físico") }}
     {{- $s := . }}
     {{- with where $itens "categoria" $s.categoria }}

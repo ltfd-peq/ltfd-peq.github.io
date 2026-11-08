@@ -15,7 +15,7 @@
 {{- $arquivo := resources.FromString "pesquisa/publicacoes/ltfd.bib" (delimit $bib "\n\n") }}
 <div class="secao">
   <div class="container container--estreito">
-    <div class="prosa">{{ .Content }}</div>
+    {{- with .Content }}<div class="prosa">{{ . }}</div>{{ end }}
     <p><a class="link-seta" href="{{ $arquivo.RelPermalink }}" download>Baixar a lista em BibTeX ({{ len $pubs }} artigos)</a></p>
     <nav class="ir-para" aria-label="Anos">
       <span>{{ T "irPara" }}</span>

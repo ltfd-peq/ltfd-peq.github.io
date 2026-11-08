@@ -13,14 +13,14 @@ Complexos" (P. L. C. Lage, 2016–atual), parafraseado; briefing de identidade v
 Lattes de G. G. S. Ferreira (cursos). Rascunho A, §8.2. Missão, visão e valores ficam
 de fora até haver uma versão específica do LTFD (PLANO §6.2 e §15, item 19). -->
 
-O Laboratório de Termofluidodinâmica (LTFD) faz parte do Programa de Engenharia Química
-(PEQ) do Instituto Alberto Luiz Coimbra de Pós-Graduação e Pesquisa de Engenharia (COPPE)
-da Universidade Federal do Rio de Janeiro (UFRJ).
+O Laboratório de Termofluidodinâmica (LTFD) faz parte do
+[Programa de Engenharia Química (PEQ)](https://www.peq.coppe.ufrj.br/) do
+[Instituto Alberto Luiz Coimbra de Pós-Graduação e Pesquisa de Engenharia (COPPE)](https://coppe.ufrj.br/)
+da [Universidade Federal do Rio de Janeiro (UFRJ)](https://ufrj.br/).
 
 A termofluidodinâmica estuda processos que envolvem escoamentos de fluidos com transporte
-de calor e massa, na área de Fenômenos de Transporte, onde atuam profissionais da
-Engenharia Química e também da Engenharia Mecânica, da Engenharia de Petróleo e de
-outras áreas afins. Com o crescimento da capacidade computacional,
+de calor e massa, na área de Fenômenos de Transporte, em que atuam profissionais das
+Engenharias Química, Mecânica, Civil, e outras áreas afins. Com o crescimento da capacidade computacional,
 a melhoria dos métodos numéricos e a disponibilidade de códigos abertos, a área tem se
 voltado à análise de processos químicos com escoamentos complexos — com mais de uma fase,
 com fluidos de reologia complexa ou com misturas de muitos componentes — usando a

@@ -17,7 +17,7 @@ linhas:
   - reologia-fluidos-complexos
   - separacao-balanco-populacional
   - cfd-garantia-escoamento
-  - reatores-nao-ideais
+  - reatores-compactos
 email: gferreira@peq.coppe.ufrj.br
 foto: null
 consentimento: {foto: null, email: null, destino: null, data: null}
